@@ -5,7 +5,9 @@ subtitle:
     Sam Parmar, Pfizer, New York City, United States <br>
     Nick Masel, Johnson and Johnson
 format: docx
-editor: source
+format: 
+    docx:
+        reference-doc: paper_template_us_connect_26.docx
 ---
 
 ## ABSTRACT
