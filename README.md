@@ -21,7 +21,7 @@
 * Trials and Tribulations
 * AI infrastructure
 * Way of working
-* Succes of the Pilot
+* Success of the Pilot
 
 ---
 
