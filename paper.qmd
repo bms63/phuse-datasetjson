@@ -9,12 +9,91 @@ format: docx
 
 ## ABSTRACT
 
+Clinical regulatory submissions have historically depended on SAS XPORT (XPT) as the standard transport mechanism for SDTM and ADaM datasets. While XPT has enabled exchange across systems for decades, it also carries limitations: constrained metadata expression, historical formatting constraints, and practical friction when working in modern open-source ecosystems where JSON is a native interchange format. The CDISC Dataset-JSON standard offers a contemporary alternative designed to represent tabular clinical data and metadata in a structured, machine-readable form.
+
+R Consortium R Submission Pilot 5 investigated whether an **R-based submission package** can generate analysis datasets and outputs in a manner aligned with regulatory expectations while delivering datasets using **Dataset-JSON (v1.1)**. Using the publicly available CDISC Pilot study (CDISCPilot01) as a reference dataset, the pilot produced ADaM datasets using R, created Dataset-JSON deliverables, and regenerated tables/figures to demonstrate reproducibility. Quality control steps compared Pilot 5 datasets and outputs against earlier artifacts to validate consistency.
+
+This paper summarizes the Pilot 5 approach, including the reproducible analysis pipeline, dataset conversion workflows, and the packaging of materials into an eCTD-like structure. We conclude with practical lessons learned and recommendations for organizations considering Dataset-JSON as an alternative transport mechanism.
+
 ## INTRODUCTION
+
+### Background and Motivation
+
+Regulatory submissions commonly require clinical datasets to be delivered in SAS XPORT transport format. Although widely supported, XPT reflects a legacy technical design and can introduce friction when data engineering and analysis workflows are implemented in open-source environments. In parallel, regulatory agencies and industry have increasingly explored structured, modern data representations that better support automation and reproducibility.
+
+Dataset-JSON (CDISC) is a standard intended to represent SDTM/ADaM-like tabular datasets and associated metadata in JSON. JSON is broadly supported across languages and platforms, and can integrate more naturally with contemporary tooling, including validation, versioning, and automated processing.
+
+### R Consortium R Submission Pilot 5 Overview
+
+The objectives of the R Consortium R Submission Pilot 5 project include (1) delivering a publicly accessible, R-based submission through an eCTD-style package using Dataset-JSON and (2) expanding on prior pilots by using R to generate ADaM datasets and reproduce analysis outputs.
+
+The work is publicly implemented in the repository:
+- Main development repository: https://github.com/RConsortium/submissions-pilot5-datasetjson
+- The eCTD packaging repository is referenced as: https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda
+
+The repository structure and documentation demonstrate:
+- An organized submission-like folder layout aligned with ICH eCTD conventions (`ectd_readme/README.qmd`).
+- Generation of ADaM datasets in R (`pilot5-submission/pilot5-programs/*.r`).
+- Conversion steps supporting Dataset-JSON deliverables.
+- Regeneration of tables, listings, and figures (TLFs) from the R-generated ADaM datasets.
+- QC workflows to compare Pilot 5 outputs/datasets to previously established artifacts (Pilot 3 / Pilot 1 lineage), supporting reproducibility claims.
+
+### Scope of This Paper
+
+This paper focuses on the Dataset-JSON aspect of Pilot 5—specifically, showing how Dataset-JSON can be produced and used in an R-based submission pipeline while maintaining traceability, reproducibility, and reviewer usability. Evaluation of system/software validation evidence and agency policy questions are considered out of scope.
 
 ## CONCLUSION
 
+R Consortium R Submission Pilot 5 demonstrates an end-to-end, public example of a clinical submission-style package where:
+- ADaM datasets are generated in R using reproducible code.
+- Data can be represented and delivered as **Dataset-JSON (v1.1)** rather than relying exclusively on XPT.
+- Outputs (tables/figures) can be regenerated from the provided code and datasets, reinforcing the reproducibility objective.
+- QC comparisons (dataset-level and output-level) can be integrated into the workflow to provide evidence of consistency with prior datasets and outputs.
+
+Key observations from the implementation include:
+
+1. **Dataset-JSON fits naturally into open-source workflows.** JSON is broadly interoperable and integrates with modern tooling for structured data processing. The project’s conversion and write steps show how data can be serialized with appropriate metadata and labels.
+
+2. **Traceability and reviewer guidance remain essential.** A Dataset-JSON delivery does not remove the need for strong documentation. The pilot includes an ADRG and define artifacts to contextualize analysis datasets, terminology, and conformance.
+
+3. **QC and comparability are achievable and should be designed in.** The project includes code-driven comparisons of datasets and output artifacts (including automated difference reporting), supporting confidence that a JSON-based transport can still meet expectations for fidelity and auditability.
+
+Based on this pilot, Dataset-JSON is a credible alternative transport format for SDTM/ADaM-like datasets, particularly when paired with a reproducible analysis environment and submission-ready documentation. Future work should continue to evaluate reviewer tooling, agency feedback, and operational considerations for adoption at scale.
+
 ## REFERENCES
+
+1. R Consortium R Submission Working Group. *R Submission Pilot 5 (Dataset-JSON) development repository*. https://github.com/RConsortium/submissions-pilot5-datasetjson  
+2. R Consortium R Submission Working Group. *R Submissions Pilot 5 eCTD Package Overview (README.qmd)*. https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd  
+3. CDISC. *Dataset-JSON (DatasetJSON) Standard, v1.1.* (Referenced in Pilot 5 ADRG standards table.)  
+4. FDA. *Electronic Common Technical Document (eCTD).* https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd  
+5. CDISC SDTM & ADaM Pilot Project. *CDISCPilot01 public pilot materials.* https://github.com/cdisc-org/sdtm-adam-pilot-project  
 
 ## RECOMMENDED READING
 
+- Pilot 5 ADRG (public preview links referenced from repo README):
+  - HTML: https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/
+  - PDF: https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
+
+- Prior R submission pilots (Pilot 1 and Pilot 3 background referenced by Pilot 5 README):
+  - https://rconsortium.github.io/submissions-pilot1/
+
+- Example implementation references in the Pilot 5 repository:
+  - Dataset QC report Quarto: `qcReport.qmd` (compares Pilot 5 ADaM RDS to prior XPT artifacts)
+  - TLF QC report Quarto: `tlf-qc.qmd` (compares Pilot 5 vs Pilot 3 outputs, including text diffs and image comparisons)
+  - Conversion utilities (illustrative):
+    - `pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r`
+    - `pilot5-submission/pilot5-programs/convert_rds_to_json_to_xpt.r`
+
 ## CONTACT INFORMATION
+
+Ben Straub  
+GSK  
+Philadelphia, United States  
+
+Sam Parmar  
+Pfizer  
+New York City, United States  
+
+Nick Masel  
+Johnson and Johnson  
+(complete affiliation/location as applicable)
