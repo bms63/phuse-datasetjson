@@ -29,6 +29,8 @@ jobs:
   spellcheck:
     name: Spellcheck
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     if: >
