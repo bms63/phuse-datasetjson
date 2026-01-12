@@ -62,7 +62,7 @@ This is the motivation for exploring Dataset-JSON: not to declare a villain, but
 
 ### A brief “history lesson”
 
-Dataset-JSON is a CDISC standard intended to represent clinical tabular datasets using JSON. It exists in the context of increasing adoption of structured data standards and the need to support interoperability beyond a single vendor ecosystem.
+Dataset-JSON is a CDISC standard intended to represent clinical tabular datasets using JSON. It exists in the context of increasing adoption of structured data standards and the need to support interoperability beyond a single vendor ecosystem. It is designed to meet a wide range of data exchange scenarios including regulatory submissions and API-based data sharing.
 
 Dataset-JSON is important because it is:
 - **machine-readable and widely parseable**, and
@@ -72,11 +72,15 @@ Dataset-JSON is important because it is:
 
 Dataset-JSON can be thought of as a standard way to serialize a dataset plus its metadata into JSON. In practical terms it enables:
 
-- transport of rows/records in JSON form,
-- representation of column metadata (name, label, type, etc.),
-- consistent schema that can be validated and diffed using standard tooling.
+- transport of rows/records in JSON form
+- representation of column metadata (name, label, type, etc.)
+- consistent schema that can be validated and diffed using standard tooling
+- contains one dataset per file
+- each dataset can optionally reference a Define-XML file
 
-Pilot 5 uses Dataset-JSON v1.1 (as referenced in the ADRG standards inventory) and demonstrates converting and producing these artifacts in R in a transparent manner.
+Pilot 5 uses [Dataset-JSON v1.1](https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html) and demonstrates converting and producing these artifacts in R in a transparent manner.
+
+The standard addresses requirements from the PHUSE 2017 "Transport for the Next Generation" paper. It follows a lowerCamelCase structure with three main components: top-level metadata (including creation datetime, version, and optional Define-XML references), column metadata (specifying variable names, labels, and data types), and row data arrays. It supports multiple data types with special handling for decimal precision (exchanged as strings to avoid rounding) and ISO 8601 format for date/time variables, with missing values represented as `null`. The standard also offers an NDJSON format (.ndjson) that enables streaming of large datasets by placing metadata on the first line and individual data rows on subsequent lines, allowing processing without loading entire datasets into memory. 
 
 ### Collaboration framing (CDISC / PHUSE / FDA)
 
