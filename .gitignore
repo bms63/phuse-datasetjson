@@ -48,5 +48,9 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 
+paper.docx
+paper.html
+paper_files/
+
 feedback.md
 draft_slides.qmd
