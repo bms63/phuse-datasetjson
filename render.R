@@ -1,8 +1,7 @@
 library(quarto)
 library(glue)
 
-# TODO : Replace with actual paper number
-XXnn <- "XXnn"  
+XXnn <- "SA02"  
 
 quarto_render(
     input = "paper.qmd",
