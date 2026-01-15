@@ -30,7 +30,7 @@ The xpt is a burden to our industry.
 This paper covers four related topics:
 
 1. Why the industry is reevaluating long-standing dataset transport assumptions (with XPT as the historical default).
-2. What Dataset-JSON is, where it came from, and why it matters.
+2. What is Dataset-JSON, where it came from, and why it matters.
 3. The R Consortium R Submissions Working Group context that enabled Pilot 5.
 4. R Submission Pilot 5, with emphasis on the Dataset-JSON implementation, reproducible workflows, and what we learned.
 
@@ -38,8 +38,7 @@ This paper covers four related topics:
 
 XPT is not “bad”— as it is widely supported and deeply embedded in regulatory processes. However, 
 when viewed through a modern software lens, it unduly burdens the acceptance of modern software practices and adoption
-of new data standards. In this section, we will lay out why the xpt is problematic with an
-eye toward the datasetjsons section highlighting the potential to address these burdens.
+of new data standards. In this section, we will lay out why the xpt is problematic.
 
 **Outdated Technology:** The format was defined in the 1980s (SAS Technical Report TS-140) and was designed for data transfer between SAS applications on different operating systems, particularly mainframe and VAX systems. It is not aligned with modern data architectures or standards like FHIR or big-data. The FDA adopted it as non-proprietary data format
 to submit for drug submissions.
@@ -248,6 +247,9 @@ QC reports in the Pilot 5 repo:
 
 LLM-assisted ADRG utilities (Pilot 5 repo):
 - `adrg/llm-adrg-utils/llm_pipeline.qmd`
+
+TS-140 THE RECORD LAYOUT OF A DATA SET IN SAS TRANSPORT (XPORT) FORMAT
+- https://hwiegman.home.xs4all.nl/fileformats/S/sas/TS-140%20THE%20RECORD%20LAYOUT%20OF%20A%20DATA%20SET%20IN%20SAS%20TRANSPORT%20(XPORT)%20FORMAT.htm
 
 ## ACKNOWLEDGMENTS
 
