@@ -54,3 +54,7 @@ paper_files/
 
 feedback.md
 draft_slides.qmd
+
+*.xpt
+*.json
+*.parquet
