@@ -40,6 +40,9 @@ jobs:
           r-version: '4.4'
           use-public-rspm: true
 
+      - name: Install rmarkdown
+        run: Rscript -e "install.packages(c('rmarkdown', 'knitr'))"
+
       - name: Render Quarto document
         run: |
           quarto render paper.qmd --to html --output-dir _site
