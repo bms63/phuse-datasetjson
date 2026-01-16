@@ -42,7 +42,7 @@ jobs:
 
       - name: Render Quarto document
         run: |
-          quarto render paper.qmd --to html
+          quarto render paper.qmd --to html --output-dir _site
         shell: bash
 
       - name: Setup Pages
@@ -51,7 +51,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
   deploy:
     environment:
