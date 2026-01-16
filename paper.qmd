@@ -139,7 +139,7 @@ created in R - hence the small package to help stay focused.
 
 Now enter Pilot 5.  Building off the success if Pilot 1 and Pilot 3 we wanted to 
 see if all the xpt files in the submission package could be converted to datasetjson.
-The amazing datasetjson R package is avaiable to help do a lot of the heavy lifting.
+The amazing datasetjson R package is available to help do a lot of the heavy lifting.
 See below for more information on it. As most of the code was in place for the tables,
 figures and ADaMs, we only had to add minimal code to produce the xpts into datasetjson.
 The datasetjson R package also had a handy conversion program for moving existing xpts
