@@ -170,7 +170,7 @@ worked with our FDA partners to address and have documented in the FDA. Once the
 For technical, the first issue was learning how the metadata is applied and stored in
 the datasetjson format as we have to ensure consistency. The second issue was learning
 about converting float variables to decimal data type in the JSON output. This was a
-bit of a thorn in our side in the initial development.  Eventually, a warpper function was
+bit of a thorn in our side in the initial development.  Eventually, a wrapper function was
 built to help provide consistency across all the datasets.
 
 ### Way of working: reproducibility-first
