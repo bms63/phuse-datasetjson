@@ -164,7 +164,7 @@ For standards, the first issue was that the standard of datasetjson had just swi
 make use of the Validation software Pinnacle 21, which helps ensure compliance for
 submissions packages. Unfortunately, the standard 1.1 was not available in either
 the community or enterprise version of the software.  A bit of setback, but we
-worked with our FDA partners to address and have documented in the FDA. Once the standard
+worked with our FDA partners to address and have documented this in the FDA submission. Once the standard
 1.1 is available in the Pinnacle 21 we might re-submit.
 
 For technical, the first issue was learning how the metadata is applied and stored in
