@@ -11,7 +11,7 @@ format:
 
 ## ABSTRACT
 
-The SAS XPORT (XPT) transport file has been the de facto interchange format for SDTM and ADaM datasets in regulatory submissions for decades. While durable and widely supported, XPT is inherently constrained by legacy design decisions and is not a natural “first choice” format within modern open-source data ecosystems. The CDISC Dataset-JSON standard (“dataset.json”) provides a contemporary alternative designed to represent clinical datasets and metadata using JavaScript Object Notation (JSON), enabling straightforward interaction across many programming languages and validation toolchains.
+The SAS XPORT (XPT) transport file has been the de facto interchange format for SDTM and ADaM datasets in regulatory submissions for decades. While durable and widely supported, XPT is inherently constrained by legacy design decisions and is not a natural “first choice” format within modern open-source data ecosystems. The CDISC Dataset-JSON standard provides a contemporary alternative designed to represent clinical datasets and metadata using JavaScript Object Notation (JSON), enabling straightforward interaction across many programming languages and validation toolchains.
 
 R Consortium R Submission Pilot 5 explored a fully reproducible, publicly accessible submission-like package centered on **R-generated ADaM datasets** and delivery of datasets in **Dataset-JSON v1.1**. The pilot demonstrates (1) converting study data inputs into analysis-ready datasets, (2) serializing datasets to Dataset-JSON using R, (3) regenerating key tables/figures from the R-derived datasets, and (4) implementing quality control comparisons to support confidence that artifacts match expectations and prior baselines.
 
