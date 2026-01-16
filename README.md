@@ -25,6 +25,22 @@
 
 ---
 
+## GitHub Pages
+
+The paper (`paper.qmd`) is automatically published to GitHub Pages whenever changes are pushed to the `main` branch. The workflow can also be triggered manually from the Actions tab.
+
+### Setup Instructions
+
+To enable GitHub Pages for this repository:
+
+1. Go to repository Settings → Pages
+2. Under "Build and deployment", select **Source**: GitHub Actions
+3. The paper will be published automatically on the next push to `main` or manual workflow trigger
+
+The published paper will be available at: `https://bms63.github.io/phuse-datasetjson/paper.html`
+
+---
+
 ## Spell Checker
 
 This repository includes an automated spell checker for `.qmd` (Quarto Markdown) files via GitHub Actions.
