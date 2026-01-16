@@ -65,7 +65,7 @@ for (n_rows in num_rows_tests) {
   
   # 2. Create the dummy XPT file (defaulting to version 5, which limits rows)
   tryCatch({
-    write_xpt(dummy_data, xpt_file) # Removed 'version = 8'
+    write_xpt(dummy_data, xpt_file) # Uses default XPT version 5, which has row limitations
     message(paste("Dummy XPT file (version 5) created:", xpt_file))
   }, error = function(e) {
     message(paste("Error creating XPT file:", e$message))
