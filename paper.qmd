@@ -288,7 +288,7 @@ LLM-assisted ADRG utilities (Pilot 5 repo):
 - `adrg/llm-adrg-utils/llm_pipeline.qmd`
 
 TS-140 THE RECORD LAYOUT OF A DATA SET IN SAS TRANSPORT (XPORT) FORMAT
-- https://hwiegman.home.xs4all.nl/fileformats/S/sas/TS-140%20THE%20RECORD%20LAYOUT%20OF%20A%20DATA%20SET%20IN%20SAS%20TRANSPORT%20(XPORT)%20FORMAT.htm
+- https://support.sas.com/content/dam/SAS/support/en/technical-papers/record-layout-of-a-sas-version-5-or-6-data-set-in-sas-transport-xport-format.pdf
 
 ## ACKNOWLEDGMENTS
 
