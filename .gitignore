@@ -51,6 +51,7 @@ rsconnect/
 paper.docx
 paper.html
 paper_files/
+_site/
 
 feedback.md
 draft_slides.qmd
