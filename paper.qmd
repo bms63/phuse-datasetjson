@@ -156,7 +156,7 @@ Primary public entry points include:
 
 ### Trials and tribulations (what you run into in the real world)
 
-Pilot 5 encountered a couple of challenges along the way in brining our submission
+Pilot 5 encountered a couple of challenges along the way in bringing our submission
 package to the FDA grouped into standards and technical hurdle.
 
 For standards, the first issue was that the standard of datasetjson had just switched from 1.0 to
