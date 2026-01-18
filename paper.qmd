@@ -3,12 +3,14 @@ title: "Breaking Free from the Xpt: Exploration of dataset.json as an Alternativ
 subtitle: 
     Ben Straub, GSK, Philadelphia, United States <br>
     Sam Parmar, Pfizer, New York City, United States <br>
-    Nick Masel, Johnson and Johnson
+    Nick Masel, Johnson and Johnson, Raleigh, United States
 format: 
     html
 ---
 
 ```{r, echo = FALSE}
+# Drafts due on Feb 2nd
+# Final paper and slides due on Feb 9th
 # Monday, March 23rd, 11:30 - 12:00
 # Sabine
 ```
