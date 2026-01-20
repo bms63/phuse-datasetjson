@@ -263,8 +263,9 @@ https://github.com/cdisc-org/sdtm-adam-pilot-project
 Electronic Study Data Submission; Data Standards; Clinical Data Interchange Standards Consortium Dataset-JavaScript Object Notation; Request for Comments. Federal Register. (2025, April 9).
 https://www.federalregister.gov/documents/2025/04/09/2025-06051/electronic-study-data-submission-data-standards-clinical-data-interchange-standards-consortium
 
-Github. (2025). Github Copilot (GPT-4.1, 15 Jan version) [Large Language Model].
-https://github.com/copilot/
+Github. (2025). Github Copilot (GPT-4.1, 14 April version) [Large Language Model]. https://github.com/copilot/
+
+OpenAI. (2025). GPT-4.1 (14 April version) [Large language model]. https://platform.openai.com 
 
 ## RECOMMENDED READING
 
