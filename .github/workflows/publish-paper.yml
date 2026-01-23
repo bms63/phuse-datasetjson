@@ -22,6 +22,9 @@ jobs:
         with:
           r-version: 'release' # Or a specific version, e.g., '4.3.2'
 
+      - name: Install libcurl system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libcurl4-openssl-dev
+      
       - name: Install R dependencies # Add this new step to install R packages
         run: |
           R -e 'install.packages(c("rmarkdown", "knitr", "datasetjson"), repos = "https://cran.rstudio.com/")'
