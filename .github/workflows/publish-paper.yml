@@ -27,7 +27,7 @@ jobs:
       
       - name: Install R dependencies # Add this new step to install R packages
         run: |
-          R -e 'install.packages(c("rmarkdown", "knitr", "datasetjson"), repos = "https://cran.rstudio.com/")'
+          R -e 'install.packages(c("rmarkdown", "knitr", "datasetjson", "tibble"), repos = "https://cran.rstudio.com/")'
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
