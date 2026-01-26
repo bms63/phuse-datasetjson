@@ -101,9 +101,9 @@ Binary formats sacrifice these readability and auditability characteristics—co
 
 The R Consortium R Submissions Working Group has focused on demonstrating that **open-source, R-based submission packages** can be organized, reproduced, and reviewed in a way that meets regulatory expectations. A key theme across pilots is transparency: making the full submission-like artifact available (data, code, documentation, and outputs), enabling learning and reuse across industry. The mission is:
 
-* Easier R-based clinical trial regulatory submissions today
+* Easier R-based clinical trial regulatory submissions **today**
   * by showing open examples of using current submission portals
-* Easier R-based clinical trial regulatory submissions tomorrow
+* Easier R-based clinical trial regulatory submissions **tomorrow**
   * by collecting feedback and influencing future industry and agency decisions on system/process setup
   
 Each Pilot's goals as well supporting documentation can be found on the R Consortium's
