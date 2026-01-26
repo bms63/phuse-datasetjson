@@ -28,7 +28,7 @@ slides <- paper_chat(
 )
 
 writeLines(feedback, "paper_feedback.md")
-writeLines(slides, "slides.qmd")
+writeLines(slides, "slides2.qmd")
 
 documentOpen("feedback.md")
 documentOpen("draft_slides.qmd")
