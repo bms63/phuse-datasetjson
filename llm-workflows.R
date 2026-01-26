@@ -7,7 +7,7 @@ source(file.path(getwd(), "R", "utilities.R"))
 paper_txt <- read_qmd("paper.qmd")
 
 paper_chat <- function(paper, prompt){
-  chat <- chat_openai(model = "gpt-4.1")
+  chat <- chat_openai(model = "gpt-5.1")
   resp <- chat$chat(
     glue("First, here's the my paper for Phuse that I'll ask you about: {paper}. {prompt}")
   )
@@ -27,8 +27,8 @@ slides <- paper_chat(
   :::"
 )
 
-writeLines(feedback, "feedback.md")
-writeLines(slides, "draft_slides.qmd")
+writeLines(feedback, "paper_feedback.md")
+writeLines(slides, "slides.qmd")
 
 documentOpen("feedback.md")
 documentOpen("draft_slides.qmd")
