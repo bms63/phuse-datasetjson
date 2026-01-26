@@ -230,12 +230,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 </ul>
 </section>
-<section id="trials-and-tribulations-what-you-run-into-in-the-real-world" class="level3">
-<h3 class="anchored" data-anchor-id="trials-and-tribulations-what-you-run-into-in-the-real-world">Trials and tribulations (what you run into in the real world)</h3>
-<p>Pilot 5 encountered a couple of challenges along the way in bringing our submission package to the FDA grouped into standards and technical hurdle.</p>
-<p>For standards, the first issue was that the standard of datasetjson had just switched from 1.0 to 1.1 so we needed to understand the differences for discussion with FDA. Second, we make use of the Validation software Pinnacle 21 Community v4.1.0 (the latest available at the time of writing), which helps ensure compliance for submissions packages. Unfortunately, the <a href="https://www.certara.com/announcement/pinnacle-21-releases-p21-community-4-1-0/" target="_blank">standard 1.1 was not available</a> in either the community or enterprise version of the software. A bit of setback, but we worked with our FDA partners to address and have documented this in the FDA submission. Once the standard 1.1 is available in the Pinnacle 21 we might re-submit.</p>
-<p>For technical, the first issue was learning how the metadata is applied and stored in the datasetjson format as we have to ensure consistency. The second issue was learning about converting float variables to decimal data type in the JSON output. This was a bit of a thorn in our side in the initial development. Eventually, a wrapper function was built to help provide consistency across all the datasets.</p>
-</section>
 <section id="way-of-working-reproducibility-first" class="level3">
 <h3 class="anchored" data-anchor-id="way-of-working-reproducibility-first">Way of working: reproducibility-first</h3>
 <p>Pilot 5 is organized to be rerunnable and inspectable, including:</p>
@@ -259,6 +253,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Outputs can be regenerated from the provided code and datasets.</li>
 <li>QC comparisons can be scripted and reported to support confidence in the fidelity of the produced artifacts.</li>
 </ul>
+</section>
+<section id="trials-and-tribulations-what-you-run-into-in-the-real-world" class="level3">
+<h3 class="anchored" data-anchor-id="trials-and-tribulations-what-you-run-into-in-the-real-world">Trials and tribulations (what you run into in the real world)</h3>
+<p>Pilot 5 encountered a couple of challenges along the way in bringing our submission package to the FDA grouped into standards and technical hurdle.</p>
+<p>For standards, the first issue was that the standard of datasetjson had just switched from 1.0 to 1.1 so we needed to understand the differences for discussion with FDA. Second, we make use of the Validation software Pinnacle 21 Community v4.1.0 (the latest available at the time of writing), which helps ensure compliance for submissions packages. Unfortunately, the <a href="https://www.certara.com/announcement/pinnacle-21-releases-p21-community-4-1-0/" target="_blank">standard 1.1 was not available</a> in either the community or enterprise version of the software. A bit of setback, but we worked with our FDA partners to address and have documented this in the FDA submission. Once the standard 1.1 is available in the Pinnacle 21 we might re-submit.</p>
+<p>For technical, the first issue was learning how the metadata is applied and stored in the datasetjson format as we have to ensure consistency. The second issue was learning about converting float variables to decimal data type in the JSON output. This was a bit of a thorn in our side in the initial development. Eventually, a wrapper function was built to help provide consistency across all the datasets. There are also a few limitations to the R package datasetjson which are being <a href="https://github.com/atorus-research/datasetjson/issues">looked into by the team</a>.</p>
 </section>
 </section>
 <section id="mini-example-from-an-adam-data-frame-to-dataset-json" class="level2">
@@ -301,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(json_text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{
-  "datasetJSONCreationDateTime": "2026-01-26T19:40:00",
+  "datasetJSONCreationDateTime": "2026-01-26T19:43:35",
   "datasetJSONVersion": "1.1.0",
   "itemGroupOID": "ADSL",
   "records": 2,
