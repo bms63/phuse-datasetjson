@@ -1,0 +1,513 @@
+title: "Breaking Free from the Xpt"
+subtitle: "Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies"
+author:
+  - "Ben Straub (GSK)"
+  - "Sam Parmar (Pfizer)"
+  - "Nick Masel (Johnson & Johnson)"
+format:
+  revealjs:
+    theme: simple
+    incremental: true
+    slide-number: true
+    transition: fade
+
+---
+
+# Breaking Free from the XPT
+
+## Dataset-JSON as an Alternative Transport Format
+
+- From SAS XPT to Dataset-JSON
+- R Consortium R Submissions Working Group
+- Pilot 5: R-generated ADaM + Dataset-JSON
+- Lessons, challenges, and how you can start
+
+::: {.notes}
+Frame the talk as a journey: not “SAS vs R” or “XPT vs JSON” but reducing friction and enabling modern, open, reproducible workflows while still meeting regulatory needs.
+:::
+
+---
+
+# Agenda
+
+- Why XPT feels like yesterday’s solution
+- What Dataset-JSON is and why it matters
+- R Consortium R Submissions Working Group
+- Pilot 5: R-generated ADaM + Dataset-JSON
+- Mini example: ADaM → Dataset-JSON in R
+- Lessons learned, recommendations, and next steps
+
+::: {.notes}
+Emphasize that this is practical and grounded in a real pilot with FDA interaction, not a theoretical standards-only discussion.
+:::
+
+---
+
+# XPT: Durable, but Constraining
+
+- Defined in the 1980s (SAS TS-140)
+- Originally for SAS–SAS transfer across mainframes
+- Adopted by FDA as a non‑proprietary format
+- Deeply embedded in submission processes
+- Still works—but creates friction in modern workflows
+
+::: {.notes}
+Acknowledge XPT’s success and longevity. The question is not “is XPT bad?” but “is it still the best fit given today’s tools and expectations?”.
+:::
+
+---
+
+# XPT Limitations (1/2)
+
+- **Outdated technology**
+  - Not aligned with modern data standards or architectures
+  - Awkward fit for API-based and big data ecosystems
+- **Constrained data characteristics**
+  - Variable names: 8 chars, case-insensitive
+  - Labels: 40 characters
+  - Character length: ≤ 200 bytes
+  - Limited data types
+
+::: {.notes}
+These constraints force compromises (cryptic variable names, truncated labels) and complicate mapping to richer internal representations.
+:::
+
+---
+
+# XPT Limitations (2/2)
+
+- **Poor handling of international text**
+  - US-ASCII only
+  - Workarounds needed for UTF-8 and multibyte characters
+- **Weak metadata story**
+  - No rich metadata inside the file
+  - Reliance on Define-XML → sync issues
+- **Inefficient storage**
+  - Fixed-width, padded values
+  - No compression; lots of wasted space
+- **Ecosystem & automation friction**
+  - Less natural in open-source stacks
+  - Binary format: harder to diff, validate, and automate
+
+::: {.notes}
+Connect these issues to day-to-day pain: encoding bugs, bloated submissions, awkward QC, and brittle data–metadata alignment.
+:::
+
+---
+
+# Why Look Beyond XPT?
+
+- Open-source tools (R, Python) are mainstream
+- Regulators are increasingly open to modern standards
+- Teams want:
+  - Reproducible, code-driven pipelines
+  - Text-based formats for diffing and review
+  - Better alignment with APIs and cloud-native workflows
+- Motivation: reduce friction, not “break” existing processes
+
+::: {.notes}
+Reinforce that we’re exploring alternatives to *improve* reliability, transparency, and interoperability, not to disrupt regulatory review.
+:::
+
+---
+
+# Enter Dataset-JSON
+
+- CDISC standard for tabular clinical datasets in JSON
+- Designed to:
+  - Replace SAS V5 XPT for many use cases
+  - Support regulatory submissions and APIs
+  - Carry data and metadata together
+- One dataset per file; optional linkage to Define-XML
+
+::: {.notes}
+This is not “just JSON”—it’s JSON with a CDISC-defined structure tailored for clinical tabular data.
+:::
+
+---
+
+# Dataset-JSON: Origins & Context
+
+- 2017 PHUSE “Transport for the Next Generation” paper set requirements
+- 2022: FDA evaluated XPT alternatives and identified JSON as optimal
+- CDISC created Dataset-JSON standard to:
+  - Support interoperable exchange beyond single vendors
+  - Align with broader structured data and web standards
+
+::: {.notes}
+Position Dataset-JSON as arising from cross‑stakeholder collaboration: CDISC, PHUSE, FDA, and industry.
+:::
+
+---
+
+# What Dataset-JSON Contains
+
+- **Top-level metadata**
+  - Creation date-time, version, dataset label
+  - Optional Define-XML references
+- **Column metadata**
+  - Names, labels, data types, roles, codelists, etc.
+- **Row data**
+  - Data arrays aligned with the column metadata
+- **Types & conventions**
+  - String-based decimals to avoid rounding issues
+  - ISO 8601 for dates/times
+  - `null` for missing values
+
+::: {.notes}
+Highlight that metadata is first-class: no more “data here, metadata over in another unconnected file”.
+:::
+
+---
+
+# NDJSON Variant
+
+- **NDJSON (.ndjson)** = newline-delimited JSON
+- First line: metadata
+- Subsequent lines: data rows
+- Advantages:
+  - Stream processing
+  - Handle large datasets without loading to memory
+  - Fits naturally with modern data engineering tools
+
+::: {.notes}
+Mention that NDJSON aligns well with log processing, streaming pipelines, and modern backend systems.
+:::
+
+---
+
+# Regulatory Momentum
+
+- April 2025 Federal Register notice:
+  - Reaffirms CDISC as basis for electronic study data
+  - Signals openness to transport format evolution
+- Dataset-JSON fits:
+  - Within CDISC ecosystem
+  - With FDA’s exploration of future data standards
+
+::: {.notes}
+Clarify that this is not yet a blanket replacement for XPT, but the direction of travel makes Dataset-JSON increasingly relevant.
+:::
+
+---
+
+# Why Dataset-JSON vs Other Modern Formats?
+
+- Parquet, Arrow, etc. are powerful—but:
+  - Binary, less human-readable
+  - Less transparent for audits and manual review
+- Dataset-JSON strengths for submissions:
+  - **Self-contained metadata**
+  - **Plain-text, human-readable**
+  - **Git / diff friendly**
+  - **Language-agnostic JSON parsers**
+  - **Supports both file and API exchange**
+
+::: {.notes}
+Regulatory contexts prioritize transparency and traceability over pure I/O performance. That’s where Dataset‑JSON shines.
+:::
+
+---
+
+# CDISC–PHUSE–FDA Collaboration
+
+- Successful change requires:
+  - CDISC: standard definition
+  - PHUSE: applied methods & best practices
+  - FDA: review feasibility and regulatory fit
+- Dataset-JSON and Pilot 5 sit squarely in this collaboration
+
+::: {.notes}
+Situate Pilot 5 as a “living example” within this ecosystem, not a standalone experiment.
+:::
+
+---
+
+# R Consortium R Submissions WG
+
+- Goal: Show that R-based submissions can:
+  - Be organized and reproducible
+  - Meet regulatory expectations
+  - Be shared publicly to accelerate learning
+- Two time horizons:
+  - **Today**: concrete examples using current portals
+  - **Tomorrow**: feedback to shape future standards and systems
+
+::: {.notes}
+Emphasize the open, community nature: everything is on GitHub for others to reuse, critique, and extend.
+:::
+
+---
+
+# Prior Pilots (1 & 3) in Brief
+
+- **Pilot 1**
+  - 3 tables + 1 figure created in R
+  - SDTM/ADaM produced in SAS as XPT
+- **Pilot 3**
+  - Recreated key ADaM datasets in R
+  - Still delivered data as XPT
+  - Focused package size (5 ADaM datasets) to keep the scope manageable
+
+::: {.notes}
+These pilots built trust: R for analysis is feasible; now the question becomes data *transport* and full-pipeline reproducibility.
+:::
+
+---
+
+# Pilot 5: What’s New?
+
+- Build on Pilots 1 & 3 by:
+  - Generating ADaM datasets in R
+  - Delivering datasets using **Dataset-JSON v1.1**
+- Objectives:
+  - Convert all XPTs in the package to Dataset-JSON
+  - Demonstrate full reproducible workflow (data → TLFs → QC)
+- Key enabler: R `datasetjson` package for:
+  - Direct R → Dataset-JSON export
+  - XPT → Dataset-JSON conversion
+
+::: {.notes}
+Make clear: this pilot is about end-to-end reproducibility and format change together, not just “can we write JSON?”.
+:::
+
+---
+
+# Pilot 5 Artifacts (Public)
+
+- Main repo:
+  - https://github.com/RConsortium/submissions-pilot5-datasetjson
+- eCTD-like package README (Quarto):
+  - `ectd_readme/README.qmd`
+- ADRG previews:
+  - HTML: https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/
+  - PDF: https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
+
+::: {.notes}
+Invite attendees to explore after the talk; everything discussed is inspectable in the repo.
+:::
+
+---
+
+# Reproducibility-First Structure
+
+- **Programs**
+  - `pilot5-programs/` (e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`)
+- **Outputs**
+  - `pilot5-output/` for TLFs, reports, and Dataset-JSON
+- **Documentation**
+  - ADRG (Quarto)
+  - eCTD-style README and structure
+- All designed to be rerun end-to-end
+
+::: {.notes}
+This mirrors real-world submission packaging but with a public, open-source twist.
+:::
+
+---
+
+# QC as a First-Class Artifact
+
+- Dataset QC:
+  - `qcReport.qmd` compares Pilot 5 ADaM vs baseline
+  - Uses `diffdf` to show structure and value differences
+- TLF QC:
+  - `tlf-qc.qmd` compares:
+    - Text outputs
+    - Figures (image comparisons)
+- QC reports are themselves reproducible documents
+
+::: {.notes}
+Regulators care about how you know things match; scripted QC with transparent thresholds and outputs is powerful evidence.
+:::
+
+---
+
+# AI-Assisted Documentation
+
+- Experimental LLM pipeline:
+  - `adrg/llm-adrg-utils/llm_pipeline.qmd`
+- Extracts:
+  - Variables, datasets, filters from analysis code
+- Supports:
+  - Building reviewer tables for ADRG
+  - Reducing manual copying and inconsistencies
+- Role: assistive, not replacing authorship or review
+
+::: {.notes}
+Position this as an early look at how AI can reduce tedious documentation tasks while keeping humans firmly in control.
+:::
+
+---
+
+# Pilot 5: What It Demonstrates
+
+- Dataset-JSON can be:
+  - Produced directly from R-based ADaM pipelines
+  - Managed with explicit, auditable metadata
+- A submission-like artifact can be:
+  - Organized in reviewer-friendly eCTD-style structure
+  - Fully reproducible from code and data
+- QC can:
+  - Be scripted
+  - Generate evidence for dataset and TLF fidelity
+
+::: {.notes}
+Tie back to the original goal: can Dataset‑JSON realistically stand in for XPT in a submission-like context? Pilot 5 says “yes, with care”.
+:::
+
+---
+
+# Real-World Issues: Standards
+
+- Dataset-JSON standard transition:
+  - Pilot 5 uses v1.1
+  - Needed to carefully understand changes from v1.0
+- Validation tooling:
+  - Pinnacle 21 (Community/Enterprise) did not yet support v1.1
+  - Required:
+    - Close collaboration with FDA partners
+    - Documentation of the gap in the submission
+  - Plan to revisit when P21 supports v1.1
+
+::: {.notes}
+This is a key lesson: format evolution can outpace validation tools; you need a mitigation and clear documentation.
+:::
+
+---
+
+# Real-World Issues: Technical
+
+- Metadata handling:
+  - Learning how Dataset-JSON stores and applies metadata
+  - Ensuring consistent labels, data types, and roles
+- Numeric representation:
+  - Converting float variables to decimal data types in JSON
+  - Avoiding rounding/precision issues
+  - Solution: wrapper function for consistent decimal handling
+- R `datasetjson` package:
+  - Very helpful overall
+  - Some limitations / issues tracked on GitHub
+
+::: {.notes}
+Encourage attendees to think about their own wrappers and consistency layers when they adopt Dataset‑JSON.
+:::
+
+---
+
+# Mini Example: ADaM → Dataset-JSON in R
+
+- Steps:
+  - Create an ADaM-like data frame (e.g., `adsl`)
+  - Attach dataset label
+  - Define column metadata (name, label, dataType)
+  - Call `datasetjson::dataset_json()`
+  - Write out JSON with `write_dataset_json()`
+- Mirrors Pilot 5 pattern:
+  - Explicit metadata
+  - Scripted, version-controlled conversion
+
+::: {.notes}
+You can show code briefly or just describe; key point is that Dataset‑JSON export is simply another step in the R pipeline.
+:::
+
+---
+
+# Operational Advantages Illustrated
+
+- Even in a toy example:
+  - Metadata is explicit and inspectable
+  - JSON is plain text:
+    - Easy to diff
+    - Easy to review
+    - Easy to validate with generic tools
+- Fits naturally into:
+  - Git / CI pipelines
+  - Automated checks and documentation
+
+::: {.notes}
+Bring it back to daily practice: easier code review, better CI, more robust handoffs between study teams and data engineers.
+:::
+
+---
+
+# Key Takeaways
+
+- XPT has served the industry well, but:
+  - Creates friction in modern, open-source workflows
+- Dataset-JSON:
+  - Combines data + metadata in a CDISC-standard JSON structure
+  - Is readable, diffable, and automation-friendly
+- Pilot 5:
+  - Shows R-generated ADaM + Dataset-JSON is realistic
+  - Demonstrates reproducibility, QC, and reviewer-oriented packaging
+
+::: {.notes}
+Summarize the value proposition: not just a new file extension, but a more natural fit to how we now build, review, and share analysis pipelines.
+:::
+
+---
+
+# What You Can Do Next
+
+- Explore Pilot 5 repo and ADRG:
+  - https://github.com/RConsortium/submissions-pilot5-datasetjson
+- Experiment internally:
+  - Convert a subset of XPTs to Dataset-JSON
+  - Integrate `datasetjson` into your R pipelines
+- Engage with:
+  - R Submissions Working Group
+  - CDISC / PHUSE collaborations
+  - Your regulatory liaisons on format evolution
+
+::: {.notes}
+Encourage small, low-risk experiments as a starting point: e.g., internal reviews, non-submission pilots, or parallel production of Dataset‑JSON next to XPT.
+:::
+
+---
+
+# References & Resources
+
+- R Submissions WG overview & Pilot 3 letter:
+  - https://github.com/RConsortium/submissions-wg
+- Pilot 5 repo:
+  - https://github.com/RConsortium/submissions-pilot5-datasetjson
+- CDISC SDTM & ADaM Pilot (CDISCPILOT01):
+  - https://github.com/cdisc-org/sdtm-adam-pilot-project
+- FDA eCTD overview:
+  - https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd
+- Dataset-JSON standard:
+  - https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html
+
+::: {.notes}
+You can trim or rearrange depending on time; keep at least the Pilot 5 repo and Dataset‑JSON spec links.
+:::
+
+---
+
+# Acknowledgments
+
+- R Consortium & R Submissions Working Group
+- FDA collaborators on Pilot 5
+- CDISC and PHUSE communities
+- Contributors to the `datasetjson` R package and related tooling
+
+::: {.notes}
+Recognize the collaborative nature of this work; invite attendees to participate in these communities.
+:::
+
+---
+
+# Contact
+
+- **Ben Straub** – GSK – Philadelphia, United States  
+- **Sam Parmar** – Pfizer – New York City, United States  
+- **Nick Masel** – Johnson & Johnson – (location/contact as applicable)
+
+- Questions, collaboration, or pilot reuse:
+  - See the Pilot 5 GitHub repo
+  - Reach out via working group channels or conference networking
+
+::: {.notes}
+End by inviting questions and hallway conversations; mention that all materials are open for reuse and adaptation.
+:::
