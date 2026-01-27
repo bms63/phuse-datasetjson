@@ -265,6 +265,8 @@ Github. (2025). Github Copilot (GPT-4.1, 14 April version) [Large Language Model
 
 OpenAI. (2025). GPT-4.1 (14 April version) [Large language model]. https://platform.openai.com 
 
+OpenAI. (2025). GPT-5.1 (12 November version) [Large language model]. https://platform.openai.com 
+
 ## RECOMMENDED READING
 
 Pilot 5 ADRG preview (public links referenced by the Pilot 5 repo README):
