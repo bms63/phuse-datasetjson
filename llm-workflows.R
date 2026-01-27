@@ -21,7 +21,7 @@ feedback <- paper_chat(
 
 slides <- paper_chat(
   paper_txt, 
-  "Generate Quarto RevealJS slides for a 20 minute presentation at Phuse based on the paper. Include slide titles and bullet points. Ensure it is concise but engaging. Only give me the slide content in qmd format. Do not include tick marks like ```qmd or ```markdown like your normally would. You can include speaker notes using this format:
+  "Generate Quarto RevealJS slides for a 20 minute presentation at Phuse based on the paper. Constrain slides to 20 total slides. Include slide titles and bullet points. Ensure it is concise but engaging. Only give me the slide content in qmd format. Do not include tick marks like ```qmd or ```markdown like your normally would. You can include speaker notes using this format:
   ::: {.notes}
   Speaker notes go here.
   :::"
