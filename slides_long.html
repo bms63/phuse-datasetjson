@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>slides_long – phuse-datasetjson</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">phuse-datasetjson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./paper.html"> 
+<span class="menu-text">Paper - datasetjson</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./slides.html"> 
+<span class="menu-text">Presentation - datasetjson</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#breaking-free-from-the-xpt" id="toc-breaking-free-from-the-xpt" class="nav-link active" data-scroll-target="#breaking-free-from-the-xpt">Breaking Free from the XPT</a>
+  <ul class="collapse">
+  <li><a href="#dataset-json-as-an-alternative-transport-format" id="toc-dataset-json-as-an-alternative-transport-format" class="nav-link" data-scroll-target="#dataset-json-as-an-alternative-transport-format">Dataset-JSON as an Alternative Transport Format</a></li>
+  </ul></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#xpt-durable-but-constraining" id="toc-xpt-durable-but-constraining" class="nav-link" data-scroll-target="#xpt-durable-but-constraining">XPT: Durable, but Constraining</a></li>
+  <li><a href="#xpt-limitations-12" id="toc-xpt-limitations-12" class="nav-link" data-scroll-target="#xpt-limitations-12">XPT Limitations (1/2)</a></li>
+  <li><a href="#xpt-limitations-22" id="toc-xpt-limitations-22" class="nav-link" data-scroll-target="#xpt-limitations-22">XPT Limitations (2/2)</a></li>
+  <li><a href="#why-look-beyond-xpt" id="toc-why-look-beyond-xpt" class="nav-link" data-scroll-target="#why-look-beyond-xpt">Why Look Beyond XPT?</a></li>
+  <li><a href="#enter-dataset-json" id="toc-enter-dataset-json" class="nav-link" data-scroll-target="#enter-dataset-json">Enter Dataset-JSON</a></li>
+  <li><a href="#dataset-json-origins-context" id="toc-dataset-json-origins-context" class="nav-link" data-scroll-target="#dataset-json-origins-context">Dataset-JSON: Origins &amp; Context</a></li>
+  <li><a href="#what-dataset-json-contains" id="toc-what-dataset-json-contains" class="nav-link" data-scroll-target="#what-dataset-json-contains">What Dataset-JSON Contains</a></li>
+  <li><a href="#ndjson-variant" id="toc-ndjson-variant" class="nav-link" data-scroll-target="#ndjson-variant">NDJSON Variant</a></li>
+  <li><a href="#regulatory-momentum" id="toc-regulatory-momentum" class="nav-link" data-scroll-target="#regulatory-momentum">Regulatory Momentum</a></li>
+  <li><a href="#why-dataset-json-vs-other-modern-formats" id="toc-why-dataset-json-vs-other-modern-formats" class="nav-link" data-scroll-target="#why-dataset-json-vs-other-modern-formats">Why Dataset-JSON vs Other Modern Formats?</a></li>
+  <li><a href="#cdiscphusefda-collaboration" id="toc-cdiscphusefda-collaboration" class="nav-link" data-scroll-target="#cdiscphusefda-collaboration">CDISC–PHUSE–FDA Collaboration</a></li>
+  <li><a href="#r-consortium-r-submissions-wg" id="toc-r-consortium-r-submissions-wg" class="nav-link" data-scroll-target="#r-consortium-r-submissions-wg">R Consortium R Submissions WG</a></li>
+  <li><a href="#prior-pilots-1-3-in-brief" id="toc-prior-pilots-1-3-in-brief" class="nav-link" data-scroll-target="#prior-pilots-1-3-in-brief">Prior Pilots (1 &amp; 3) in Brief</a></li>
+  <li><a href="#pilot-5-whats-new" id="toc-pilot-5-whats-new" class="nav-link" data-scroll-target="#pilot-5-whats-new">Pilot 5: What’s New?</a></li>
+  <li><a href="#pilot-5-artifacts-public" id="toc-pilot-5-artifacts-public" class="nav-link" data-scroll-target="#pilot-5-artifacts-public">Pilot 5 Artifacts (Public)</a></li>
+  <li><a href="#reproducibility-first-structure" id="toc-reproducibility-first-structure" class="nav-link" data-scroll-target="#reproducibility-first-structure">Reproducibility-First Structure</a></li>
+  <li><a href="#qc-as-a-first-class-artifact" id="toc-qc-as-a-first-class-artifact" class="nav-link" data-scroll-target="#qc-as-a-first-class-artifact">QC as a First-Class Artifact</a></li>
+  <li><a href="#ai-assisted-documentation" id="toc-ai-assisted-documentation" class="nav-link" data-scroll-target="#ai-assisted-documentation">AI-Assisted Documentation</a></li>
+  <li><a href="#pilot-5-what-it-demonstrates" id="toc-pilot-5-what-it-demonstrates" class="nav-link" data-scroll-target="#pilot-5-what-it-demonstrates">Pilot 5: What It Demonstrates</a></li>
+  <li><a href="#real-world-issues-standards" id="toc-real-world-issues-standards" class="nav-link" data-scroll-target="#real-world-issues-standards">Real-World Issues: Standards</a></li>
+  <li><a href="#real-world-issues-technical" id="toc-real-world-issues-technical" class="nav-link" data-scroll-target="#real-world-issues-technical">Real-World Issues: Technical</a></li>
+  <li><a href="#mini-example-adam-dataset-json-in-r" id="toc-mini-example-adam-dataset-json-in-r" class="nav-link" data-scroll-target="#mini-example-adam-dataset-json-in-r">Mini Example: ADaM → Dataset-JSON in R</a></li>
+  <li><a href="#operational-advantages-illustrated" id="toc-operational-advantages-illustrated" class="nav-link" data-scroll-target="#operational-advantages-illustrated">Operational Advantages Illustrated</a></li>
+  <li><a href="#key-takeaways" id="toc-key-takeaways" class="nav-link" data-scroll-target="#key-takeaways">Key Takeaways</a></li>
+  <li><a href="#what-you-can-do-next" id="toc-what-you-can-do-next" class="nav-link" data-scroll-target="#what-you-can-do-next">What You Can Do Next</a></li>
+  <li><a href="#references-resources" id="toc-references-resources" class="nav-link" data-scroll-target="#references-resources">References &amp; Resources</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p>title: “Breaking Free from the Xpt” subtitle: “Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies” author: - “Ben Straub (GSK)” - “Sam Parmar (Pfizer)” - “Nick Masel (Johnson &amp; Johnson)” format: revealjs: theme: simple incremental: true slide-number: true transition: fade</p>
+<hr>
+<section id="breaking-free-from-the-xpt" class="level1">
+<h1>Breaking Free from the XPT</h1>
+<section id="dataset-json-as-an-alternative-transport-format" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-json-as-an-alternative-transport-format">Dataset-JSON as an Alternative Transport Format</h2>
+<ul>
+<li>From SAS XPT to Dataset-JSON</li>
+<li>R Consortium R Submissions Working Group</li>
+<li>Pilot 5: R-generated ADaM + Dataset-JSON</li>
+<li>Lessons, challenges, and how you can start</li>
+</ul>
+<div class="notes">
+<p>Frame the talk as a journey: not “SAS vs R” or “XPT vs JSON” but reducing friction and enabling modern, open, reproducible workflows while still meeting regulatory needs.</p>
+</div>
+<hr>
+</section>
+</section>
+<section id="agenda" class="level1">
+<h1>Agenda</h1>
+<ul>
+<li>Why XPT feels like yesterday’s solution</li>
+<li>What Dataset-JSON is and why it matters</li>
+<li>R Consortium R Submissions Working Group</li>
+<li>Pilot 5: R-generated ADaM + Dataset-JSON</li>
+<li>Mini example: ADaM → Dataset-JSON in R</li>
+<li>Lessons learned, recommendations, and next steps</li>
+</ul>
+<div class="notes">
+<p>Emphasize that this is practical and grounded in a real pilot with FDA interaction, not a theoretical standards-only discussion.</p>
+</div>
+<hr>
+</section>
+<section id="xpt-durable-but-constraining" class="level1">
+<h1>XPT: Durable, but Constraining</h1>
+<ul>
+<li>Defined in the 1980s (SAS TS-140)</li>
+<li>Originally for SAS–SAS transfer across mainframes</li>
+<li>Adopted by FDA as a non‑proprietary format</li>
+<li>Deeply embedded in submission processes</li>
+<li>Still works—but creates friction in modern workflows</li>
+</ul>
+<div class="notes">
+<p>Acknowledge XPT’s success and longevity. The question is not “is XPT bad?” but “is it still the best fit given today’s tools and expectations?”.</p>
+</div>
+<hr>
+</section>
+<section id="xpt-limitations-12" class="level1">
+<h1>XPT Limitations (1/2)</h1>
+<ul>
+<li><strong>Outdated technology</strong>
+<ul>
+<li>Not aligned with modern data standards or architectures</li>
+<li>Awkward fit for API-based and big data ecosystems</li>
+</ul></li>
+<li><strong>Constrained data characteristics</strong>
+<ul>
+<li>Variable names: 8 chars, case-insensitive</li>
+<li>Labels: 40 characters</li>
+<li>Character length: ≤ 200 bytes</li>
+<li>Limited data types</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>These constraints force compromises (cryptic variable names, truncated labels) and complicate mapping to richer internal representations.</p>
+</div>
+<hr>
+</section>
+<section id="xpt-limitations-22" class="level1">
+<h1>XPT Limitations (2/2)</h1>
+<ul>
+<li><strong>Poor handling of international text</strong>
+<ul>
+<li>US-ASCII only</li>
+<li>Workarounds needed for UTF-8 and multibyte characters</li>
+</ul></li>
+<li><strong>Weak metadata story</strong>
+<ul>
+<li>No rich metadata inside the file</li>
+<li>Reliance on Define-XML → sync issues</li>
+</ul></li>
+<li><strong>Inefficient storage</strong>
+<ul>
+<li>Fixed-width, padded values</li>
+<li>No compression; lots of wasted space</li>
+</ul></li>
+<li><strong>Ecosystem &amp; automation friction</strong>
+<ul>
+<li>Less natural in open-source stacks</li>
+<li>Binary format: harder to diff, validate, and automate</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Connect these issues to day-to-day pain: encoding bugs, bloated submissions, awkward QC, and brittle data–metadata alignment.</p>
+</div>
+<hr>
+</section>
+<section id="why-look-beyond-xpt" class="level1">
+<h1>Why Look Beyond XPT?</h1>
+<ul>
+<li>Open-source tools (R, Python) are mainstream</li>
+<li>Regulators are increasingly open to modern standards</li>
+<li>Teams want:
+<ul>
+<li>Reproducible, code-driven pipelines</li>
+<li>Text-based formats for diffing and review</li>
+<li>Better alignment with APIs and cloud-native workflows</li>
+</ul></li>
+<li>Motivation: reduce friction, not “break” existing processes</li>
+</ul>
+<div class="notes">
+<p>Reinforce that we’re exploring alternatives to <em>improve</em> reliability, transparency, and interoperability, not to disrupt regulatory review.</p>
+</div>
+<hr>
+</section>
+<section id="enter-dataset-json" class="level1">
+<h1>Enter Dataset-JSON</h1>
+<ul>
+<li>CDISC standard for tabular clinical datasets in JSON</li>
+<li>Designed to:
+<ul>
+<li>Replace SAS V5 XPT for many use cases</li>
+<li>Support regulatory submissions and APIs</li>
+<li>Carry data and metadata together</li>
+</ul></li>
+<li>One dataset per file; optional linkage to Define-XML</li>
+</ul>
+<div class="notes">
+<p>This is not “just JSON”—it’s JSON with a CDISC-defined structure tailored for clinical tabular data.</p>
+</div>
+<hr>
+</section>
+<section id="dataset-json-origins-context" class="level1">
+<h1>Dataset-JSON: Origins &amp; Context</h1>
+<ul>
+<li>2017 PHUSE “Transport for the Next Generation” paper set requirements</li>
+<li>2022: FDA evaluated XPT alternatives and identified JSON as optimal</li>
+<li>CDISC created Dataset-JSON standard to:
+<ul>
+<li>Support interoperable exchange beyond single vendors</li>
+<li>Align with broader structured data and web standards</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Position Dataset-JSON as arising from cross‑stakeholder collaboration: CDISC, PHUSE, FDA, and industry.</p>
+</div>
+<hr>
+</section>
+<section id="what-dataset-json-contains" class="level1">
+<h1>What Dataset-JSON Contains</h1>
+<ul>
+<li><strong>Top-level metadata</strong>
+<ul>
+<li>Creation date-time, version, dataset label</li>
+<li>Optional Define-XML references</li>
+</ul></li>
+<li><strong>Column metadata</strong>
+<ul>
+<li>Names, labels, data types, roles, codelists, etc.</li>
+</ul></li>
+<li><strong>Row data</strong>
+<ul>
+<li>Data arrays aligned with the column metadata</li>
+</ul></li>
+<li><strong>Types &amp; conventions</strong>
+<ul>
+<li>String-based decimals to avoid rounding issues</li>
+<li>ISO 8601 for dates/times</li>
+<li><code>null</code> for missing values</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Highlight that metadata is first-class: no more “data here, metadata over in another unconnected file”.</p>
+</div>
+<hr>
+</section>
+<section id="ndjson-variant" class="level1">
+<h1>NDJSON Variant</h1>
+<ul>
+<li><strong>NDJSON (.ndjson)</strong> = newline-delimited JSON</li>
+<li>First line: metadata</li>
+<li>Subsequent lines: data rows</li>
+<li>Advantages:
+<ul>
+<li>Stream processing</li>
+<li>Handle large datasets without loading to memory</li>
+<li>Fits naturally with modern data engineering tools</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Mention that NDJSON aligns well with log processing, streaming pipelines, and modern backend systems.</p>
+</div>
+<hr>
+</section>
+<section id="regulatory-momentum" class="level1">
+<h1>Regulatory Momentum</h1>
+<ul>
+<li>April 2025 Federal Register notice:
+<ul>
+<li>Reaffirms CDISC as basis for electronic study data</li>
+<li>Signals openness to transport format evolution</li>
+</ul></li>
+<li>Dataset-JSON fits:
+<ul>
+<li>Within CDISC ecosystem</li>
+<li>With FDA’s exploration of future data standards</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Clarify that this is not yet a blanket replacement for XPT, but the direction of travel makes Dataset-JSON increasingly relevant.</p>
+</div>
+<hr>
+</section>
+<section id="why-dataset-json-vs-other-modern-formats" class="level1">
+<h1>Why Dataset-JSON vs Other Modern Formats?</h1>
+<ul>
+<li>Parquet, Arrow, etc. are powerful—but:
+<ul>
+<li>Binary, less human-readable</li>
+<li>Less transparent for audits and manual review</li>
+</ul></li>
+<li>Dataset-JSON strengths for submissions:
+<ul>
+<li><strong>Self-contained metadata</strong></li>
+<li><strong>Plain-text, human-readable</strong></li>
+<li><strong>Git / diff friendly</strong></li>
+<li><strong>Language-agnostic JSON parsers</strong></li>
+<li><strong>Supports both file and API exchange</strong></li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Regulatory contexts prioritize transparency and traceability over pure I/O performance. That’s where Dataset‑JSON shines.</p>
+</div>
+<hr>
+</section>
+<section id="cdiscphusefda-collaboration" class="level1">
+<h1>CDISC–PHUSE–FDA Collaboration</h1>
+<ul>
+<li>Successful change requires:
+<ul>
+<li>CDISC: standard definition</li>
+<li>PHUSE: applied methods &amp; best practices</li>
+<li>FDA: review feasibility and regulatory fit</li>
+</ul></li>
+<li>Dataset-JSON and Pilot 5 sit squarely in this collaboration</li>
+</ul>
+<div class="notes">
+<p>Situate Pilot 5 as a “living example” within this ecosystem, not a standalone experiment.</p>
+</div>
+<hr>
+</section>
+<section id="r-consortium-r-submissions-wg" class="level1">
+<h1>R Consortium R Submissions WG</h1>
+<ul>
+<li>Goal: Show that R-based submissions can:
+<ul>
+<li>Be organized and reproducible</li>
+<li>Meet regulatory expectations</li>
+<li>Be shared publicly to accelerate learning</li>
+</ul></li>
+<li>Two time horizons:
+<ul>
+<li><strong>Today</strong>: concrete examples using current portals</li>
+<li><strong>Tomorrow</strong>: feedback to shape future standards and systems</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Emphasize the open, community nature: everything is on GitHub for others to reuse, critique, and extend.</p>
+</div>
+<hr>
+</section>
+<section id="prior-pilots-1-3-in-brief" class="level1">
+<h1>Prior Pilots (1 &amp; 3) in Brief</h1>
+<ul>
+<li><strong>Pilot 1</strong>
+<ul>
+<li>3 tables + 1 figure created in R</li>
+<li>SDTM/ADaM produced in SAS as XPT</li>
+</ul></li>
+<li><strong>Pilot 3</strong>
+<ul>
+<li>Recreated key ADaM datasets in R</li>
+<li>Still delivered data as XPT</li>
+<li>Focused package size (5 ADaM datasets) to keep the scope manageable</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>These pilots built trust: R for analysis is feasible; now the question becomes data <em>transport</em> and full-pipeline reproducibility.</p>
+</div>
+<hr>
+</section>
+<section id="pilot-5-whats-new" class="level1">
+<h1>Pilot 5: What’s New?</h1>
+<ul>
+<li>Build on Pilots 1 &amp; 3 by:
+<ul>
+<li>Generating ADaM datasets in R</li>
+<li>Delivering datasets using <strong>Dataset-JSON v1.1</strong></li>
+</ul></li>
+<li>Objectives:
+<ul>
+<li>Convert all XPTs in the package to Dataset-JSON</li>
+<li>Demonstrate full reproducible workflow (data → TLFs → QC)</li>
+</ul></li>
+<li>Key enabler: R <code>datasetjson</code> package for:
+<ul>
+<li>Direct R → Dataset-JSON export</li>
+<li>XPT → Dataset-JSON conversion</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Make clear: this pilot is about end-to-end reproducibility and format change together, not just “can we write JSON?”.</p>
+</div>
+<hr>
+</section>
+<section id="pilot-5-artifacts-public" class="level1">
+<h1>Pilot 5 Artifacts (Public)</h1>
+<ul>
+<li>Main repo:
+<ul>
+<li>https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
+</ul></li>
+<li>eCTD-like package README (Quarto):
+<ul>
+<li><code>ectd_readme/README.qmd</code></li>
+</ul></li>
+<li>ADRG previews:
+<ul>
+<li>HTML: https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/</li>
+<li>PDF: https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Invite attendees to explore after the talk; everything discussed is inspectable in the repo.</p>
+</div>
+<hr>
+</section>
+<section id="reproducibility-first-structure" class="level1">
+<h1>Reproducibility-First Structure</h1>
+<ul>
+<li><strong>Programs</strong>
+<ul>
+<li><code>pilot5-programs/</code> (e.g., <code>adsl.r</code>, <code>adae.r</code>, <code>adlbc.r</code>, <code>adtte.r</code>)</li>
+</ul></li>
+<li><strong>Outputs</strong>
+<ul>
+<li><code>pilot5-output/</code> for TLFs, reports, and Dataset-JSON</li>
+</ul></li>
+<li><strong>Documentation</strong>
+<ul>
+<li>ADRG (Quarto)</li>
+<li>eCTD-style README and structure</li>
+</ul></li>
+<li>All designed to be rerun end-to-end</li>
+</ul>
+<div class="notes">
+<p>This mirrors real-world submission packaging but with a public, open-source twist.</p>
+</div>
+<hr>
+</section>
+<section id="qc-as-a-first-class-artifact" class="level1">
+<h1>QC as a First-Class Artifact</h1>
+<ul>
+<li>Dataset QC:
+<ul>
+<li><code>qcReport.qmd</code> compares Pilot 5 ADaM vs baseline</li>
+<li>Uses <code>diffdf</code> to show structure and value differences</li>
+</ul></li>
+<li>TLF QC:
+<ul>
+<li><code>tlf-qc.qmd</code> compares:
+<ul>
+<li>Text outputs</li>
+<li>Figures (image comparisons)</li>
+</ul></li>
+</ul></li>
+<li>QC reports are themselves reproducible documents</li>
+</ul>
+<div class="notes">
+<p>Regulators care about how you know things match; scripted QC with transparent thresholds and outputs is powerful evidence.</p>
+</div>
+<hr>
+</section>
+<section id="ai-assisted-documentation" class="level1">
+<h1>AI-Assisted Documentation</h1>
+<ul>
+<li>Experimental LLM pipeline:
+<ul>
+<li><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></li>
+</ul></li>
+<li>Extracts:
+<ul>
+<li>Variables, datasets, filters from analysis code</li>
+</ul></li>
+<li>Supports:
+<ul>
+<li>Building reviewer tables for ADRG</li>
+<li>Reducing manual copying and inconsistencies</li>
+</ul></li>
+<li>Role: assistive, not replacing authorship or review</li>
+</ul>
+<div class="notes">
+<p>Position this as an early look at how AI can reduce tedious documentation tasks while keeping humans firmly in control.</p>
+</div>
+<hr>
+</section>
+<section id="pilot-5-what-it-demonstrates" class="level1">
+<h1>Pilot 5: What It Demonstrates</h1>
+<ul>
+<li>Dataset-JSON can be:
+<ul>
+<li>Produced directly from R-based ADaM pipelines</li>
+<li>Managed with explicit, auditable metadata</li>
+</ul></li>
+<li>A submission-like artifact can be:
+<ul>
+<li>Organized in reviewer-friendly eCTD-style structure</li>
+<li>Fully reproducible from code and data</li>
+</ul></li>
+<li>QC can:
+<ul>
+<li>Be scripted</li>
+<li>Generate evidence for dataset and TLF fidelity</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Tie back to the original goal: can Dataset‑JSON realistically stand in for XPT in a submission-like context? Pilot 5 says “yes, with care”.</p>
+</div>
+<hr>
+</section>
+<section id="real-world-issues-standards" class="level1">
+<h1>Real-World Issues: Standards</h1>
+<ul>
+<li>Dataset-JSON standard transition:
+<ul>
+<li>Pilot 5 uses v1.1</li>
+<li>Needed to carefully understand changes from v1.0</li>
+</ul></li>
+<li>Validation tooling:
+<ul>
+<li>Pinnacle 21 (Community/Enterprise) did not yet support v1.1</li>
+<li>Required:
+<ul>
+<li>Close collaboration with FDA partners</li>
+<li>Documentation of the gap in the submission</li>
+</ul></li>
+<li>Plan to revisit when P21 supports v1.1</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>This is a key lesson: format evolution can outpace validation tools; you need a mitigation and clear documentation.</p>
+</div>
+<hr>
+</section>
+<section id="real-world-issues-technical" class="level1">
+<h1>Real-World Issues: Technical</h1>
+<ul>
+<li>Metadata handling:
+<ul>
+<li>Learning how Dataset-JSON stores and applies metadata</li>
+<li>Ensuring consistent labels, data types, and roles</li>
+</ul></li>
+<li>Numeric representation:
+<ul>
+<li>Converting float variables to decimal data types in JSON</li>
+<li>Avoiding rounding/precision issues</li>
+<li>Solution: wrapper function for consistent decimal handling</li>
+</ul></li>
+<li>R <code>datasetjson</code> package:
+<ul>
+<li>Very helpful overall</li>
+<li>Some limitations / issues tracked on GitHub</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Encourage attendees to think about their own wrappers and consistency layers when they adopt Dataset‑JSON.</p>
+</div>
+<hr>
+</section>
+<section id="mini-example-adam-dataset-json-in-r" class="level1">
+<h1>Mini Example: ADaM → Dataset-JSON in R</h1>
+<ul>
+<li>Steps:
+<ul>
+<li>Create an ADaM-like data frame (e.g., <code>adsl</code>)</li>
+<li>Attach dataset label</li>
+<li>Define column metadata (name, label, dataType)</li>
+<li>Call <code>datasetjson::dataset_json()</code></li>
+<li>Write out JSON with <code>write_dataset_json()</code></li>
+</ul></li>
+<li>Mirrors Pilot 5 pattern:
+<ul>
+<li>Explicit metadata</li>
+<li>Scripted, version-controlled conversion</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>You can show code briefly or just describe; key point is that Dataset‑JSON export is simply another step in the R pipeline.</p>
+</div>
+<hr>
+</section>
+<section id="operational-advantages-illustrated" class="level1">
+<h1>Operational Advantages Illustrated</h1>
+<ul>
+<li>Even in a toy example:
+<ul>
+<li>Metadata is explicit and inspectable</li>
+<li>JSON is plain text:
+<ul>
+<li>Easy to diff</li>
+<li>Easy to review</li>
+<li>Easy to validate with generic tools</li>
+</ul></li>
+</ul></li>
+<li>Fits naturally into:
+<ul>
+<li>Git / CI pipelines</li>
+<li>Automated checks and documentation</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Bring it back to daily practice: easier code review, better CI, more robust handoffs between study teams and data engineers.</p>
+</div>
+<hr>
+</section>
+<section id="key-takeaways" class="level1">
+<h1>Key Takeaways</h1>
+<ul>
+<li>XPT has served the industry well, but:
+<ul>
+<li>Creates friction in modern, open-source workflows</li>
+</ul></li>
+<li>Dataset-JSON:
+<ul>
+<li>Combines data + metadata in a CDISC-standard JSON structure</li>
+<li>Is readable, diffable, and automation-friendly</li>
+</ul></li>
+<li>Pilot 5:
+<ul>
+<li>Shows R-generated ADaM + Dataset-JSON is realistic</li>
+<li>Demonstrates reproducibility, QC, and reviewer-oriented packaging</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Summarize the value proposition: not just a new file extension, but a more natural fit to how we now build, review, and share analysis pipelines.</p>
+</div>
+<hr>
+</section>
+<section id="what-you-can-do-next" class="level1">
+<h1>What You Can Do Next</h1>
+<ul>
+<li>Explore Pilot 5 repo and ADRG:
+<ul>
+<li>https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
+</ul></li>
+<li>Experiment internally:
+<ul>
+<li>Convert a subset of XPTs to Dataset-JSON</li>
+<li>Integrate <code>datasetjson</code> into your R pipelines</li>
+</ul></li>
+<li>Engage with:
+<ul>
+<li>R Submissions Working Group</li>
+<li>CDISC / PHUSE collaborations</li>
+<li>Your regulatory liaisons on format evolution</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>Encourage small, low-risk experiments as a starting point: e.g., internal reviews, non-submission pilots, or parallel production of Dataset‑JSON next to XPT.</p>
+</div>
+<hr>
+</section>
+<section id="references-resources" class="level1">
+<h1>References &amp; Resources</h1>
+<ul>
+<li>R Submissions WG overview &amp; Pilot 3 letter:
+<ul>
+<li>https://github.com/RConsortium/submissions-wg</li>
+</ul></li>
+<li>Pilot 5 repo:
+<ul>
+<li>https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
+</ul></li>
+<li>CDISC SDTM &amp; ADaM Pilot (CDISCPILOT01):
+<ul>
+<li>https://github.com/cdisc-org/sdtm-adam-pilot-project</li>
+</ul></li>
+<li>FDA eCTD overview:
+<ul>
+<li>https://www.fda.gov/drugs/electronic-regulatory-submission-and-review/electronic-common-technical-document-ectd</li>
+</ul></li>
+<li>Dataset-JSON standard:
+<ul>
+<li>https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>You can trim or rearrange depending on time; keep at least the Pilot 5 repo and Dataset‑JSON spec links.</p>
+</div>
+<hr>
+</section>
+<section id="acknowledgments" class="level1">
+<h1>Acknowledgments</h1>
+<ul>
+<li>R Consortium &amp; R Submissions Working Group</li>
+<li>FDA collaborators on Pilot 5</li>
+<li>CDISC and PHUSE communities</li>
+<li>Contributors to the <code>datasetjson</code> R package and related tooling</li>
+</ul>
+<div class="notes">
+<p>Recognize the collaborative nature of this work; invite attendees to participate in these communities.</p>
+</div>
+<hr>
+</section>
+<section id="contact" class="level1">
+<h1>Contact</h1>
+<ul>
+<li><p><strong>Ben Straub</strong> – GSK – Philadelphia, United States<br>
+</p></li>
+<li><p><strong>Sam Parmar</strong> – Pfizer – New York City, United States<br>
+</p></li>
+<li><p><strong>Nick Masel</strong> – Johnson &amp; Johnson – (location/contact as applicable)</p></li>
+<li><p>Questions, collaboration, or pilot reuse:</p>
+<ul>
+<li>See the Pilot 5 GitHub repo</li>
+<li>Reach out via working group channels or conference networking</li>
+</ul></li>
+</ul>
+<div class="notes">
+<p>End by inviting questions and hallway conversations; mention that all materials are open for reuse and adaptation.</p>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/bms63\.github\.io\/phuse-datasetjson\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

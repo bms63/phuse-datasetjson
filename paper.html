@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies</title>
+<title>Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies – phuse-datasetjson</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,26 +58,143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="paper_files/libs/clipboard/clipboard.min.js"></script>
-<script src="paper_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="paper_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="paper_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="paper_files/libs/quarto-html/popper.min.js"></script>
-<script src="paper_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="paper_files/libs/quarto-html/anchor.min.js"></script>
-<link href="paper_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="paper_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="paper_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="paper_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="paper_files/libs/bootstrap/bootstrap-55aa396ea3e988129bcec43acf404917.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0b37c64f34216b628666a8dac638b53b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">phuse-datasetjson</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./paper.html" aria-current="page"> 
+<span class="menu-text">Paper - datasetjson</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./slides.html"> 
+<span class="menu-text">Presentation - datasetjson</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#abstract" id="toc-abstract" class="nav-link active" data-scroll-target="#abstract">ABSTRACT</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">INTRODUCTION</a>
+  <ul class="collapse">
+  <li><a href="#what-we-are-going-to-talk-about" id="toc-what-we-are-going-to-talk-about" class="nav-link" data-scroll-target="#what-we-are-going-to-talk-about">What we are going to talk about</a></li>
+  <li><a href="#a-high-level-framing-why-xpt-feels-like-yesterdays-solution" id="toc-a-high-level-framing-why-xpt-feels-like-yesterdays-solution" class="nav-link" data-scroll-target="#a-high-level-framing-why-xpt-feels-like-yesterdays-solution">A high-level framing: why XPT feels like yesterday’s solution</a></li>
+  </ul></li>
+  <li><a href="#datasetjson" id="toc-datasetjson" class="nav-link" data-scroll-target="#datasetjson">datasetjson</a>
+  <ul class="collapse">
+  <li><a href="#a-brief-history-lesson" id="toc-a-brief-history-lesson" class="nav-link" data-scroll-target="#a-brief-history-lesson">A brief “history lesson”</a></li>
+  <li><a href="#what-dataset-json-is-practically" id="toc-what-dataset-json-is-practically" class="nav-link" data-scroll-target="#what-dataset-json-is-practically">What Dataset-JSON is (practically)</a></li>
+  <li><a href="#regulatory-context-and-momentum" id="toc-regulatory-context-and-momentum" class="nav-link" data-scroll-target="#regulatory-context-and-momentum">Regulatory context and momentum</a></li>
+  <li><a href="#collaboration-framing-cdisc-phuse-fda" id="toc-collaboration-framing-cdisc-phuse-fda" class="nav-link" data-scroll-target="#collaboration-framing-cdisc-phuse-fda">Collaboration framing (CDISC / PHUSE / FDA)</a></li>
+  </ul></li>
+  <li><a href="#why-dataset-json-over-other-modern-formats" id="toc-why-dataset-json-over-other-modern-formats" class="nav-link" data-scroll-target="#why-dataset-json-over-other-modern-formats">WHY DATASET-JSON OVER OTHER MODERN FORMATS</a></li>
+  <li><a href="#r-consortium-working-group" id="toc-r-consortium-working-group" class="nav-link" data-scroll-target="#r-consortium-working-group">R CONSORTIUM WORKING GROUP</a>
+  <ul class="collapse">
+  <li><a href="#what-is-the-focus" id="toc-what-is-the-focus" class="nav-link" data-scroll-target="#what-is-the-focus">What is the focus?</a></li>
+  <li><a href="#successes-as-demonstrated-by-the-pilots" id="toc-successes-as-demonstrated-by-the-pilots" class="nav-link" data-scroll-target="#successes-as-demonstrated-by-the-pilots">Successes (as demonstrated by the pilots)</a></li>
+  <li><a href="#problems-identified-and-iterations" id="toc-problems-identified-and-iterations" class="nav-link" data-scroll-target="#problems-identified-and-iterations">Problems identified and iterations</a></li>
+  </ul></li>
+  <li><a href="#pilot-5" id="toc-pilot-5" class="nav-link" data-scroll-target="#pilot-5">PILOT 5</a>
+  <ul class="collapse">
+  <li><a href="#focus-of-pilot-5-dataset-json-r-generated-adam" id="toc-focus-of-pilot-5-dataset-json-r-generated-adam" class="nav-link" data-scroll-target="#focus-of-pilot-5-dataset-json-r-generated-adam">Focus of Pilot 5 (Dataset-JSON + R-generated ADaM)</a></li>
+  <li><a href="#way-of-working-reproducibility-first" id="toc-way-of-working-reproducibility-first" class="nav-link" data-scroll-target="#way-of-working-reproducibility-first">Way of working: reproducibility-first</a></li>
+  <li><a href="#ai-infrastructure-where-it-helped" id="toc-ai-infrastructure-where-it-helped" class="nav-link" data-scroll-target="#ai-infrastructure-where-it-helped">AI infrastructure (where it helped)</a></li>
+  <li><a href="#success-of-the-pilot-what-pilot-5-demonstrates" id="toc-success-of-the-pilot-what-pilot-5-demonstrates" class="nav-link" data-scroll-target="#success-of-the-pilot-what-pilot-5-demonstrates">Success of the Pilot (what Pilot 5 demonstrates)</a></li>
+  <li><a href="#trials-and-tribulations-what-you-run-into-in-the-real-world" id="toc-trials-and-tribulations-what-you-run-into-in-the-real-world" class="nav-link" data-scroll-target="#trials-and-tribulations-what-you-run-into-in-the-real-world">Trials and tribulations (what you run into in the real world)</a></li>
+  </ul></li>
+  <li><a href="#mini-example-from-an-adam-data-frame-to-dataset-json" id="toc-mini-example-from-an-adam-data-frame-to-dataset-json" class="nav-link" data-scroll-target="#mini-example-from-an-adam-data-frame-to-dataset-json">MINI EXAMPLE: FROM AN ADAM DATA FRAME TO DATASET-JSON</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">CONCLUSION</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">REFERENCES</a></li>
+  <li><a href="#recommended-reading" id="toc-recommended-reading" class="nav-link" data-scroll-target="#recommended-reading">RECOMMENDED READING</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">ACKNOWLEDGMENTS</a></li>
+  <li><a href="#contact-information" id="toc-contact-information" class="nav-link" data-scroll-target="#contact-information">CONTACT INFORMATION</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -301,7 +418,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(json_text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{
-  "datasetJSONCreationDateTime": "2026-01-26T19:55:01",
+  "datasetJSONCreationDateTime": "2026-01-28T18:37:50",
   "datasetJSONVersion": "1.1.0",
   "itemGroupOID": "ADSL",
   "records": 2,
@@ -370,6 +487,7 @@ https://github.com/cdisc-org/sdtm-adam-pilot-project</p>
 <p>Electronic Study Data Submission; Data Standards; Clinical Data Interchange Standards Consortium Dataset-JavaScript Object Notation; Request for Comments. Federal Register. (2025, April 9). https://www.federalregister.gov/documents/2025/04/09/2025-06051/electronic-study-data-submission-data-standards-clinical-data-interchange-standards-consortium</p>
 <p>Github. (2025). Github Copilot (GPT-4.1, 14 April version) [Large Language Model]. https://github.com/copilot/</p>
 <p>OpenAI. (2025). GPT-4.1 (14 April version) [Large language model]. https://platform.openai.com</p>
+<p>OpenAI. (2025). GPT-5.1 (12 November version) [Large language model]. https://platform.openai.com</p>
 </section>
 <section id="recommended-reading" class="level2">
 <h2 class="anchored" data-anchor-id="recommended-reading">RECOMMENDED READING</h2>
@@ -399,10 +517,11 @@ New York City, United States</p>
 Johnson and Johnson<br>
 (complete location and email as applicable)</p>
 <p>Brand and product names are trademarks of their respective companies.</p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -476,7 +595,7 @@ Johnson and Johnson<br>
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/bms63\.github\.io\/phuse-datasetjson\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
