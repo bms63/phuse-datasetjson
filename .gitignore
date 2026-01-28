@@ -59,3 +59,8 @@ draft_slides.qmd
 *.xpt
 *.json
 *.parquet
+/.quarto/
+**/*.quarto_ipynb
+slides_files/
+*.docx
+
