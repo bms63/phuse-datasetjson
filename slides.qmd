@@ -1,3 +1,4 @@
+---
 title: "Breaking Free from the XPT"
 subtitle: "Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies"
 author: |
@@ -9,7 +10,6 @@ format:
     theme: simple
     slide-number: true
     incremental: true
-
 ---
 
 # 1. Motivation: Why Talk About Transport Formats?
