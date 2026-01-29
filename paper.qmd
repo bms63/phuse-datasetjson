@@ -58,7 +58,7 @@ This is the motivation for exploring Dataset-JSON: not to declare a villain, but
 
 ### A brief “history lesson”
 
-In 2022, the FDA evaluated alternatives to serve as possible replacements to SAS V5 XPT. The FDA determined that JSON was the optimal modern format to serve as a replacement to SAS V5 XPT. Dataset-JSON is a CDISC standard intended to represent clinical tabular datasets using JSON. It exists in the context of increasing adoption of structured data standards and the need to support interoperability beyond a single vendor ecosystem. It is designed to meet a wide range of data exchange scenarios including regulatory submissions and API-based data sharing. 
+In 2022, the FDA evaluated alternatives to serve as possible replacements to SAS V5 XPT. The FDA determined that JSON was the optimal modern format to serve as a replacement to SAS V5 XPT. CDISC Datsaet-JSON v1.0 was released in Aug 2023 and the [datasetjson](https://atorus-research.github.io/datasetjson/) R package supporting this version was released in Oct 2023. Dataset-JSON is a CDISC standard intended to represent clinical tabular datasets using JSON. It exists in the context of increasing adoption of structured data standards and the need to support interoperability beyond a single vendor ecosystem. It is designed to meet a wide range of data exchange scenarios including regulatory submissions and API-based data sharing. 
 
 ### What Dataset-JSON is (practically)
 
@@ -159,17 +159,18 @@ Primary public entry points include:
 
 Pilot 5 is organized to be rerunnable and inspectable, including:
 
-- dataset generation programs under `pilot5-submission/pilot5-programs/` (e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`),
-- outputs and derived artifacts under `pilot5-submission/pilot5-output/`,
+- dataset generation programs under [`pilot5-submission/pilot5-programs/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs) (e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`),
+- outputs and derived artifacts under [`pilot5-submission/pilot5-output/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output),
 - documentation such as ADRG and eCTD README.
 
 Most importantly, Pilot 5 treats comparability as an artifact. For example:
-- `qcReport.qmd` compares Pilot 5 ADaM datasets against prior baseline artifacts using `diffdf`.
-- `tlf-qc.qmd` supports comparing generated output artifacts, including text diffs and image-style comparisons.
+
+- [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd) compares Pilot 5 ADaM datasets against prior baseline artifacts using `diffdf`.
+- [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd) supports comparing generated output artifacts, including text diffs and image-style comparisons.
 
 ### AI infrastructure (where it helped)
 
-Pilot 5 includes experimental automation to assist documentation workflows, including LLM-assisted pipelines for extracting information (e.g., variables, datasets, and filters) from analysis code to support reviewer documentation tables (see `adrg/llm-adrg-utils/llm_pipeline.qmd`). This is not positioned as a replacement for authoring, but as a mechanism to reduce manual effort and improve consistency when building reviewer-facing documentation from code.
+Pilot 5 includes experimental automation to assist documentation workflows, including LLM-assisted pipelines for extracting information (e.g., variables, datasets, and filters) from analysis code to support reviewer documentation tables (see [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)). This is not positioned as a replacement for authoring, but as a mechanism to reduce manual effort and improve consistency when building reviewer-facing documentation from code.
 
 ### Success of the Pilot (what Pilot 5 demonstrates)
 
@@ -193,7 +194,7 @@ For technical, the first issue was learning how the metadata is applied and stor
 
 This section provides a minimal illustration of how Dataset-JSON can be produced in R in the same spirit as the Pilot 5 workflow. The goal is to show that Dataset-JSON creation is a reproducible, scriptable step that can be version-controlled and QC’d like any other artifact.
 
-Pilot 5 conversion logic is exemplified by scripts such as `pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r` (read source data, ensure labels, derive column metadata, write Dataset-JSON).
+Pilot 5 conversion logic is exemplified by scripts such as [`pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r) (read source data, ensure labels, derive column metadata, write Dataset-JSON).
 
 Below is a simplified “toy” example mirroring that concept.
 
@@ -275,11 +276,13 @@ Pilot 5 ADRG preview (public links referenced by the Pilot 5 repo README):
 - PDF: https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
 
 QC reports in the Pilot 5 repo:
-- `qcReport.qmd`
-- `tlf-qc.qmd`
+
+- [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd)
+- [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd)
 
 LLM-assisted ADRG utilities (Pilot 5 repo):
-- `adrg/llm-adrg-utils/llm_pipeline.qmd`
+
+- [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)
 
 TS-140 THE RECORD LAYOUT OF A DATA SET IN SAS TRANSPORT (XPORT) FORMAT
 - https://support.sas.com/content/dam/SAS/support/en/technical-papers/record-layout-of-a-sas-version-5-or-6-data-set-in-sas-transport-xport-format.pdf
