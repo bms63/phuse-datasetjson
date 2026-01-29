@@ -12,7 +12,7 @@ format:
     incremental: true
 ---
 
-# 1. Motivation: Why Talk About Transport Formats?
+## Motivation: Why Talk About Transport Formats?
 
 - SAS XPORT (XPT) has been the de facto submission transport for decades
 - XPT works – but reflects 1980s constraints, not modern data practice
@@ -26,7 +26,7 @@ Set the stage: XPT is familiar and “good enough,” but we’re asking if ther
 
 ---
 
-# 2. Agenda
+## Agenda
 
 This talk covers four topics:
 
@@ -44,7 +44,7 @@ Give the audience a mental roadmap; we’ll go from pain points, to the new stan
 
 ---
 
-# 3. XPT: Yesterday’s Solution to Yesterday’s Problem
+## XPT: Yesterday’s Solution to Yesterday’s Problem
 
 - **Outdated technology**
   - Defined in the 1980s (SAS TS-140) for SAS-to-SAS transfer
@@ -62,7 +62,7 @@ Emphasize that XPT isn’t “bad,” but its constraints create friction when w
 
 ---
 
-# 4. Why XPT Creates Friction Today
+## Why XPT Creates Friction Today
 
 - **Weak embedded metadata**
   - No rich metadata inside the file
@@ -84,7 +84,7 @@ Connect these to practical headaches: bloated files, harder QC, more custom glue
 
 ---
 
-# 5. Enter Dataset-JSON
+## Enter Dataset-JSON
 
 - CDISC standard for representing tabular clinical data in JSON
 - Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT
@@ -100,7 +100,7 @@ Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “s
 
 ---
 
-# 6. Dataset-JSON in Practice
+## Dataset-JSON in Practice
 
 - One dataset per file
 - Three main components (lowerCamelCase JSON):
@@ -122,7 +122,7 @@ Highlight that Dataset-JSON encodes both data and metadata in one place, which i
 
 ---
 
-# 7. Why Dataset-JSON (vs Other Modern Formats)?
+## Why Dataset-JSON (vs Other Modern Formats)?
 
 - **Self-contained metadata**
   - Variable labels/types and CDISC metadata embedded in the file
@@ -141,7 +141,7 @@ Contrast with Parquet/other binary formats: great for analytics, less ideal when
 
 ---
 
-# 8. Regulatory and Collaboration Context
+## Regulatory and Collaboration Context
 
 - FDA April 2025 Federal Register notice:
   - Reaffirms CDISC standards
@@ -159,7 +159,7 @@ Underscore that industry change happens when standards bodies, industry, and reg
 
 ---
 
-# 9. R Consortium R Submissions Working Group
+## R Consortium R Submissions Working Group
 
 - Mission: demonstrate that **R-based submission packages** can:
   - Meet regulatory expectations
@@ -176,7 +176,7 @@ Briefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Da
 
 ---
 
-# 10. What Earlier Pilots Showed
+## What Earlier Pilots Showed
 
 - Demonstrated:
   - eCTD-style packaging and conventions
@@ -193,7 +193,7 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ---
 
-# 11. Pilot 5 Focus: Dataset-JSON + R-Generated ADaM
+## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM
 
 - Objectives:
   - Deliver a publicly accessible R-based submission-like package
@@ -212,7 +212,7 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
 
 ---
 
-# 12. Pilot 5 Artifacts (What You Can See Today)
+## Pilot 5 Artifacts (What You Can See Today)
 
 - Public repository:
   - https://github.com/RConsortium/submissions-pilot5-datasetjson
@@ -232,7 +232,7 @@ Encourage participants to explore the repo post-session; it’s meant as a start
 
 ---
 
-# 13. Way of Working: Reproducibility-First
+## Way of Working: Reproducibility-First
 
 - Organized to be **re-runnable and inspectable**:
   - Programs: `pilot5-submission/pilot5-programs/`
@@ -251,7 +251,7 @@ Key message: nothing is “magic”; everything is scripted and version-controll
 
 ---
 
-# 14. Mini Example: ADaM Data Frame → Dataset-JSON
+## Mini Example: ADaM Data Frame → Dataset-JSON
 
 - Using the `datasetjson` R package:
   - Start from an ADaM-like tibble (`adsl`)
@@ -273,7 +273,7 @@ You don’t need to show all the code line by line; emphasize that producing Dat
 
 ---
 
-# 15. Where AI Helped (But Didn’t Replace Authors)
+## Where AI Helped (But Didn’t Replace Authors)
 
 - Pilot 5 experimented with LLM-assisted documentation:
   - `adrg/llm-adrg-utils/llm_pipeline.qmd`
@@ -290,7 +290,7 @@ Brief mention to show forward-looking tooling, but clarify that AI augments, not
 
 ---
 
-# 16. Challenges Faced: Standards & Tools
+## Challenges Faced: Standards & Tools
 
 - **Standards timing**
   - Dataset-JSON moved from v1.0 to v1.1 during pilot
@@ -308,7 +308,7 @@ This illustrates that format innovation can get slightly ahead of validation eco
 
 ---
 
-# 17. Challenges Faced: Technical Details
+## Challenges Faced: Technical Details
 
 - Learning how metadata is represented and persisted in Dataset-JSON
 - Managing numeric precision:
@@ -325,7 +325,7 @@ Real-world adoption always involves working through rough edges; Pilot 5 surface
 
 ---
 
-# 18. What Pilot 5 Demonstrates
+## What Pilot 5 Demonstrates
 
 - Dataset-JSON is a **viable transport** for submission-like packages:
   - Produced fully in an R-driven pipeline
@@ -342,7 +342,7 @@ Tie this back to the original motivation: same scientific intent and reproducibi
 
 ---
 
-# 19. Takeaways and Next Steps
+## Takeaways and Next Steps
 
 - XPT served us well but is misaligned with:
   - Modern open-source ecosystems
@@ -365,7 +365,7 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ---
 
-# 20. References & Contact
+## References & Contact
 
 **Selected references**
 
