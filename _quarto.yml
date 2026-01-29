@@ -12,13 +12,15 @@ website:
       - href: slides.qmd
         text: Presentation
   page-footer: 
-    left: "Created using [Quarto](https://quarto.org/docs/websites/).
+    left: "Created using [Quarto](https://quarto.org/docs/websites/)."
+    right: 
+      - icon: github
+        href: https://github.com/bms63/phuse-datasetjson
 
 format:
   html:
-    theme:
-      - Sandstone
-    css: styles.css
+    light: flatly
+    dark: darkly
     toc: true
 
 

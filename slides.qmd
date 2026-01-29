@@ -5,11 +5,7 @@ author: |
   Ben Straub (GSK)  
   Sam Parmar (Pfizer)  
   Nick Masel (Johnson & Johnson)
-format:
-  revealjs:
-    theme: simple
-    slide-number: true
-    incremental: true
+format: clean-revealjs
 ---
 
 ## Motivation: Why Talk About Transport Formats?
