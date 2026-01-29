@@ -7,18 +7,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - href: paper.qmd
-        text: Paper - datasetjson
+        text: Paper
       - href: slides.qmd
-        text: Presentation - datasetjson
+        text: Presentation
+  page-footer: 
+    left: "Created using [Quarto](https://quarto.org/docs/websites/)."
+    right: 
+      - icon: github
+        href: https://github.com/bms63/phuse-datasetjson
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    light: flatly
+    dark: darkly
     toc: true
 
 
