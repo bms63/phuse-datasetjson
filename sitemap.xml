@@ -2,26 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bms63.github.io/phuse-datasetjson/paper.html</loc>
-    <lastmod>2026-01-28T18:32:09.067Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bms63.github.io/phuse-datasetjson/paper_feedback.html</loc>
-    <lastmod>2026-01-28T18:32:09.068Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bms63.github.io/phuse-datasetjson/index.html</loc>
-    <lastmod>2026-01-28T18:32:09.067Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bms63.github.io/phuse-datasetjson/slides.html</loc>
-    <lastmod>2026-01-28T18:32:09.068Z</lastmod>
+    <lastmod>2026-01-29T20:25:51.105Z</lastmod>
   </url>
   <url>
     <loc>https://bms63.github.io/phuse-datasetjson/slides_long.html</loc>
-    <lastmod>2026-01-28T18:32:09.068Z</lastmod>
+    <lastmod>2026-01-29T20:25:51.106Z</lastmod>
   </url>
   <url>
-    <loc>https://bms63.github.io/phuse-datasetjson/about.html</loc>
-    <lastmod>2026-01-28T18:32:09.067Z</lastmod>
+    <loc>https://bms63.github.io/phuse-datasetjson/slides.html</loc>
+    <lastmod>2026-01-29T20:25:51.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bms63.github.io/phuse-datasetjson/index.html</loc>
+    <lastmod>2026-01-29T20:25:51.104Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bms63.github.io/phuse-datasetjson/paper_feedback.html</loc>
+    <lastmod>2026-01-29T20:25:51.105Z</lastmod>
   </url>
 </urlset>
