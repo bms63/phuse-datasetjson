@@ -5,7 +5,9 @@ author: |
   Ben Straub (GSK)  
   Sam Parmar (Pfizer)  
   Nick Masel (Johnson & Johnson)
-format: clean-revealjs
+format: 
+  clean-revealjs:
+    footer: "[bms63.github.io/phuse-datasetjson/slides](https://bms63.github.io/phuse-datasetjson/slides)"
 ---
 
 ## Motivation: Why Talk About Transport Formats?
