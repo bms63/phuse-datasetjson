@@ -224,7 +224,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="why-xpt-creates-friction-today" class="slide level2">
+<section id="why-xpt-creates-friction-today" class="slide level2 smaller">
 <h2>Why XPT Creates Friction Today</h2>
 <ul>
 <li><strong>Weak embedded metadata</strong>
@@ -292,7 +292,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="dataset-json-in-practice" class="slide level2">
+<section id="dataset-json-in-practice" class="slide level2 smaller">
 <h2>Dataset-JSON in Practice</h2>
 <ul>
 <li>One dataset per file</li>
@@ -466,6 +466,7 @@
 </section>
 <section id="pilot-5-focus-dataset-json-r-generated-adam" class="slide level2">
 <h2>Pilot 5 Focus: Dataset-JSON + R-Generated ADaM</h2>
+<p><img data-src="https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png" class="absolute" style="bottom: 35%; right: 0px; width: 170px; "></p>
 <ul>
 <li>Objectives:
 <ul>
@@ -480,7 +481,7 @@
 <li><strong>Pilot 5</strong>:
 <ul>
 <li>Convert <em>all</em> XPTs in the package to Dataset-JSON</li>
-<li>Use the <code>datasetjson</code> R package to do the heavy lifting</li>
+<li>Use the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package to do the heavy lifting</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -498,7 +499,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="pilot-5-artifacts-what-you-can-see-today" class="slide level2">
+<section id="pilot-5-artifacts-what-you-can-see-today" class="slide level2 smaller">
 <h2>Pilot 5 Artifacts (What You Can See Today)</h2>
 <ul>
 <li>Public repository:
@@ -507,12 +508,12 @@
 </ul></li>
 <li>eCTD-like package overview (Quarto source):
 <ul>
-<li><code>ectd_readme/README.qmd</code></li>
+<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd"><code>ectd_readme/README.qmd</code></a></li>
 </ul></li>
 <li>ADRG previews:
 <ul>
-<li>HTML: rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/</li>
-<li>PDF: rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf</li>
+<li>HTML: <a href="http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/">rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/</a></li>
+<li>PDF: <a href="https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf">rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf</a></li>
 </ul></li>
 <li>Contents:
 <ul>
@@ -540,17 +541,17 @@
 <ul>
 <li>Organized to be <strong>re-runnable and inspectable</strong>:
 <ul>
-<li>Programs: <code>pilot5-submission/pilot5-programs/</code>
+<li>Programs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs"><code>pilot5-submission/pilot5-programs/</code></a>
 <ul>
 <li>e.g., <code>adsl.r</code>, <code>adae.r</code>, <code>adlbc.r</code>, <code>adtte.r</code></li>
 </ul></li>
-<li>Outputs: <code>pilot5-submission/pilot5-output/</code></li>
+<li>Outputs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output"><code>pilot5-submission/pilot5-output/</code></a></li>
 <li>Documentation: ADRG + eCTD-style README</li>
 </ul></li>
 <li>Comparability treated as a first-class artifact:
 <ul>
-<li><code>qcReport.qmd</code>: dataset-to-dataset QC using <code>diffdf</code></li>
-<li><code>tlf-qc.qmd</code>: text and graphical diffing of outputs</li>
+<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd"><code>qcReport.qmd</code></a>: dataset-to-dataset QC using <code>diffdf</code></li>
+<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd"><code>tlf-qc.qmd</code></a>: text and graphical diffing of outputs</li>
 </ul></li>
 <li>Dataset-JSON creation is just another scripted step:
 <ul>
@@ -571,10 +572,10 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="mini-example-adam-data-frame-dataset-json" class="slide level2">
+<section id="mini-example-adam-data-frame-dataset-json" class="slide level2 smaller">
 <h2>Mini Example: ADaM Data Frame → Dataset-JSON</h2>
 <ul>
-<li>Using the <code>datasetjson</code> R package:
+<li>Using the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package:
 <ul>
 <li>Start from an ADaM-like tibble (<code>adsl</code>)</li>
 <li>Ensure dataset label is set (<code>attr(adsl, "label")</code>)</li>
@@ -582,11 +583,11 @@
 <ul>
 <li><code>itemOID</code>, <code>name</code>, <code>label</code>, <code>dataType</code></li>
 </ul></li>
-<li>Call <code>datasetjson::dataset_json()</code>:
+<li>Call <a href="https://atorus-research.github.io/datasetjson/reference/dataset_json.html"><code>datasetjson::dataset_json()</code></a>:
 <ul>
 <li>Pass data, dataset name, label, columns metadata</li>
 </ul></li>
-<li>Write JSON text with <code>write_dataset_json()</code></li>
+<li>Write JSON text with <a href="https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html"><code>write_dataset_json()</code></a></li>
 </ul></li>
 <li>Output:
 <ul>
@@ -617,7 +618,7 @@
 <ul>
 <li>Pilot 5 experimented with LLM-assisted documentation:
 <ul>
-<li><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></li>
+<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd"><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></a></li>
 </ul></li>
 <li>Use cases:
 <ul>
@@ -688,10 +689,10 @@
 </ul></li>
 <li>Package limitations:
 <ul>
-<li><code>datasetjson</code> R package has a few open issues</li>
+<li><a href="https://atorus-research.github.io/datasetjson/index.html"><code>datasetjson</code></a> R package has a few open issues</li>
 <li>Tracked and discussed publicly:
 <ul>
-<li>https://github.com/atorus-research/datasetjson/issues</li>
+<li><a href="https://github.com/atorus-research/datasetjson/issues">https://github.com/atorus-research/datasetjson/issues</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -739,7 +740,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="takeaways-and-next-steps" class="slide level2">
+<section id="takeaways-and-next-steps" class="slide level2 smaller">
 <h2>Takeaways and Next Steps</h2>
 <ul>
 <li>XPT served us well but is misaligned with:
@@ -779,15 +780,14 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="references-contact" class="slide level2">
+<section id="references-contact" class="slide level2 smaller">
 <h2>References &amp; Contact</h2>
 <p><strong>Selected references</strong></p>
 <ul>
-<li>Pilot 5 repo: https://github.com/RConsortium/submissions-pilot5-datasetjson<br>
+<li>Pilot 5 repo: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson">https://github.com/RConsortium/submissions-pilot5-datasetjson</a><br>
 </li>
-<li>eCTD overview: https://www.fda.gov/drugs/electronic-common-technical-document-ectd<br>
-</li>
-<li>Dataset-JSON v1.1: https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</li>
+<li>eCTD overview: <a href="https://www.fda.gov/drugs/electronic-common-technical-document-ectd">https://www.fda.gov/drugs/electronic-common-technical-document-ectd</a></li>
+<li>Dataset-JSON v1.1: <a href="https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html">https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</a></li>
 </ul>
 <p><strong>Authors</strong></p>
 <ul>
@@ -797,7 +797,6 @@
 </li>
 <li>Nick Masel, Johnson &amp; Johnson – (location/email as applicable)</li>
 </ul>
-<p>Brand and product names are trademarks of their respective companies.</p>
 <aside class="notes">
 <p>Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.</p>
 <style type="text/css">
