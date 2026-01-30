@@ -202,7 +202,7 @@ This slide builds trust: regulators have already successfully reviewed R-based p
   - Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT
   - **Pilot 5**:
     - Convert *all* XPTs in the package to Dataset-JSON
-    - Use the `datasetjson` R package to do the heavy lifting
+    - Use the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package to do the heavy lifting
 
 ::: {.notes}
 Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating end‑to‑end R-based dataset generation.
@@ -251,14 +251,14 @@ Key message: nothing is “magic”; everything is scripted and version-controll
 
 ## Mini Example: ADaM Data Frame → Dataset-JSON
 
-- Using the `datasetjson` R package:
+- Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
   - Start from an ADaM-like tibble (`adsl`)
   - Ensure dataset label is set (`attr(adsl, "label")`)
   - Define column metadata tibble:
     - `itemOID`, `name`, `label`, `dataType`
-  - Call `datasetjson::dataset_json()`:
+  - Call [`datasetjson::dataset_json()`](https://atorus-research.github.io/datasetjson/reference/dataset_json.html):
     - Pass data, dataset name, label, columns metadata
-  - Write JSON text with `write_dataset_json()`
+  - Write JSON text with [`write_dataset_json()`](https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html)
 - Output:
   - A plain-text Dataset-JSON file containing:
     - Top-level metadata
@@ -274,7 +274,7 @@ You don’t need to show all the code line by line; emphasize that producing Dat
 ## Where AI Helped (But Didn’t Replace Authors)
 
 - Pilot 5 experimented with LLM-assisted documentation:
-  - `adrg/llm-adrg-utils/llm_pipeline.qmd`
+  - [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)
 - Use cases:
   - Extract variables, datasets, filters from analysis code
   - Pre-populate reviewer-facing tables in ADRG
@@ -313,9 +313,9 @@ This illustrates that format innovation can get slightly ahead of validation eco
   - Converting float variables to decimal data type in JSON
   - Building wrapper functions for consistent handling across datasets
 - Package limitations:
-  - `datasetjson` R package has a few open issues
+  - [`datasetjson`](https://atorus-research.github.io/datasetjson/index.html) R package has a few open issues
   - Tracked and discussed publicly:
-    - https://github.com/atorus-research/datasetjson/issues
+    - [https://github.com/atorus-research/datasetjson/issues](https://github.com/atorus-research/datasetjson/issues)
 
 ::: {.notes}
 Real-world adoption always involves working through rough edges; Pilot 5 surfaces and documents them for the community.
@@ -367,9 +367,9 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 **Selected references**
 
-- Pilot 5 repo: https://github.com/RConsortium/submissions-pilot5-datasetjson  
-- eCTD overview: https://www.fda.gov/drugs/electronic-common-technical-document-ectd  
-- Dataset-JSON v1.1: https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html  
+- Pilot 5 repo: [https://github.com/RConsortium/submissions-pilot5-datasetjson](https://github.com/RConsortium/submissions-pilot5-datasetjson)  
+- eCTD overview: [https://www.fda.gov/drugs/electronic-common-technical-document-ectd](https://www.fda.gov/drugs/electronic-common-technical-document-ectd)
+- Dataset-JSON v1.1: [https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html](https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html)
 
 **Authors**
 
