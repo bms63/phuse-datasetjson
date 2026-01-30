@@ -1,6 +1,6 @@
 ---
 title: "Breaking Free from the XPT"
-subtitle: "Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies"
+subtitle: "Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies"
 author: |
   Ben Straub (GSK)  
   Sam Parmar (Pfizer)  
@@ -8,6 +8,7 @@ author: |
 format: 
   clean-revealjs:
     footer: "[bms63.github.io/phuse-datasetjson/slides](https://bms63.github.io/phuse-datasetjson/slides)"
+    incremental: true
 ---
 
 ## Motivation: Why Talk About Transport Formats?
