@@ -129,7 +129,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Breaking Free from the XPT</h1>
-  <p class="subtitle">Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies</p>
+  <p class="subtitle">Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -143,11 +143,11 @@
 <section id="motivation-why-talk-about-transport-formats" class="slide level2">
 <h2>Motivation: Why Talk About Transport Formats?</h2>
 <ul>
-<li>SAS XPORT (XPT) has been the de facto submission transport for decades</li>
-<li>XPT works – but reflects 1980s constraints, not modern data practice</li>
-<li>Open-source tooling (R, Python) and modern standards are now mainstream</li>
-<li>CDISC Dataset-JSON offers a contemporary alternative</li>
-<li>R Consortium Pilot 5: a concrete test of Dataset-JSON in a submission-like setting</li>
+<li class="fragment">SAS XPORT (XPT) has been the de facto submission transport for decades</li>
+<li class="fragment">XPT works – but reflects 1980s constraints, not modern data practice</li>
+<li class="fragment">Open-source tooling (R, Python) and modern standards are now mainstream</li>
+<li class="fragment">CDISC Dataset-JSON offers a contemporary alternative</li>
+<li class="fragment">R Consortium Pilot 5: a concrete test of Dataset-JSON in a submission-like setting</li>
 </ul>
 <aside class="notes">
 <p>Set the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions.</p>
@@ -167,14 +167,14 @@
 <h2>Agenda</h2>
 <p>This talk covers four topics:</p>
 <ul>
-<li>Why the industry is rethinking XPT as the default transport</li>
-<li>What Dataset-JSON is, where it came from, and why it matters</li>
-<li>The R Consortium R Submissions Working Group context</li>
-<li>R Submission Pilot 5:
+<li class="fragment">Why the industry is rethinking XPT as the default transport</li>
+<li class="fragment">What Dataset-JSON is, where it came from, and why it matters</li>
+<li class="fragment">The R Consortium R Submissions Working Group context</li>
+<li class="fragment">R Submission Pilot 5:
 <ul>
-<li>Dataset-JSON implementation</li>
-<li>Reproducible workflows and QC</li>
-<li>Lessons learned</li>
+<li class="fragment">Dataset-JSON implementation</li>
+<li class="fragment">Reproducible workflows and QC</li>
+<li class="fragment">Lessons learned</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -194,20 +194,20 @@
 <section id="xpt-yesterdays-solution-to-yesterdays-problem" class="slide level2">
 <h2>XPT: Yesterday’s Solution to Yesterday’s Problem</h2>
 <ul>
-<li><strong>Outdated technology</strong>
+<li class="fragment"><strong>Outdated technology</strong>
 <ul>
-<li>Defined in the 1980s (SAS TS-140) for SAS-to-SAS transfer</li>
-<li>Optimized for mainframes, not for modern APIs or big data</li>
+<li class="fragment">Defined in the 1980s (SAS TS-140) for SAS-to-SAS transfer</li>
+<li class="fragment">Optimized for mainframes, not for modern APIs or big data</li>
 </ul></li>
-<li><strong>Constrained data characteristics</strong>
+<li class="fragment"><strong>Constrained data characteristics</strong>
 <ul>
-<li>8-character variable names, 40-character labels</li>
-<li>200-character limit for character values</li>
-<li>Limited data types</li>
+<li class="fragment">8-character variable names, 40-character labels</li>
+<li class="fragment">200-character limit for character values</li>
+<li class="fragment">Limited data types</li>
 </ul></li>
-<li><strong>Poor handling of internationalization</strong>
+<li class="fragment"><strong>Poor handling of internationalization</strong>
 <ul>
-<li>US-ASCII only; no native UTF-8/multibyte support</li>
+<li class="fragment">US-ASCII only; no native UTF-8/multibyte support</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -227,27 +227,27 @@
 <section id="why-xpt-creates-friction-today" class="slide level2 smaller">
 <h2>Why XPT Creates Friction Today</h2>
 <ul>
-<li><strong>Weak embedded metadata</strong>
+<li class="fragment"><strong>Weak embedded metadata</strong>
 <ul>
-<li>No rich metadata inside the file</li>
-<li>Reliance on external Define-XML; risk of misalignment</li>
+<li class="fragment">No rich metadata inside the file</li>
+<li class="fragment">Reliance on external Define-XML; risk of misalignment</li>
 </ul></li>
-<li><strong>Inefficient storage</strong>
+<li class="fragment"><strong>Inefficient storage</strong>
 <ul>
-<li>Fixed-width allocations, lots of padding</li>
-<li>No compression support</li>
+<li class="fragment">Fixed-width allocations, lots of padding</li>
+<li class="fragment">No compression support</li>
 </ul></li>
-<li><strong>Ecosystem asymmetry</strong>
+<li class="fragment"><strong>Ecosystem asymmetry</strong>
 <ul>
-<li>Native in SAS; awkward in open-source and data engineering stacks</li>
+<li class="fragment">Native in SAS; awkward in open-source and data engineering stacks</li>
 </ul></li>
-<li><strong>Automation friction</strong>
+<li class="fragment"><strong>Automation friction</strong>
 <ul>
-<li>Binary format, not ideal for:
+<li class="fragment">Binary format, not ideal for:
 <ul>
-<li>Schema validation</li>
-<li>Diffs in Git</li>
-<li>Text-based QA tooling</li>
+<li class="fragment">Schema validation</li>
+<li class="fragment">Diffs in Git</li>
+<li class="fragment">Text-based QA tooling</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -268,15 +268,15 @@
 <section id="enter-dataset-json" class="slide level2">
 <h2>Enter Dataset-JSON</h2>
 <ul>
-<li>CDISC standard for representing tabular clinical data in JSON</li>
-<li>Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT</li>
-<li>Designed for:
+<li class="fragment">CDISC standard for representing tabular clinical data in JSON</li>
+<li class="fragment">Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT</li>
+<li class="fragment">Designed for:
 <ul>
-<li>Regulatory submissions</li>
-<li>API-based data exchange</li>
-<li>Interoperability beyond a single vendor</li>
+<li class="fragment">Regulatory submissions</li>
+<li class="fragment">API-based data exchange</li>
+<li class="fragment">Interoperability beyond a single vendor</li>
 </ul></li>
-<li>Supports both file-based and API-based workflows</li>
+<li class="fragment">Supports both file-based and API-based workflows</li>
 </ul>
 <aside class="notes">
 <p>Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”</p>
@@ -295,28 +295,28 @@
 <section id="dataset-json-in-practice" class="slide level2 smaller">
 <h2>Dataset-JSON in Practice</h2>
 <ul>
-<li>One dataset per file</li>
-<li>Three main components (lowerCamelCase JSON):
+<li class="fragment">One dataset per file</li>
+<li class="fragment">Three main components (lowerCamelCase JSON):
 <ul>
-<li><strong>Top-level metadata</strong>
+<li class="fragment"><strong>Top-level metadata</strong>
 <ul>
-<li>Creation time, standard version</li>
-<li>Optional link to Define-XML</li>
+<li class="fragment">Creation time, standard version</li>
+<li class="fragment">Optional link to Define-XML</li>
 </ul></li>
-<li><strong>Column metadata</strong>
+<li class="fragment"><strong>Column metadata</strong>
 <ul>
-<li>Names, labels, data types, optional CDISC-specific attributes</li>
+<li class="fragment">Names, labels, data types, optional CDISC-specific attributes</li>
 </ul></li>
-<li><strong>Row data</strong>
+<li class="fragment"><strong>Row data</strong>
 <ul>
-<li>Arrays of values; missing values as <code>null</code></li>
+<li class="fragment">Arrays of values; missing values as <code>null</code></li>
 </ul></li>
 </ul></li>
-<li>Special handling:
+<li class="fragment">Special handling:
 <ul>
-<li>Decimals as strings to preserve precision</li>
-<li>ISO 8601 dates/times</li>
-<li>Optional NDJSON variant for streaming large datasets</li>
+<li class="fragment">Decimals as strings to preserve precision</li>
+<li class="fragment">ISO 8601 dates/times</li>
+<li class="fragment">Optional NDJSON variant for streaming large datasets</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -336,25 +336,25 @@
 <section id="why-dataset-json-vs-other-modern-formats" class="slide level2">
 <h2>Why Dataset-JSON (vs Other Modern Formats)?</h2>
 <ul>
-<li><strong>Self-contained metadata</strong>
+<li class="fragment"><strong>Self-contained metadata</strong>
 <ul>
-<li>Variable labels/types and CDISC metadata embedded in the file</li>
+<li class="fragment">Variable labels/types and CDISC metadata embedded in the file</li>
 </ul></li>
-<li><strong>Human-readable and audit-friendly</strong>
+<li class="fragment"><strong>Human-readable and audit-friendly</strong>
 <ul>
-<li>Plain-text JSON; easy to inspect, search, and diff</li>
+<li class="fragment">Plain-text JSON; easy to inspect, search, and diff</li>
 </ul></li>
-<li><strong>Git-native</strong>
+<li class="fragment"><strong>Git-native</strong>
 <ul>
-<li>Works well with standard diff and review tools</li>
+<li class="fragment">Works well with standard diff and review tools</li>
 </ul></li>
-<li><strong>Universally parseable</strong>
+<li class="fragment"><strong>Universally parseable</strong>
 <ul>
-<li>Mature JSON parsers exist in all major languages</li>
+<li class="fragment">Mature JSON parsers exist in all major languages</li>
 </ul></li>
-<li><strong>Supports APIs</strong>
+<li class="fragment"><strong>Supports APIs</strong>
 <ul>
-<li>Same structure works for file transfer and REST endpoints</li>
+<li class="fragment">Same structure works for file transfer and REST endpoints</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -374,20 +374,20 @@
 <section id="regulatory-and-collaboration-context" class="slide level2">
 <h2>Regulatory and Collaboration Context</h2>
 <ul>
-<li>FDA April 2025 Federal Register notice:
+<li class="fragment">FDA April 2025 Federal Register notice:
 <ul>
-<li>Reaffirms CDISC standards</li>
-<li>Signals openness to evolving transport mechanisms</li>
+<li class="fragment">Reaffirms CDISC standards</li>
+<li class="fragment">Signals openness to evolving transport mechanisms</li>
 </ul></li>
-<li>Dataset-JSON sits in a collaborative ecosystem:
+<li class="fragment">Dataset-JSON sits in a collaborative ecosystem:
 <ul>
-<li><strong>CDISC</strong>: defines standards</li>
-<li><strong>PHUSE</strong>: applied use cases and community practice</li>
-<li><strong>FDA</strong>: evaluates review impact and feasibility</li>
+<li class="fragment"><strong>CDISC</strong>: defines standards</li>
+<li class="fragment"><strong>PHUSE</strong>: applied use cases and community practice</li>
+<li class="fragment"><strong>FDA</strong>: evaluates review impact and feasibility</li>
 </ul></li>
-<li>Pilot 5: FDA–industry collaboration under the R Consortium
+<li class="fragment">Pilot 5: FDA–industry collaboration under the R Consortium
 <ul>
-<li>“Show your work” style, not a policy statement</li>
+<li class="fragment">“Show your work” style, not a policy statement</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -407,18 +407,18 @@
 <section id="r-consortium-r-submissions-working-group" class="slide level2">
 <h2>R Consortium R Submissions Working Group</h2>
 <ul>
-<li>Mission: demonstrate that <strong>R-based submission packages</strong> can:
+<li class="fragment">Mission: demonstrate that <strong>R-based submission packages</strong> can:
 <ul>
-<li>Meet regulatory expectations</li>
-<li>Be fully reproducible and reviewable</li>
+<li class="fragment">Meet regulatory expectations</li>
+<li class="fragment">Be fully reproducible and reviewable</li>
 </ul></li>
-<li>Focus on:
+<li class="fragment">Focus on:
 <ul>
-<li>Complete, public submission-like artifacts (data, code, outputs)</li>
-<li>Practical workflows others can fork and adapt</li>
-<li>Feedback loop with regulators to shape future processes</li>
+<li class="fragment">Complete, public submission-like artifacts (data, code, outputs)</li>
+<li class="fragment">Practical workflows others can fork and adapt</li>
+<li class="fragment">Feedback loop with regulators to shape future processes</li>
 </ul></li>
-<li>Goal: easier R-based submissions <strong>today</strong> and <strong>tomorrow</strong></li>
+<li class="fragment">Goal: easier R-based submissions <strong>today</strong> and <strong>tomorrow</strong></li>
 </ul>
 <aside class="notes">
 <p>Briefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Dataset-JSON-focused one.</p>
@@ -437,18 +437,18 @@
 <section id="what-earlier-pilots-showed" class="slide level2">
 <h2>What Earlier Pilots Showed</h2>
 <ul>
-<li>Demonstrated:
+<li class="fragment">Demonstrated:
 <ul>
-<li>eCTD-style packaging and conventions</li>
-<li>Reproducible execution from source data through TLFs</li>
-<li>Reviewer-aligned documentation (ADRG) using open tools (e.g., Quarto)</li>
-<li>Concrete interaction with FDA reviewers:
+<li class="fragment">eCTD-style packaging and conventions</li>
+<li class="fragment">Reproducible execution from source data through TLFs</li>
+<li class="fragment">Reviewer-aligned documentation (ADRG) using open tools (e.g., Quarto)</li>
+<li class="fragment">Concrete interaction with FDA reviewers:
 <ul>
-<li>Installation, environment setup</li>
-<li>Data and derivation questions</li>
+<li class="fragment">Installation, environment setup</li>
+<li class="fragment">Data and derivation questions</li>
 </ul></li>
 </ul></li>
-<li>Pilot 3: FDA “Statistical Review and Evaluation” documented as public evidence</li>
+<li class="fragment">Pilot 3: FDA “Statistical Review and Evaluation” documented as public evidence</li>
 </ul>
 <aside class="notes">
 <p>This slide builds trust: regulators have already successfully reviewed R-based packages from earlier pilots.</p>
@@ -468,20 +468,20 @@
 <h2>Pilot 5 Focus: Dataset-JSON + R-Generated ADaM</h2>
 <p><img data-src="https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png" class="absolute" style="bottom: 35%; right: 0px; width: 170px; "></p>
 <ul>
-<li>Objectives:
+<li class="fragment">Objectives:
 <ul>
-<li>Deliver a publicly accessible R-based submission-like package</li>
-<li>Use <strong>Dataset-JSON v1.1</strong> as the dataset transport format</li>
-<li>Generate key ADaM datasets in R (not SAS)</li>
+<li class="fragment">Deliver a publicly accessible R-based submission-like package</li>
+<li class="fragment">Use <strong>Dataset-JSON v1.1</strong> as the dataset transport format</li>
+<li class="fragment">Generate key ADaM datasets in R (not SAS)</li>
 </ul></li>
-<li>Evolution:
+<li class="fragment">Evolution:
 <ul>
-<li>Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
-<li>Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
-<li><strong>Pilot 5</strong>:
+<li class="fragment">Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
+<li class="fragment">Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
+<li class="fragment"><strong>Pilot 5</strong>:
 <ul>
-<li>Convert <em>all</em> XPTs in the package to Dataset-JSON</li>
-<li>Use the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package to do the heavy lifting</li>
+<li class="fragment">Convert <em>all</em> XPTs in the package to Dataset-JSON</li>
+<li class="fragment">Use the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package to do the heavy lifting</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -502,24 +502,24 @@
 <section id="pilot-5-artifacts-what-you-can-see-today" class="slide level2 smaller">
 <h2>Pilot 5 Artifacts (What You Can See Today)</h2>
 <ul>
-<li>Public repository:
+<li class="fragment">Public repository:
 <ul>
-<li>https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
+<li class="fragment">https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
 </ul></li>
-<li>eCTD-like package overview (Quarto source):
+<li class="fragment">eCTD-like package overview (Quarto source):
 <ul>
-<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd"><code>ectd_readme/README.qmd</code></a></li>
+<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd"><code>ectd_readme/README.qmd</code></a></li>
 </ul></li>
-<li>ADRG previews:
+<li class="fragment">ADRG previews:
 <ul>
-<li>HTML: <a href="http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/">rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/</a></li>
-<li>PDF: <a href="https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf">rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf</a></li>
+<li class="fragment">HTML: <a href="http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/">rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/</a></li>
+<li class="fragment">PDF: <a href="https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf">rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf</a></li>
 </ul></li>
-<li>Contents:
+<li class="fragment">Contents:
 <ul>
-<li>R programs for dataset generation and conversions</li>
-<li>Dataset-JSON outputs</li>
-<li>QC reports and ADRG</li>
+<li class="fragment">R programs for dataset generation and conversions</li>
+<li class="fragment">Dataset-JSON outputs</li>
+<li class="fragment">QC reports and ADRG</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -539,23 +539,23 @@
 <section id="way-of-working-reproducibility-first" class="slide level2">
 <h2>Way of Working: Reproducibility-First</h2>
 <ul>
-<li>Organized to be <strong>re-runnable and inspectable</strong>:
+<li class="fragment">Organized to be <strong>re-runnable and inspectable</strong>:
 <ul>
-<li>Programs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs"><code>pilot5-submission/pilot5-programs/</code></a>
+<li class="fragment">Programs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs"><code>pilot5-submission/pilot5-programs/</code></a>
 <ul>
-<li>e.g., <code>adsl.r</code>, <code>adae.r</code>, <code>adlbc.r</code>, <code>adtte.r</code></li>
+<li class="fragment">e.g., <code>adsl.r</code>, <code>adae.r</code>, <code>adlbc.r</code>, <code>adtte.r</code></li>
 </ul></li>
-<li>Outputs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output"><code>pilot5-submission/pilot5-output/</code></a></li>
-<li>Documentation: ADRG + eCTD-style README</li>
+<li class="fragment">Outputs: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output"><code>pilot5-submission/pilot5-output/</code></a></li>
+<li class="fragment">Documentation: ADRG + eCTD-style README</li>
 </ul></li>
-<li>Comparability treated as a first-class artifact:
+<li class="fragment">Comparability treated as a first-class artifact:
 <ul>
-<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd"><code>qcReport.qmd</code></a>: dataset-to-dataset QC using <code>diffdf</code></li>
-<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd"><code>tlf-qc.qmd</code></a>: text and graphical diffing of outputs</li>
+<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd"><code>qcReport.qmd</code></a>: dataset-to-dataset QC using <code>diffdf</code></li>
+<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd"><code>tlf-qc.qmd</code></a>: text and graphical diffing of outputs</li>
 </ul></li>
-<li>Dataset-JSON creation is just another scripted step:
+<li class="fragment">Dataset-JSON creation is just another scripted step:
 <ul>
-<li>e.g., <code>convert_xpt_to_datasetjson.r</code></li>
+<li class="fragment">e.g., <code>convert_xpt_to_datasetjson.r</code></li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -575,27 +575,27 @@
 <section id="mini-example-adam-data-frame-dataset-json" class="slide level2 smaller">
 <h2>Mini Example: ADaM Data Frame → Dataset-JSON</h2>
 <ul>
-<li>Using the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package:
+<li class="fragment">Using the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package:
 <ul>
-<li>Start from an ADaM-like tibble (<code>adsl</code>)</li>
-<li>Ensure dataset label is set (<code>attr(adsl, "label")</code>)</li>
-<li>Define column metadata tibble:
+<li class="fragment">Start from an ADaM-like tibble (<code>adsl</code>)</li>
+<li class="fragment">Ensure dataset label is set (<code>attr(adsl, "label")</code>)</li>
+<li class="fragment">Define column metadata tibble:
 <ul>
-<li><code>itemOID</code>, <code>name</code>, <code>label</code>, <code>dataType</code></li>
+<li class="fragment"><code>itemOID</code>, <code>name</code>, <code>label</code>, <code>dataType</code></li>
 </ul></li>
-<li>Call <a href="https://atorus-research.github.io/datasetjson/reference/dataset_json.html"><code>datasetjson::dataset_json()</code></a>:
+<li class="fragment">Call <a href="https://atorus-research.github.io/datasetjson/reference/dataset_json.html"><code>datasetjson::dataset_json()</code></a>:
 <ul>
-<li>Pass data, dataset name, label, columns metadata</li>
+<li class="fragment">Pass data, dataset name, label, columns metadata</li>
 </ul></li>
-<li>Write JSON text with <a href="https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html"><code>write_dataset_json()</code></a></li>
+<li class="fragment">Write JSON text with <a href="https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html"><code>write_dataset_json()</code></a></li>
 </ul></li>
-<li>Output:
+<li class="fragment">Output:
 <ul>
-<li>A plain-text Dataset-JSON file containing:
+<li class="fragment">A plain-text Dataset-JSON file containing:
 <ul>
-<li>Top-level metadata</li>
-<li>Column metadata</li>
-<li>Row data</li>
+<li class="fragment">Top-level metadata</li>
+<li class="fragment">Column metadata</li>
+<li class="fragment">Row data</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -616,19 +616,19 @@
 <section id="where-ai-helped-but-didnt-replace-authors" class="slide level2">
 <h2>Where AI Helped (But Didn’t Replace Authors)</h2>
 <ul>
-<li>Pilot 5 experimented with LLM-assisted documentation:
+<li class="fragment">Pilot 5 experimented with LLM-assisted documentation:
 <ul>
-<li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd"><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></a></li>
+<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd"><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></a></li>
 </ul></li>
-<li>Use cases:
+<li class="fragment">Use cases:
 <ul>
-<li>Extract variables, datasets, filters from analysis code</li>
-<li>Pre-populate reviewer-facing tables in ADRG</li>
+<li class="fragment">Extract variables, datasets, filters from analysis code</li>
+<li class="fragment">Pre-populate reviewer-facing tables in ADRG</li>
 </ul></li>
-<li>Intent:
+<li class="fragment">Intent:
 <ul>
-<li><strong>Reduce manual effort and inconsistencies</strong></li>
-<li>Keep humans firmly in the authoring and review loop</li>
+<li class="fragment"><strong>Reduce manual effort and inconsistencies</strong></li>
+<li class="fragment">Keep humans firmly in the authoring and review loop</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -648,20 +648,20 @@
 <section id="challenges-faced-standards-tools" class="slide level2">
 <h2>Challenges Faced: Standards &amp; Tools</h2>
 <ul>
-<li><strong>Standards timing</strong>
+<li class="fragment"><strong>Standards timing</strong>
 <ul>
-<li>Dataset-JSON moved from v1.0 to v1.1 during pilot</li>
-<li>Needed to understand and document v1.1 changes with FDA</li>
+<li class="fragment">Dataset-JSON moved from v1.0 to v1.1 during pilot</li>
+<li class="fragment">Needed to understand and document v1.1 changes with FDA</li>
 </ul></li>
-<li><strong>Validation tooling gap</strong>
+<li class="fragment"><strong>Validation tooling gap</strong>
 <ul>
-<li>Pinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1</li>
-<li>Required:
+<li class="fragment">Pinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1</li>
+<li class="fragment">Required:
 <ul>
-<li>Workarounds and additional documentation</li>
-<li>Direct discussion with FDA collaborators</li>
+<li class="fragment">Workarounds and additional documentation</li>
+<li class="fragment">Direct discussion with FDA collaborators</li>
 </ul></li>
-<li>Potential re-submission once P21 supports v1.1</li>
+<li class="fragment">Potential re-submission once P21 supports v1.1</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -681,18 +681,18 @@
 <section id="challenges-faced-technical-details" class="slide level2">
 <h2>Challenges Faced: Technical Details</h2>
 <ul>
-<li>Learning how metadata is represented and persisted in Dataset-JSON</li>
-<li>Managing numeric precision:
+<li class="fragment">Learning how metadata is represented and persisted in Dataset-JSON</li>
+<li class="fragment">Managing numeric precision:
 <ul>
-<li>Converting float variables to decimal data type in JSON</li>
-<li>Building wrapper functions for consistent handling across datasets</li>
+<li class="fragment">Converting float variables to decimal data type in JSON</li>
+<li class="fragment">Building wrapper functions for consistent handling across datasets</li>
 </ul></li>
-<li>Package limitations:
+<li class="fragment">Package limitations:
 <ul>
-<li><a href="https://atorus-research.github.io/datasetjson/index.html"><code>datasetjson</code></a> R package has a few open issues</li>
-<li>Tracked and discussed publicly:
+<li class="fragment"><a href="https://atorus-research.github.io/datasetjson/index.html"><code>datasetjson</code></a> R package has a few open issues</li>
+<li class="fragment">Tracked and discussed publicly:
 <ul>
-<li><a href="https://github.com/atorus-research/datasetjson/issues">https://github.com/atorus-research/datasetjson/issues</a></li>
+<li class="fragment"><a href="https://github.com/atorus-research/datasetjson/issues">https://github.com/atorus-research/datasetjson/issues</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -713,17 +713,17 @@
 <section id="what-pilot-5-demonstrates" class="slide level2">
 <h2>What Pilot 5 Demonstrates</h2>
 <ul>
-<li>Dataset-JSON is a <strong>viable transport</strong> for submission-like packages:
+<li class="fragment">Dataset-JSON is a <strong>viable transport</strong> for submission-like packages:
 <ul>
-<li>Produced fully in an R-driven pipeline</li>
-<li>With explicit metadata management</li>
+<li class="fragment">Produced fully in an R-driven pipeline</li>
+<li class="fragment">With explicit metadata management</li>
 </ul></li>
-<li>A reviewer-friendly, eCTD-style package can use Dataset-JSON instead of XPT</li>
-<li>Outputs (TLFs) can be regenerated from provided code and datasets</li>
-<li>QC comparisons:
+<li class="fragment">A reviewer-friendly, eCTD-style package can use Dataset-JSON instead of XPT</li>
+<li class="fragment">Outputs (TLFs) can be regenerated from provided code and datasets</li>
+<li class="fragment">QC comparisons:
 <ul>
-<li>Dataset-level and output-level</li>
-<li>Scripted and reported for transparency</li>
+<li class="fragment">Dataset-level and output-level</li>
+<li class="fragment">Scripted and reported for transparency</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -743,27 +743,27 @@
 <section id="takeaways-and-next-steps" class="slide level2 smaller">
 <h2>Takeaways and Next Steps</h2>
 <ul>
-<li>XPT served us well but is misaligned with:
+<li class="fragment">XPT served us well but is misaligned with:
 <ul>
-<li>Modern open-source ecosystems</li>
-<li>Rich metadata and internationalization needs</li>
-<li>Text-based, automated, reproducible workflows</li>
+<li class="fragment">Modern open-source ecosystems</li>
+<li class="fragment">Rich metadata and internationalization needs</li>
+<li class="fragment">Text-based, automated, reproducible workflows</li>
 </ul></li>
-<li>Dataset-JSON offers:
+<li class="fragment">Dataset-JSON offers:
 <ul>
-<li>Self-contained, human-readable, API-ready transport</li>
-<li>Stronger fit with R, Python, and Git-based practices</li>
+<li class="fragment">Self-contained, human-readable, API-ready transport</li>
+<li class="fragment">Stronger fit with R, Python, and Git-based practices</li>
 </ul></li>
-<li>Pilot 5:
+<li class="fragment">Pilot 5:
 <ul>
-<li>Provides a public blueprint you can adapt</li>
-<li>Invites further experimentation and feedback with regulators</li>
+<li class="fragment">Provides a public blueprint you can adapt</li>
+<li class="fragment">Invites further experimentation and feedback with regulators</li>
 </ul></li>
-<li>Call to action:
+<li class="fragment">Call to action:
 <ul>
-<li>Explore the Pilot 5 repo</li>
-<li>Try Dataset-JSON in your internal workflows</li>
-<li>Engage via PHUSE / CDISC / R Consortium channels</li>
+<li class="fragment">Explore the Pilot 5 repo</li>
+<li class="fragment">Try Dataset-JSON in your internal workflows</li>
+<li class="fragment">Engage via PHUSE / CDISC / R Consortium channels</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -784,18 +784,18 @@
 <h2>References &amp; Contact</h2>
 <p><strong>Selected references</strong></p>
 <ul>
-<li>Pilot 5 repo: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson">https://github.com/RConsortium/submissions-pilot5-datasetjson</a><br>
+<li class="fragment">Pilot 5 repo: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson">https://github.com/RConsortium/submissions-pilot5-datasetjson</a><br>
 </li>
-<li>eCTD overview: <a href="https://www.fda.gov/drugs/electronic-common-technical-document-ectd">https://www.fda.gov/drugs/electronic-common-technical-document-ectd</a></li>
-<li>Dataset-JSON v1.1: <a href="https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html">https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</a></li>
+<li class="fragment">eCTD overview: <a href="https://www.fda.gov/drugs/electronic-common-technical-document-ectd">https://www.fda.gov/drugs/electronic-common-technical-document-ectd</a></li>
+<li class="fragment">Dataset-JSON v1.1: <a href="https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html">https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</a></li>
 </ul>
 <p><strong>Authors</strong></p>
 <ul>
-<li>Ben Straub, GSK – Philadelphia, United States<br>
+<li class="fragment">Ben Straub, GSK – Philadelphia, United States<br>
 </li>
-<li>Sam Parmar, Pfizer – New York City, United States<br>
+<li class="fragment">Sam Parmar, Pfizer – New York City, United States<br>
 </li>
-<li>Nick Masel, Johnson &amp; Johnson – (location/email as applicable)</li>
+<li class="fragment">Nick Masel, Johnson &amp; Johnson – (location/email as applicable)</li>
 </ul>
 <aside class="notes">
 <p>Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.</p>
