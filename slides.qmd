@@ -60,7 +60,7 @@ Emphasize that XPT isn’t “bad,” but its constraints create friction when w
 
 ---
 
-## Why XPT Creates Friction Today
+## Why XPT Creates Friction Today  {.smaller}
 
 - **Weak embedded metadata**
   - No rich metadata inside the file
@@ -98,7 +98,7 @@ Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “s
 
 ---
 
-## Dataset-JSON in Practice
+## Dataset-JSON in Practice {.smaller}
 
 - One dataset per file
 - Three main components (lowerCamelCase JSON):
@@ -193,7 +193,7 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM 
 
-![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){.absolute right=0 bottom=35% width="150"}
+![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){.absolute right=0 bottom=35% width="170"}
 
 - Objectives:
   - Deliver a publicly accessible R-based submission-like package
@@ -212,7 +212,7 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
 
 ---
 
-## Pilot 5 Artifacts (What You Can See Today)
+## Pilot 5 Artifacts (What You Can See Today) {.smaller}
 
 - Public repository:
   - https://github.com/RConsortium/submissions-pilot5-datasetjson
@@ -251,7 +251,7 @@ Key message: nothing is “magic”; everything is scripted and version-controll
 
 ---
 
-## Mini Example: ADaM Data Frame → Dataset-JSON
+## Mini Example: ADaM Data Frame → Dataset-JSON {.smaller}
 
 - Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
   - Start from an ADaM-like tibble (`adsl`)
@@ -342,7 +342,7 @@ Tie this back to the original motivation: same scientific intent and reproducibi
 
 ---
 
-## Takeaways and Next Steps
+## Takeaways and Next Steps {.smaller}
 
 - XPT served us well but is misaligned with:
   - Modern open-source ecosystems
@@ -365,7 +365,7 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ---
 
-## References & Contact
+## References & Contact {.smaller}
 
 **Selected references**
 
