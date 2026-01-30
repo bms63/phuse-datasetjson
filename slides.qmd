@@ -60,7 +60,7 @@ Emphasize that XPT isn’t “bad,” but its constraints create friction when w
 
 ---
 
-## Why XPT Creates Friction Today
+## Why XPT Creates Friction Today  {.smaller}
 
 - **Weak embedded metadata**
   - No rich metadata inside the file
@@ -98,7 +98,7 @@ Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “s
 
 ---
 
-## Dataset-JSON in Practice
+## Dataset-JSON in Practice {.smaller}
 
 - One dataset per file
 - Three main components (lowerCamelCase JSON):
@@ -191,7 +191,9 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ---
 
-## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM
+## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM 
+
+![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){.absolute right=0 bottom=35% width="170"}
 
 - Objectives:
   - Deliver a publicly accessible R-based submission-like package
@@ -202,7 +204,7 @@ This slide builds trust: regulators have already successfully reviewed R-based p
   - Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT
   - **Pilot 5**:
     - Convert *all* XPTs in the package to Dataset-JSON
-    - Use the `datasetjson` R package to do the heavy lifting
+    - Use the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package to do the heavy lifting
 
 ::: {.notes}
 Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating end‑to‑end R-based dataset generation.
@@ -210,15 +212,15 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
 
 ---
 
-## Pilot 5 Artifacts (What You Can See Today)
+## Pilot 5 Artifacts (What You Can See Today) {.smaller}
 
 - Public repository:
   - https://github.com/RConsortium/submissions-pilot5-datasetjson
 - eCTD-like package overview (Quarto source):
-  - `ectd_readme/README.qmd`
+  - [`ectd_readme/README.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd)
 - ADRG previews:
-  - HTML: rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/
-  - PDF: rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
+  - HTML: [rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/](http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/)
+  - PDF: [rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf](https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf)
 - Contents:
   - R programs for dataset generation and conversions
   - Dataset-JSON outputs
@@ -233,13 +235,13 @@ Encourage participants to explore the repo post-session; it’s meant as a start
 ## Way of Working: Reproducibility-First
 
 - Organized to be **re-runnable and inspectable**:
-  - Programs: `pilot5-submission/pilot5-programs/`
+  - Programs: [`pilot5-submission/pilot5-programs/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs)
     - e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`
-  - Outputs: `pilot5-submission/pilot5-output/`
+  - Outputs: [`pilot5-submission/pilot5-output/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output)
   - Documentation: ADRG + eCTD-style README
 - Comparability treated as a first-class artifact:
-  - `qcReport.qmd`: dataset-to-dataset QC using `diffdf`
-  - `tlf-qc.qmd`: text and graphical diffing of outputs
+  - [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd): dataset-to-dataset QC using `diffdf`
+  - [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd): text and graphical diffing of outputs
 - Dataset-JSON creation is just another scripted step:
   - e.g., `convert_xpt_to_datasetjson.r`
 
@@ -249,16 +251,16 @@ Key message: nothing is “magic”; everything is scripted and version-controll
 
 ---
 
-## Mini Example: ADaM Data Frame → Dataset-JSON
+## Mini Example: ADaM Data Frame → Dataset-JSON {.smaller}
 
-- Using the `datasetjson` R package:
+- Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
   - Start from an ADaM-like tibble (`adsl`)
   - Ensure dataset label is set (`attr(adsl, "label")`)
   - Define column metadata tibble:
     - `itemOID`, `name`, `label`, `dataType`
-  - Call `datasetjson::dataset_json()`:
+  - Call [`datasetjson::dataset_json()`](https://atorus-research.github.io/datasetjson/reference/dataset_json.html):
     - Pass data, dataset name, label, columns metadata
-  - Write JSON text with `write_dataset_json()`
+  - Write JSON text with [`write_dataset_json()`](https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html)
 - Output:
   - A plain-text Dataset-JSON file containing:
     - Top-level metadata
@@ -274,7 +276,7 @@ You don’t need to show all the code line by line; emphasize that producing Dat
 ## Where AI Helped (But Didn’t Replace Authors)
 
 - Pilot 5 experimented with LLM-assisted documentation:
-  - `adrg/llm-adrg-utils/llm_pipeline.qmd`
+  - [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)
 - Use cases:
   - Extract variables, datasets, filters from analysis code
   - Pre-populate reviewer-facing tables in ADRG
@@ -313,9 +315,9 @@ This illustrates that format innovation can get slightly ahead of validation eco
   - Converting float variables to decimal data type in JSON
   - Building wrapper functions for consistent handling across datasets
 - Package limitations:
-  - `datasetjson` R package has a few open issues
+  - [`datasetjson`](https://atorus-research.github.io/datasetjson/index.html) R package has a few open issues
   - Tracked and discussed publicly:
-    - https://github.com/atorus-research/datasetjson/issues
+    - [https://github.com/atorus-research/datasetjson/issues](https://github.com/atorus-research/datasetjson/issues)
 
 ::: {.notes}
 Real-world adoption always involves working through rough edges; Pilot 5 surfaces and documents them for the community.
@@ -340,7 +342,7 @@ Tie this back to the original motivation: same scientific intent and reproducibi
 
 ---
 
-## Takeaways and Next Steps
+## Takeaways and Next Steps {.smaller}
 
 - XPT served us well but is misaligned with:
   - Modern open-source ecosystems
@@ -363,21 +365,19 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ---
 
-## References & Contact
+## References & Contact {.smaller}
 
 **Selected references**
 
-- Pilot 5 repo: https://github.com/RConsortium/submissions-pilot5-datasetjson  
-- eCTD overview: https://www.fda.gov/drugs/electronic-common-technical-document-ectd  
-- Dataset-JSON v1.1: https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html  
+- Pilot 5 repo: [https://github.com/RConsortium/submissions-pilot5-datasetjson](https://github.com/RConsortium/submissions-pilot5-datasetjson)  
+- eCTD overview: [https://www.fda.gov/drugs/electronic-common-technical-document-ectd](https://www.fda.gov/drugs/electronic-common-technical-document-ectd)
+- Dataset-JSON v1.1: [https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html](https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html)
 
 **Authors**
 
 - Ben Straub, GSK – Philadelphia, United States  
 - Sam Parmar, Pfizer – New York City, United States  
 - Nick Masel, Johnson & Johnson – (location/email as applicable)  
-
-Brand and product names are trademarks of their respective companies.
 
 ::: {.notes}
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
