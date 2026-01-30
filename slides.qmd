@@ -191,7 +191,9 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ---
 
-## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM
+## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM 
+
+![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){.absolute right=0 bottom=35% width="150"}
 
 - Objectives:
   - Deliver a publicly accessible R-based submission-like package
@@ -215,10 +217,10 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
 - Public repository:
   - https://github.com/RConsortium/submissions-pilot5-datasetjson
 - eCTD-like package overview (Quarto source):
-  - `ectd_readme/README.qmd`
+  - [`ectd_readme/README.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd)
 - ADRG previews:
-  - HTML: rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/
-  - PDF: rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
+  - HTML: [rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/](http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/)
+  - PDF: [rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf](https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf)
 - Contents:
   - R programs for dataset generation and conversions
   - Dataset-JSON outputs
@@ -233,13 +235,13 @@ Encourage participants to explore the repo post-session; it’s meant as a start
 ## Way of Working: Reproducibility-First
 
 - Organized to be **re-runnable and inspectable**:
-  - Programs: `pilot5-submission/pilot5-programs/`
+  - Programs: [`pilot5-submission/pilot5-programs/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs)
     - e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`
-  - Outputs: `pilot5-submission/pilot5-output/`
+  - Outputs: [`pilot5-submission/pilot5-output/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output)
   - Documentation: ADRG + eCTD-style README
 - Comparability treated as a first-class artifact:
-  - `qcReport.qmd`: dataset-to-dataset QC using `diffdf`
-  - `tlf-qc.qmd`: text and graphical diffing of outputs
+  - [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd): dataset-to-dataset QC using `diffdf`
+  - [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd): text and graphical diffing of outputs
 - Dataset-JSON creation is just another scripted step:
   - e.g., `convert_xpt_to_datasetjson.r`
 
