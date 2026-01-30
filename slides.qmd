@@ -8,6 +8,7 @@ author: |
 format: 
   clean-revealjs:
     footer: "[bms63.github.io/phuse-datasetjson/slides](https://bms63.github.io/phuse-datasetjson/slides)"
+    incremental: true
 ---
 
 ## Motivation: Why Talk About Transport Formats?
