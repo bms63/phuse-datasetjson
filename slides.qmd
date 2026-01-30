@@ -379,8 +379,6 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 - Sam Parmar, Pfizer – New York City, United States  
 - Nick Masel, Johnson & Johnson – (location/email as applicable)  
 
-Brand and product names are trademarks of their respective companies.
-
 ::: {.notes}
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
 :::
