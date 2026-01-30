@@ -140,14 +140,42 @@
 </div>
 
 </section>
+<section id="presenters" class="title-slide slide level1 center">
+<h1>Presenters</h1>
+<p>Ben Straub (GSK, R Consortium Submissions WG)<br>
+Sam Parmar (Pfizer, R Consortium Submissions WG)<br>
+Nick Masel (Johnson &amp; Johnson, R Consortium Submissions WG, datasetjson R package)</p>
+</section>
+
+<section>
+<section id="s" class="title-slide slide level1 center">
+<h1>1980s</h1>
+
+</section>
+<section id="a-time-of-bliss" class="slide level2">
+<h2>A time of bliss</h2>
+
+<img data-src="images/cathode_tv.jpg" class="r-stretch"></section>
+<section id="a-time-of-wonder" class="slide level2">
+<h2>A time of wonder</h2>
+
+<img data-src="images/overhead_projector.jpg" class="r-stretch"></section>
+<section id="a-time-of-memory" class="slide level2">
+<h2>A time of memory</h2>
+
+<img data-src="images/answering_machine.jpg" class="r-stretch"></section>
+<section id="a-time-of-xpt" class="slide level2">
+<h2>A time of xpt</h2>
+
+<img data-src="images/xpt.jpg" class="r-stretch"></section>
 <section id="motivation-why-talk-about-transport-formats" class="slide level2">
 <h2>Motivation: Why Talk About Transport Formats?</h2>
 <ul>
-<li class="fragment">SAS XPORT (XPT) has been the de facto submission transport for decades</li>
+<li class="fragment">All of these 1980s technologies have been replaced!</li>
+<li class="fragment">XPTs has been the de facto submission transport for decades</li>
 <li class="fragment">XPT works – but reflects 1980s constraints, not modern data practice</li>
-<li class="fragment">Open-source tooling (R, Python) and modern standards are now mainstream</li>
+<li class="fragment">Open-source tooling and modern standards are now mainstream</li>
 <li class="fragment">CDISC Dataset-JSON offers a contemporary alternative</li>
-<li class="fragment">R Consortium Pilot 5: a concrete test of Dataset-JSON in a submission-like setting</li>
 </ul>
 <aside class="notes">
 <p>Set the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions.</p>
@@ -169,13 +197,7 @@
 <ul>
 <li class="fragment">Why the industry is rethinking XPT as the default transport</li>
 <li class="fragment">What Dataset-JSON is, where it came from, and why it matters</li>
-<li class="fragment">The R Consortium R Submissions Working Group context</li>
-<li class="fragment">R Submission Pilot 5:
-<ul>
-<li class="fragment">Dataset-JSON implementation</li>
-<li class="fragment">Reproducible workflows and QC</li>
-<li class="fragment">Lessons learned</li>
-</ul></li>
+<li class="fragment">The R Consortium R Submissions Working Group and Pilot 5</li>
 </ul>
 <aside class="notes">
 <p>Give the audience a mental roadmap; we’ll go from pain points, to the new standard, to the pilot as a worked example.</p>
@@ -224,7 +246,7 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="why-xpt-creates-friction-today" class="slide level2 smaller">
+<section id="why-xpt-creates-friction-today" class="slide level2">
 <h2>Why XPT Creates Friction Today</h2>
 <ul>
 <li class="fragment"><strong>Weak embedded metadata</strong>
@@ -241,15 +263,6 @@
 <ul>
 <li class="fragment">Native in SAS; awkward in open-source and data engineering stacks</li>
 </ul></li>
-<li class="fragment"><strong>Automation friction</strong>
-<ul>
-<li class="fragment">Binary format, not ideal for:
-<ul>
-<li class="fragment">Schema validation</li>
-<li class="fragment">Diffs in Git</li>
-<li class="fragment">Text-based QA tooling</li>
-</ul></li>
-</ul></li>
 </ul>
 <aside class="notes">
 <p>Connect these to practical headaches: bloated files, harder QC, more custom glue code in open-source environments.</p>
@@ -265,21 +278,54 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="enter-dataset-json" class="slide level2">
-<h2>Enter Dataset-JSON</h2>
+<section id="dataset-json-history-needs-more" class="slide level2">
+<h2>Dataset-JSON History (Needs more!!)</h2>
 <ul>
 <li class="fragment">CDISC standard for representing tabular clinical data in JSON</li>
 <li class="fragment">Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT</li>
-<li class="fragment">Designed for:
+<li class="fragment">Designed for: (move or add to next slide)
 <ul>
 <li class="fragment">Regulatory submissions</li>
-<li class="fragment">API-based data exchange</li>
-<li class="fragment">Interoperability beyond a single vendor</li>
-</ul></li>
 <li class="fragment">Supports both file-based and API-based workflows</li>
+<li class="fragment">Interoperability</li>
+</ul></li>
 </ul>
 <aside class="notes">
 <p>Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="why-dataset-json-vs-other-modern-formats" class="slide level2">
+<h2>Why Dataset-JSON (vs Other Modern Formats)?</h2>
+<ul>
+<li class="fragment"><strong>Self-contained metadata</strong>
+<ul>
+<li class="fragment">Variable labels/types and CDISC metadata embedded in the file</li>
+</ul></li>
+<li class="fragment"><strong>Human-readable and audit-friendly</strong>
+<ul>
+<li class="fragment">Plain-text JSON; easy to inspect, search, and diff</li>
+</ul></li>
+<li class="fragment"><strong>Universally parseable</strong>
+<ul>
+<li class="fragment">Mature JSON parsers exist in all major languages</li>
+</ul></li>
+<li class="fragment"><strong>Supports APIs</strong>
+<ul>
+<li class="fragment">Same structure works for file transfer and REST endpoints</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -296,7 +342,7 @@
 <h2>Dataset-JSON in Practice</h2>
 <ul>
 <li class="fragment">One dataset per file</li>
-<li class="fragment">Three main components (lowerCamelCase JSON):
+<li class="fragment">Three main components:
 <ul>
 <li class="fragment"><strong>Top-level metadata</strong>
 <ul>
@@ -333,61 +379,15 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="why-dataset-json-vs-other-modern-formats" class="slide level2">
-<h2>Why Dataset-JSON (vs Other Modern Formats)?</h2>
-<ul>
-<li class="fragment"><strong>Self-contained metadata</strong>
-<ul>
-<li class="fragment">Variable labels/types and CDISC metadata embedded in the file</li>
-</ul></li>
-<li class="fragment"><strong>Human-readable and audit-friendly</strong>
-<ul>
-<li class="fragment">Plain-text JSON; easy to inspect, search, and diff</li>
-</ul></li>
-<li class="fragment"><strong>Git-native</strong>
-<ul>
-<li class="fragment">Works well with standard diff and review tools</li>
-</ul></li>
-<li class="fragment"><strong>Universally parseable</strong>
-<ul>
-<li class="fragment">Mature JSON parsers exist in all major languages</li>
-</ul></li>
-<li class="fragment"><strong>Supports APIs</strong>
-<ul>
-<li class="fragment">Same structure works for file transfer and REST endpoints</li>
-</ul></li>
-</ul>
-<aside class="notes">
-<p>Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="regulatory-and-collaboration-context" class="slide level2">
 <h2>Regulatory and Collaboration Context</h2>
 <ul>
-<li class="fragment">FDA April 2025 Federal Register notice:
-<ul>
-<li class="fragment">Reaffirms CDISC standards</li>
-<li class="fragment">Signals openness to evolving transport mechanisms</li>
-</ul></li>
 <li class="fragment">Dataset-JSON sits in a collaborative ecosystem:
 <ul>
 <li class="fragment"><strong>CDISC</strong>: defines standards</li>
 <li class="fragment"><strong>PHUSE</strong>: applied use cases and community practice</li>
 <li class="fragment"><strong>FDA</strong>: evaluates review impact and feasibility</li>
-</ul></li>
-<li class="fragment">Pilot 5: FDA–industry collaboration under the R Consortium
-<ul>
-<li class="fragment">“Show your work” style, not a policy statement</li>
+<li class="fragment"><strong>R Consortium Submission Working Group:</strong> FDA–industry collaboration testing out R-based submissions.</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -404,6 +404,17 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="recent-dataset-json-news" class="slide level2">
+<h2>Recent Dataset-JSON news</h2>
+<ul>
+<li class="fragment">FDA April 2025 Federal Register notice:
+<ul>
+<li class="fragment">Reaffirms datasetjson standards</li>
+<li class="fragment">Signals openness to evolving transport mechanisms</li>
+</ul></li>
+<li class="fragment">More here flow into Submissions WG</li>
+</ul>
+</section>
 <section id="r-consortium-r-submissions-working-group" class="slide level2">
 <h2>R Consortium R Submissions Working Group</h2>
 <ul>
@@ -411,6 +422,7 @@
 <ul>
 <li class="fragment">Meet regulatory expectations</li>
 <li class="fragment">Be fully reproducible and reviewable</li>
+<li class="fragment">something something here</li>
 </ul></li>
 <li class="fragment">Focus on:
 <ul>
@@ -418,7 +430,6 @@
 <li class="fragment">Practical workflows others can fork and adapt</li>
 <li class="fragment">Feedback loop with regulators to shape future processes</li>
 </ul></li>
-<li class="fragment">Goal: easier R-based submissions <strong>today</strong> and <strong>tomorrow</strong></li>
 </ul>
 <aside class="notes">
 <p>Briefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Dataset-JSON-focused one.</p>
@@ -447,8 +458,8 @@
 <li class="fragment">Installation, environment setup</li>
 <li class="fragment">Data and derivation questions</li>
 </ul></li>
+<li class="fragment">Pilots received a letter from FDA called “Statistical Review and Evaluation” which documented success of Pilot as public evidence.</li>
 </ul></li>
-<li class="fragment">Pilot 3: FDA “Statistical Review and Evaluation” documented as public evidence</li>
 </ul>
 <aside class="notes">
 <p>This slide builds trust: regulators have already successfully reviewed R-based packages from earlier pilots.</p>
@@ -464,25 +475,30 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="pilots-1---4" class="slide level2">
+<h2>Pilots 1 - 4</h2>
+<p>TODO</p>
+<ul>
+<li class="fragment">Evolution:
+<ul>
+<li class="fragment">Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
+<li class="fragment">Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
+</ul></li>
+</ul>
+</section>
 <section id="pilot-5-focus-dataset-json-r-generated-adam" class="slide level2">
 <h2>Pilot 5 Focus: Dataset-JSON + R-Generated ADaM</h2>
 <p><img data-src="https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png" class="absolute" style="bottom: 35%; right: 0px; width: 170px; "></p>
 <ul>
 <li class="fragment">Objectives:
 <ul>
+<li class="fragment">Convert <em>all</em> XPTs in the package to Dataset-JSON</li>
+<li class="fragment">Build off Pilot 1 and Pilot 3</li>
 <li class="fragment">Deliver a publicly accessible R-based submission-like package</li>
 <li class="fragment">Use <strong>Dataset-JSON v1.1</strong> as the dataset transport format</li>
-<li class="fragment">Generate key ADaM datasets in R (not SAS)</li>
-</ul></li>
-<li class="fragment">Evolution:
-<ul>
-<li class="fragment">Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
-<li class="fragment">Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
-<li class="fragment"><strong>Pilot 5</strong>:
-<ul>
-<li class="fragment">Convert <em>all</em> XPTs in the package to Dataset-JSON</li>
+<li class="fragment">Generate key ADaM datasets in R (not SAS) and …</li>
+<li class="fragment">SDTM also regenerated as …</li>
 <li class="fragment">Use the <a href="https://atorus-research.github.io/datasetjson/"><code>datasetjson</code></a> R package to do the heavy lifting</li>
-</ul></li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -519,7 +535,7 @@
 <ul>
 <li class="fragment">R programs for dataset generation and conversions</li>
 <li class="fragment">Dataset-JSON outputs</li>
-<li class="fragment">QC reports and ADRG</li>
+<li class="fragment">QC reports</li>
 </ul></li>
 </ul>
 <aside class="notes">
@@ -812,7 +828,7 @@
       }</style></aside>
 
 
-</section>
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
