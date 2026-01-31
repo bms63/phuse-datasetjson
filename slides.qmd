@@ -7,17 +7,17 @@ author: |
   Nick Masel (Johnson & Johnson)
 format: 
   clean-revealjs:
-    footer: "[bms63.github.io/phuse-datasetjson/slides](https://bms63.github.io/phuse-datasetjson/slides)"
+    footer: "[US PHUSE Connect 2026 datasetjson slides and paper](https://bms63.github.io/phuse-datasetjson/slides)"
     incremental: true
 ---
 
 # Presenters
 
-  Ben Straub (GSK, R Consortium Submissions WG)  
-  Sam Parmar (Pfizer, R Consortium Submissions WG)  
-  Nick Masel (Johnson & Johnson, R Consortium Submissions WG, datasetjson R package)
+  Ben Straub (GSK, RCSWG)  
+  Sam Parmar (Pfizer, RCSWG)  
+  Nick Masel (Johnson & Johnson, RCSWG, {datasetjson})
   
-# 1980s
+# 1980s - A snapshot of technology
   
 ## A time of bliss
 
@@ -38,12 +38,11 @@ format:
 
 ## Motivation: Why Talk About Transport Formats?
 
-
-- All of these 1980s technologies have been replaced!
+- All of these 1980s technologies have been replaced - except the xpt.
 - XPTs has been the de facto submission transport for decades
 - XPT works – but reflects 1980s constraints, not modern data practice
 - Open-source tooling and modern standards are now mainstream
-- CDISC Dataset-JSON offers a contemporary alternative
+- Dataset-JSON offers a contemporary alternative
 
 ::: {.notes}
 Set the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions.
@@ -53,10 +52,10 @@ Set the stage: XPT is familiar and “good enough,” but we’re asking if ther
 
 ## Agenda
 
-This talk covers four topics:
+This talk covers three topics:
 
-- Why the industry is rethinking XPT as the default transport
-- What Dataset-JSON is, where it came from, and why it matters
+- Why the industry is rethinking XPT as the default transport file?
+- What Dataset-JSON is, where it came from, and why it matters?
 - The R Consortium R Submissions Working Group and Pilot 5
 
 ::: {.notes}
@@ -100,14 +99,16 @@ Connect these to practical headaches: bloated files, harder QC, more custom glue
 
 ---
 
-## Dataset-JSON History (Needs more!!)
+## Dataset-JSON History
 
-- CDISC standard for representing tabular clinical data in JSON
 - Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT
-- Designed for: (move or add to next slide)
-  - Regulatory submissions
-  - Supports both file-based and API-based workflows
-  - Interoperability  
+
+![](images/timeline.png)
+
+::: footer
+https://www.cdisc.org/sites/default/files/pdf/Dataset-JSON-v1-1-Public-Review.pdf
+:::
+
 
 ::: {.notes}
 Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”
@@ -119,12 +120,15 @@ Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “s
 
 - **Self-contained metadata**
   - Variable labels/types and CDISC metadata embedded in the file
+  - Designed to meet regulatory needs
 - **Human-readable and audit-friendly**
-  - Plain-text JSON; easy to inspect, search, and diff
+  - Plain-text JSON; easy to inspect and search
 - **Universally parseable**
   - Mature JSON parsers exist in all major languages
 - **Supports APIs**
   - Same structure works for file transfer and REST endpoints
+- **Interoperability**
+  - This word is too fancy for me 
 
 ::: {.notes}
 Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.
