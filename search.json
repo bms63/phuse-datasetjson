@@ -53,7 +53,7 @@
     "href": "paper.html#mini-example-from-an-adam-data-frame-to-dataset-json",
     "title": "Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies",
     "section": "MINI EXAMPLE: FROM AN ADAM DATA FRAME TO DATASET-JSON",
-    "text": "MINI EXAMPLE: FROM AN ADAM DATA FRAME TO DATASET-JSON\nThis section provides a minimal illustration of how Dataset-JSON can be produced in R in the same spirit as the Pilot 5 workflow. The goal is to show that Dataset-JSON creation is a reproducible, scriptable step that can be version-controlled and QC’d like any other artifact.\nPilot 5 conversion logic is exemplified by scripts such as pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r (read source data, ensure labels, derive column metadata, write Dataset-JSON).\nBelow is a simplified “toy” example mirroring that concept.\n\nlibrary(datasetjson)\nlibrary(tibble)\n\nadsl &lt;- tibble(\n  STUDYID = \"CDISCPILOT01\",\n  USUBJID = c(\"01-701-1015\", \"01-701-1023\"),\n  TRT01A  = c(\"Placebo\", \"Xanomeline Low Dose\"),\n  AGE     = c(67, 72)\n)\n\n# Dataset label (Pilot 5 ensures labels exist; may be derived from source metadata)\nattr(adsl, \"label\") &lt;- \"Subject-Level Analysis Dataset\"\n\n# Minimal column metadata (Pilot 5 derives more comprehensive metadata)\ncolumns &lt;- tibble::tibble(\n  itemOID = names(adsl),\n  name = names(adsl),\n  label = c(\"Study Identifier\", \"Unique Subject Identifier\", \"Actual Treatment for Period 01\", \"Age\"),\n  dataType = c(\"string\", \"string\", \"string\", \"integer\")\n)\n\nds_json &lt;- datasetjson::dataset_json(\n  adsl,\n  item_oid = \"ADSL\",\n  name = \"adsl\",\n  dataset_label = attr(adsl, \"label\"),\n  columns = columns\n)\n\njson_text &lt;- datasetjson::write_dataset_json(ds_json, pretty = TRUE)\n# writeLines(json_text, \"adsl.json\")\ncat(json_text)\n\n{\n  \"datasetJSONCreationDateTime\": \"2026-01-30T22:59:34\",\n  \"datasetJSONVersion\": \"1.1.0\",\n  \"itemGroupOID\": \"ADSL\",\n  \"records\": 2,\n  \"name\": \"adsl\",\n  \"label\": \"Subject-Level Analysis Dataset\",\n  \"columns\": [\n    {\n      \"itemOID\": \"STUDYID\",\n      \"name\": \"STUDYID\",\n      \"label\": \"Study Identifier\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"USUBJID\",\n      \"name\": \"USUBJID\",\n      \"label\": \"Unique Subject Identifier\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"TRT01A\",\n      \"name\": \"TRT01A\",\n      \"label\": \"Actual Treatment for Period 01\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"AGE\",\n      \"name\": \"AGE\",\n      \"label\": \"Age\",\n      \"dataType\": \"integer\"\n    }\n  ],\n  \"rows\": [\n    [\n      \"CDISCPILOT01\",\n      \"01-701-1015\",\n      \"Placebo\",\n      67.0\n    ],\n    [\n      \"CDISCPILOT01\",\n      \"01-701-1023\",\n      \"Xanomeline Low Dose\",\n      72.0\n    ]\n  ]\n}\n\n\nEven in this simplified example, Dataset-JSON highlights two operational advantages that Pilot 5 leverages: - metadata is handled explicitly and can be audited, - the resulting artifact is plain text JSON and fits naturally into diffs, reviews, and automated checks."
+    "text": "MINI EXAMPLE: FROM AN ADAM DATA FRAME TO DATASET-JSON\nThis section provides a minimal illustration of how Dataset-JSON can be produced in R in the same spirit as the Pilot 5 workflow. The goal is to show that Dataset-JSON creation is a reproducible, scriptable step that can be version-controlled and QC’d like any other artifact.\nPilot 5 conversion logic is exemplified by scripts such as pilot5-submission/pilot5-programs/convert_xpt_to_datasetjson.r (read source data, ensure labels, derive column metadata, write Dataset-JSON).\nBelow is a simplified “toy” example mirroring that concept.\n\nlibrary(datasetjson)\nlibrary(tibble)\n\nadsl &lt;- tibble(\n  STUDYID = \"CDISCPILOT01\",\n  USUBJID = c(\"01-701-1015\", \"01-701-1023\"),\n  TRT01A  = c(\"Placebo\", \"Xanomeline Low Dose\"),\n  AGE     = c(67, 72)\n)\n\n# Dataset label (Pilot 5 ensures labels exist; may be derived from source metadata)\nattr(adsl, \"label\") &lt;- \"Subject-Level Analysis Dataset\"\n\n# Minimal column metadata (Pilot 5 derives more comprehensive metadata)\ncolumns &lt;- tibble::tibble(\n  itemOID = names(adsl),\n  name = names(adsl),\n  label = c(\"Study Identifier\", \"Unique Subject Identifier\", \"Actual Treatment for Period 01\", \"Age\"),\n  dataType = c(\"string\", \"string\", \"string\", \"integer\")\n)\n\nds_json &lt;- datasetjson::dataset_json(\n  adsl,\n  item_oid = \"ADSL\",\n  name = \"adsl\",\n  dataset_label = attr(adsl, \"label\"),\n  columns = columns\n)\n\njson_text &lt;- datasetjson::write_dataset_json(ds_json, pretty = TRUE)\n# writeLines(json_text, \"adsl.json\")\ncat(json_text)\n\n{\n  \"datasetJSONCreationDateTime\": \"2026-02-01T20:27:47\",\n  \"datasetJSONVersion\": \"1.1.0\",\n  \"itemGroupOID\": \"ADSL\",\n  \"records\": 2,\n  \"name\": \"adsl\",\n  \"label\": \"Subject-Level Analysis Dataset\",\n  \"columns\": [\n    {\n      \"itemOID\": \"STUDYID\",\n      \"name\": \"STUDYID\",\n      \"label\": \"Study Identifier\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"USUBJID\",\n      \"name\": \"USUBJID\",\n      \"label\": \"Unique Subject Identifier\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"TRT01A\",\n      \"name\": \"TRT01A\",\n      \"label\": \"Actual Treatment for Period 01\",\n      \"dataType\": \"string\"\n    },\n    {\n      \"itemOID\": \"AGE\",\n      \"name\": \"AGE\",\n      \"label\": \"Age\",\n      \"dataType\": \"integer\"\n    }\n  ],\n  \"rows\": [\n    [\n      \"CDISCPILOT01\",\n      \"01-701-1015\",\n      \"Placebo\",\n      67.0\n    ],\n    [\n      \"CDISCPILOT01\",\n      \"01-701-1023\",\n      \"Xanomeline Low Dose\",\n      72.0\n    ]\n  ]\n}\n\n\nEven in this simplified example, Dataset-JSON highlights two operational advantages that Pilot 5 leverages: - metadata is handled explicitly and can be audited, - the resulting artifact is plain text JSON and fits naturally into diffs, reviews, and automated checks."
   },
   {
     "objectID": "paper.html#conclusion",
@@ -91,18 +91,11 @@
     "text": "CONTACT INFORMATION\nBen Straub\nGSK\nPhiladelphia, United States\nSam Parmar\nPfizer\nNew York City, United States\nNick Masel\nJohnson and Johnson\nRaleigh, United States\nBrand and product names are trademarks of their respective companies."
   },
   {
-    "objectID": "slides_long.html",
-    "href": "slides_long.html",
-    "title": "Breaking Free from the XPT",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Breaking Free from the Xpt",
     "section": "",
-    "text": "title: “Breaking Free from the Xpt” subtitle: “Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies” author: - “Ben Straub (GSK)” - “Sam Parmar (Pfizer)” - “Nick Masel (Johnson & Johnson)” format: revealjs: theme: simple incremental: true slide-number: true transition: fade"
-  },
-  {
-    "objectID": "slides_long.html#dataset-json-as-an-alternative-transport-format",
-    "href": "slides_long.html#dataset-json-as-an-alternative-transport-format",
-    "title": "Breaking Free from the XPT",
-    "section": "Dataset-JSON as an Alternative Transport Format",
-    "text": "Dataset-JSON as an Alternative Transport Format\n\nFrom SAS XPT to Dataset-JSON\nR Consortium R Submissions Working Group\nPilot 5: R-generated ADaM + Dataset-JSON\nLessons, challenges, and how you can start\n\n\nFrame the talk as a journey: not “SAS vs R” or “XPT vs JSON” but reducing friction and enabling modern, open, reproducible workflows while still meeting regulatory needs."
+    "text": "This is a Quarto site for the PHUSE US Connect 2026 talk titled “Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies”. It will be presented on Monday, March 26, 2026 in Austin, Texas."
   },
   {
     "objectID": "slides.html#a-time-of-bliss",
@@ -137,14 +130,14 @@
     "href": "slides.html#motivation-why-talk-about-transport-formats",
     "title": "Breaking Free from the XPT",
     "section": "Motivation: Why Talk About Transport Formats?",
-    "text": "Motivation: Why Talk About Transport Formats?\n\nAll of these 1980s technologies have been replaced!\nXPTs has been the de facto submission transport for decades\nXPT works – but reflects 1980s constraints, not modern data practice\nOpen-source tooling and modern standards are now mainstream\nCDISC Dataset-JSON offers a contemporary alternative\n\n\nSet the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions."
+    "text": "Motivation: Why Talk About Transport Formats?\n\nAll of these 1980s technologies have been replaced - except the xpt.\nXPTs has been the de facto submission transport for decades\nXPT works – but reflects 1980s constraints, not modern data practice\nOpen-source tooling and modern standards are now mainstream\nDataset-JSON offers a contemporary alternative\n\n\nSet the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions."
   },
   {
     "objectID": "slides.html#agenda",
     "href": "slides.html#agenda",
     "title": "Breaking Free from the XPT",
     "section": "Agenda",
-    "text": "Agenda\nThis talk covers four topics:\n\nWhy the industry is rethinking XPT as the default transport\nWhat Dataset-JSON is, where it came from, and why it matters\nThe R Consortium R Submissions Working Group and Pilot 5\n\n\nGive the audience a mental roadmap; we’ll go from pain points, to the new standard, to the pilot as a worked example."
+    "text": "Agenda\nThis talk covers three topics:\n\nWhy the industry is rethinking XPT as the default transport file?\nWhat Dataset-JSON is, where it came from, and why it matters?\nThe R Consortium R Submissions Working Group and Pilot 5\n\n\nGive the audience a mental roadmap; we’ll go from pain points, to the new standard, to the pilot as a worked example."
   },
   {
     "objectID": "slides.html#xpt-yesterdays-solution-to-yesterdays-problem",
@@ -161,18 +154,18 @@
     "text": "Why XPT Creates Friction Today\n\nWeak embedded metadata\n\nNo rich metadata inside the file\nReliance on external Define-XML; risk of misalignment\n\nInefficient storage\n\nFixed-width allocations, lots of padding\nNo compression support\n\nEcosystem asymmetry\n\nNative in SAS; awkward in open-source and data engineering stacks\n\n\n\nConnect these to practical headaches: bloated files, harder QC, more custom glue code in open-source environments."
   },
   {
-    "objectID": "slides.html#dataset-json-history-needs-more",
-    "href": "slides.html#dataset-json-history-needs-more",
+    "objectID": "slides.html#dataset-json-history",
+    "href": "slides.html#dataset-json-history",
     "title": "Breaking Free from the XPT",
-    "section": "Dataset-JSON History (Needs more!!)",
-    "text": "Dataset-JSON History (Needs more!!)\n\nCDISC standard for representing tabular clinical data in JSON\nSelected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT\nDesigned for: (move or add to next slide)\n\nRegulatory submissions\nSupports both file-based and API-based workflows\nInteroperability\n\n\n\nPosition Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”"
+    "section": "Dataset-JSON History",
+    "text": "Dataset-JSON History\n\nSelected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT\nFDA April 2025 Federal Register notice:\n\nReaffirms datasetjson standards\nSignals openness to evolving transport mechanisms\n\n\n\n\nDataset-JSON v1.1\n\n\nPosition Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”"
   },
   {
-    "objectID": "slides.html#why-dataset-json-vs-other-modern-formats",
-    "href": "slides.html#why-dataset-json-vs-other-modern-formats",
+    "objectID": "slides.html#why-dataset-json",
+    "href": "slides.html#why-dataset-json",
     "title": "Breaking Free from the XPT",
-    "section": "Why Dataset-JSON (vs Other Modern Formats)?",
-    "text": "Why Dataset-JSON (vs Other Modern Formats)?\n\nSelf-contained metadata\n\nVariable labels/types and CDISC metadata embedded in the file\n\nHuman-readable and audit-friendly\n\nPlain-text JSON; easy to inspect, search, and diff\n\nUniversally parseable\n\nMature JSON parsers exist in all major languages\n\nSupports APIs\n\nSame structure works for file transfer and REST endpoints\n\n\n\nContrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators."
+    "section": "Why Dataset-JSON?",
+    "text": "Why Dataset-JSON?\n\nSelf-contained metadata\n\nVariable labels/types and CDISC metadata embedded in the file\nDesigned to meet regulatory needs\n\nHuman-readable and audit-friendly\n\nPlain-text JSON; easy to inspect and search\n\nUniversally parseable\n\nMature JSON parsers exist in all major languages\n\nSupports APIs\n\nSame structure works for file transfer and REST endpoints\n\nInteroperability\n\nThis word is too fancy for me\n\n\n\nContrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators."
   },
   {
     "objectID": "slides.html#dataset-json-in-practice",
@@ -189,18 +182,11 @@
     "text": "Regulatory and Collaboration Context\n\nDataset-JSON sits in a collaborative ecosystem:\n\nCDISC: defines standards\nPHUSE: applied use cases and community practice\nFDA: evaluates review impact and feasibility\nR Consortium Submission Working Group: FDA–industry collaboration testing out R-based submissions.\n\n\n\nUnderscore that industry change happens when standards bodies, industry, and regulators move together—Pilot 5 contributes evidence."
   },
   {
-    "objectID": "slides.html#recent-dataset-json-news",
-    "href": "slides.html#recent-dataset-json-news",
-    "title": "Breaking Free from the XPT",
-    "section": "Recent Dataset-JSON news",
-    "text": "Recent Dataset-JSON news\n\nFDA April 2025 Federal Register notice:\n\nReaffirms datasetjson standards\nSignals openness to evolving transport mechanisms\n\nMore here flow into Submissions WG"
-  },
-  {
     "objectID": "slides.html#r-consortium-r-submissions-working-group",
     "href": "slides.html#r-consortium-r-submissions-working-group",
     "title": "Breaking Free from the XPT",
     "section": "R Consortium R Submissions Working Group",
-    "text": "R Consortium R Submissions Working Group\n\nMission: demonstrate that R-based submission packages can:\n\nMeet regulatory expectations\nBe fully reproducible and reviewable\nsomething something here\n\nFocus on:\n\nComplete, public submission-like artifacts (data, code, outputs)\nPractical workflows others can fork and adapt\nFeedback loop with regulators to shape future processes\n\n\n\nBriefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Dataset-JSON-focused one."
+    "text": "R Consortium R Submissions Working Group\n\nMission: demonstrate that R-based submission packages can:\n\nMeet regulatory expectations\nBe fully reproducible and reviewable\nExperiment today to prepare for tomorrow’s submissions\n\nFocus on:\n\nComplete, public submission-like artifacts (data, code, outputs)\nPractical workflows others can fork and adapt\nFeedback loop with regulators to shape future processes\n\n\n\nBriefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Dataset-JSON-focused one."
   },
   {
     "objectID": "slides.html#what-earlier-pilots-showed",
@@ -214,35 +200,28 @@
     "href": "slides.html#pilots-1---4",
     "title": "Breaking Free from the XPT",
     "section": "Pilots 1 - 4",
-    "text": "Pilots 1 - 4\nTODO\n\nEvolution:\n\nPilot 1: TLFs in R, SDTM/ADaM from SAS XPT\nPilot 3: Rebuilt 5 ADaM datasets in R, still output XPT"
+    "text": "Pilots 1 - 4\n\nEvolution:\n\nPilot 1: TLFs in R, SDTM/ADaM from SAS XPT\nPilot 2: TLFs are packaged into a Shiny App\nPilot 3: Rebuilt 5 ADaM datasets in R, still output XPT\nPilot 4: Pilot 2 delivered as webassembly and as a container"
   },
   {
     "objectID": "slides.html#pilot-5-focus-dataset-json-r-generated-adam",
     "href": "slides.html#pilot-5-focus-dataset-json-r-generated-adam",
     "title": "Breaking Free from the XPT",
     "section": "Pilot 5 Focus: Dataset-JSON + R-Generated ADaM",
-    "text": "Pilot 5 Focus: Dataset-JSON + R-Generated ADaM\n\n\nObjectives:\n\nConvert all XPTs in the package to Dataset-JSON\nBuild off Pilot 1 and Pilot 3\nDeliver a publicly accessible R-based submission-like package\nUse Dataset-JSON v1.1 as the dataset transport format\nGenerate key ADaM datasets in R (not SAS) and …\nSDTM also regenerated as …\nUse the datasetjson R package to do the heavy lifting\n\n\n\nStress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating end‑to‑end R-based dataset generation."
+    "text": "Pilot 5 Focus: Dataset-JSON + R-Generated ADaM\n\n\nObjectives:\n\nConvert all XPTs in the package to Dataset-JSON\nBuild off Pilot 1 and Pilot 3\nDeliver a publicly accessible R-based submission-like package\nUse Dataset-JSON v1.1 as the dataset transport format\nGenerate key ADaM datasets in R (not SAS) and …\nSDTM also regenerated as datasetjson but no program available\nUse the datasetjson R package to do the heavy lifting\n\n\n\nStress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating end‑to‑end R-based dataset generation."
   },
   {
     "objectID": "slides.html#pilot-5-artifacts-what-you-can-see-today",
     "href": "slides.html#pilot-5-artifacts-what-you-can-see-today",
     "title": "Breaking Free from the XPT",
     "section": "Pilot 5 Artifacts (What You Can See Today)",
-    "text": "Pilot 5 Artifacts (What You Can See Today)\n\nPublic repository:\n\nhttps://github.com/RConsortium/submissions-pilot5-datasetjson\n\neCTD-like package overview (Quarto source):\n\nectd_readme/README.qmd\n\nADRG previews:\n\nHTML: rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/\nPDF: rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf\n\nContents:\n\nR programs for dataset generation and conversions\nDataset-JSON outputs\nQC reports\n\n\n\nEncourage participants to explore the repo post-session; it’s meant as a starting point they can reuse."
+    "text": "Pilot 5 Artifacts (What You Can See Today)\n\nPublic repository:\n\nhttps://github.com/RConsortium/submissions-pilot5-datasetjson\n\neCTD-like package overview:\n\nectd_readme/README.qmd\n\nADRG available for Pilot 5\nAdditional Contents:\n\nR programs for dataset generation and conversions\nDataset-JSON outputs\nQC reports\nMerged Pulled Requests with CICD checks\n\n\n\nEncourage participants to explore the repo post-session; it’s meant as a starting point they can reuse."
   },
   {
     "objectID": "slides.html#way-of-working-reproducibility-first",
     "href": "slides.html#way-of-working-reproducibility-first",
     "title": "Breaking Free from the XPT",
     "section": "Way of Working: Reproducibility-First",
-    "text": "Way of Working: Reproducibility-First\n\nOrganized to be re-runnable and inspectable:\n\nPrograms: pilot5-submission/pilot5-programs/\n\ne.g., adsl.r, adae.r, adlbc.r, adtte.r\n\nOutputs: pilot5-submission/pilot5-output/\nDocumentation: ADRG + eCTD-style README\n\nComparability treated as a first-class artifact:\n\nqcReport.qmd: dataset-to-dataset QC using diffdf\ntlf-qc.qmd: text and graphical diffing of outputs\n\nDataset-JSON creation is just another scripted step:\n\ne.g., convert_xpt_to_datasetjson.r\n\n\n\nKey message: nothing is “magic”; everything is scripted and version-controlled, including conversion to Dataset-JSON and QC."
-  },
-  {
-    "objectID": "slides.html#mini-example-adam-data-frame-dataset-json",
-    "href": "slides.html#mini-example-adam-data-frame-dataset-json",
-    "title": "Breaking Free from the XPT",
-    "section": "Mini Example: ADaM Data Frame → Dataset-JSON",
-    "text": "Mini Example: ADaM Data Frame → Dataset-JSON\n\nUsing the datasetjson R package:\n\nStart from an ADaM-like tibble (adsl)\nEnsure dataset label is set (attr(adsl, \"label\"))\nDefine column metadata tibble:\n\nitemOID, name, label, dataType\n\nCall datasetjson::dataset_json():\n\nPass data, dataset name, label, columns metadata\n\nWrite JSON text with write_dataset_json()\n\nOutput:\n\nA plain-text Dataset-JSON file containing:\n\nTop-level metadata\nColumn metadata\nRow data\n\n\n\n\nYou don’t need to show all the code line by line; emphasize that producing Dataset-JSON is a straightforward, scripted transformation."
+    "text": "Way of Working: Reproducibility-First\n\nOrganized to be re-runnable and inspectable:\n\nPrograms: pilot5-submission/pilot5-programs/\n\ne.g., adsl.r, adae.r, adlbc.r, adtte.r\n\nOutputs: pilot5-submission/pilot5-output/\nDocumentation: ADRG + eCTD-style README\n\nComparability treated as a first-class artifact:\n\nqcReport.qmd: dataset-to-dataset QC using diffdf\ntlf-qc.qmd: text and graphical diffing of outputs\n\n\n\nKey message: nothing is “magic”; everything is scripted and version-controlled, including conversion to Dataset-JSON and QC."
   },
   {
     "objectID": "slides.html#where-ai-helped-but-didnt-replace-authors",
@@ -252,18 +231,11 @@
     "text": "Where AI Helped (But Didn’t Replace Authors)\n\nPilot 5 experimented with LLM-assisted documentation:\n\nadrg/llm-adrg-utils/llm_pipeline.qmd\n\nUse cases:\n\nExtract variables, datasets, filters from analysis code\nPre-populate reviewer-facing tables in ADRG\n\nIntent:\n\nReduce manual effort and inconsistencies\nKeep humans firmly in the authoring and review loop\n\n\n\nBrief mention to show forward-looking tooling, but clarify that AI augments, not replaces, human oversight."
   },
   {
-    "objectID": "slides.html#challenges-faced-standards-tools",
-    "href": "slides.html#challenges-faced-standards-tools",
+    "objectID": "slides.html#challenges-faced",
+    "href": "slides.html#challenges-faced",
     "title": "Breaking Free from the XPT",
-    "section": "Challenges Faced: Standards & Tools",
-    "text": "Challenges Faced: Standards & Tools\n\nStandards timing\n\nDataset-JSON moved from v1.0 to v1.1 during pilot\nNeeded to understand and document v1.1 changes with FDA\n\nValidation tooling gap\n\nPinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1\nRequired:\n\nWorkarounds and additional documentation\nDirect discussion with FDA collaborators\n\nPotential re-submission once P21 supports v1.1\n\n\n\nThis illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key."
-  },
-  {
-    "objectID": "slides.html#challenges-faced-technical-details",
-    "href": "slides.html#challenges-faced-technical-details",
-    "title": "Breaking Free from the XPT",
-    "section": "Challenges Faced: Technical Details",
-    "text": "Challenges Faced: Technical Details\n\nLearning how metadata is represented and persisted in Dataset-JSON\nManaging numeric precision:\n\nConverting float variables to decimal data type in JSON\nBuilding wrapper functions for consistent handling across datasets\n\nPackage limitations:\n\ndatasetjson R package has a few open issues\nTracked and discussed publicly:\n\nhttps://github.com/atorus-research/datasetjson/issues\n\n\n\n\nReal-world adoption always involves working through rough edges; Pilot 5 surfaces and documents them for the community."
+    "section": "Challenges Faced",
+    "text": "Challenges Faced\n\nStandards timing\n\nDataset-JSON moved from v1.0 to v1.1 during pilot\nNeeded to understand and document v1.1 changes with FDA\n\nValidation tooling gap\n\nPinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1\nRequired:\n\nWorkarounds and additional documentation\nDirect discussion with FDA collaborators\n\nPotential re-submission once P21 supports v1.1\n\nLearning how metadata is represented and persisted in Dataset-JSON\nManaging numeric precision:\n\nConverting float variables to decimal data type in JSON\nBuilding wrapper functions for consistent handling across datasets\n\nPackage limitations:\n\ndatasetjson R package has a few open issues\nTracked and discussed publicly:\n\nhttps://github.com/atorus-research/datasetjson/issues\n\n\n\n\nThis illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key."
   },
   {
     "objectID": "slides.html#what-pilot-5-demonstrates",
@@ -271,6 +243,13 @@
     "title": "Breaking Free from the XPT",
     "section": "What Pilot 5 Demonstrates",
     "text": "What Pilot 5 Demonstrates\n\nDataset-JSON is a viable transport for submission-like packages:\n\nProduced fully in an R-driven pipeline\nWith explicit metadata management\n\nA reviewer-friendly, eCTD-style package can use Dataset-JSON instead of XPT\nOutputs (TLFs) can be regenerated from provided code and datasets\nQC comparisons:\n\nDataset-level and output-level\nScripted and reported for transparency\n\n\n\nTie this back to the original motivation: same scientific intent and reproducibility as XPT-based workflows, but better aligned with modern tools."
+  },
+  {
+    "objectID": "slides.html#daatasetjson-r-package-workhorse-of-pilot-5",
+    "href": "slides.html#daatasetjson-r-package-workhorse-of-pilot-5",
+    "title": "Breaking Free from the XPT",
+    "section": "daatasetjson R package (Workhorse of Pilot 5)",
+    "text": "daatasetjson R package (Workhorse of Pilot 5)\n\nUsing the datasetjson R package:\n\nStart from an ADaM-like tibble (adsl)\nEnsure dataset label is set (attr(adsl, \"label\"))\nDefine column metadata tibble:\n\nitemOID, name, label, dataType\n\nCall datasetjson::dataset_json():\n\nPass data, dataset name, label, columns metadata\n\nWrite JSON text with write_dataset_json()\n\nOutput:\n\nA plain-text Dataset-JSON file containing:\n\nTop-level metadata\nColumn metadata\nRow data\n\n\n\n\nYou don’t need to show all the code line by line; emphasize that producing Dataset-JSON is a straightforward, scripted transformation."
   },
   {
     "objectID": "slides.html#takeaways-and-next-steps",
@@ -287,38 +266,45 @@
     "text": "References & Contact\nSelected references\n\nPilot 5 repo: https://github.com/RConsortium/submissions-pilot5-datasetjson\n\neCTD overview: https://www.fda.gov/drugs/electronic-common-technical-document-ectd\nDataset-JSON v1.1: https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html\n\nAuthors\n\nBen Straub, GSK – Philadelphia, United States\n\nSam Parmar, Pfizer – New York City, United States\n\nNick Masel, Johnson & Johnson – (location/email as applicable)\n\n\nInvite questions and follow-up discussions; mention that all materials are public and contributions are welcome."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Breaking Free from the Xpt",
-    "section": "",
-    "text": "This is a Quarto site for the PHUSE US Connect 2026 talk titled “Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies”. It will be presented on Monday, March 26, 2026 in Austin, Texas."
-  },
-  {
-    "objectID": "paper_feedback.html",
-    "href": "paper_feedback.html",
+    "objectID": "helpers/paper_feedback.html",
+    "href": "helpers/paper_feedback.html",
     "title": "phuse-datasetjson",
     "section": "",
     "text": "Certainly! Below is feedback specifically focused on the clarity of your Introduction section (covering from “## INTRODUCTION” to just before “## datasetjson”), referencing the content and structure as presented."
   },
   {
-    "objectID": "paper_feedback.html#strengths",
-    "href": "paper_feedback.html#strengths",
+    "objectID": "helpers/paper_feedback.html#strengths",
+    "href": "helpers/paper_feedback.html#strengths",
     "title": "phuse-datasetjson",
     "section": "Strengths",
     "text": "Strengths\n1. Clear Context and Motivation\n- The introduction sets up the problem very clearly. It discusses the long-standing dominance of XPT as a transport format, notes both its durability and its limitations, and highlights how the industry context is changing.\n- The motivation for exploring alternatives is well articulated—the desire for formats that are more compatible with modern, open-source tools and current data standards.\n2. Signposting\n- The explicit list of “What we are going to talk about” provides a helpful roadmap for the paper, letting readers know what to expect in the subsequent sections.\n3. Effective Framing\n- The section “A high-level framing: why XPT feels like yesterday’s solution” sets the scene effectively, summarizing not only what’s old about XPT, but why that matters for today’s workflows.\n- The writing avoids alienating supporters of XPT by clarifying XPT is not “bad,” which positions your argument as thoughtful and measured, rather than adversarial.\n4. Concise, Specific Points\n- The list format (e.g., “Outdated Technology: …”, “Limited Data Characteristics: …”) makes it easy for readers to digest the key limitations of XPT. This breakdown is both organized and accessible. - Each point is supported with concrete details (e.g., variable length restrictions, character encoding issues), which lends credibility and understanding.\n5. Connection to Main Thesis\n- The final sentences in this section (“This is the motivation for exploring Dataset-JSON…”) tie the discussion of XPT’s limitations back to the purpose of your work. This linkage is well-done."
   },
   {
-    "objectID": "paper_feedback.html#suggestions-for-improvement",
-    "href": "paper_feedback.html#suggestions-for-improvement",
+    "objectID": "helpers/paper_feedback.html#suggestions-for-improvement",
+    "href": "helpers/paper_feedback.html#suggestions-for-improvement",
     "title": "phuse-datasetjson",
     "section": "Suggestions for Improvement",
     "text": "Suggestions for Improvement\n1. Redundancy/Transitions\n- There is some repetition between the Abstract and these early Introduction paragraphs. For an audience familiar with the context, you may be able to tighten the focus a bit, reducing overlap.\n- Consider adding very brief transitions between sections—e.g., a linking sentence between the list of what you’ll cover and the start of the XPT critique, to reinforce flow.\n2. Level of Detail\n- Your bullet points (on XPT limitations) are clear, but some could be condensed further, or combined, if brevity is prized.\n- The “Ecosystem asymmetry” and “Automation friction” bullets could be a bit more concrete: consider a short example, or a sentence explaining how text-based formats like JSON facilitate automation.\n3. Balance of Tone\n- The phrase “to ask whether an alternative transport can reduce friction and better fit modern, reproducible, open toolchains while continuing to support reviewer needs” is clear, but would be even stronger if you directly foreshadow that your paper will present concrete evidence or a case study supporting this, to further motivate the reader.\n4. Roadmap Placement\n- The list “This paper covers four related topics:” is located after several paragraphs of introductory text. Some readers may expect a high-level outline a bit earlier; consider moving this up sooner (perhaps just before the “why XPT feels like yesterday’s solution” subsection).\n5. Minor Typos/Clarity - “xpt” should be consistently capitalized as “XPT”. - A few sentences are a bit long or conversational, for instance: “In this section, we will lay out why the xpt is problematic.” For a publication, it can be tightened to: “This section outlines XPT’s limitations.”\n- One typo: “rember” should be “remember”."
   },
   {
-    "objectID": "paper_feedback.html#overall-impression",
-    "href": "paper_feedback.html#overall-impression",
+    "objectID": "helpers/paper_feedback.html#overall-impression",
+    "href": "helpers/paper_feedback.html#overall-impression",
     "title": "phuse-datasetjson",
     "section": "Overall Impression",
     "text": "Overall Impression\n\nThe introduction is clear, well organized, and sets up the paper’s purpose effectively.\n\nIt contextualizes both the technical and regulatory/compliance issues and succinctly motivates the need for an alternative.\nThe use of signposting and bullet points improves readability.\nJust a little tightening and more active transitions would make it even better.\n\n\nSummary Table\n\n\n\n\n\n\n\n\nAspect\nClarity\nSuggested Action\n\n\n\n\nMotivation\nVery clear\n-\n\n\nProblem definition\nConcrete, well described\n-\n\n\nOrganization\nStrong bullet points\nMove roadmap up earlier\n\n\nTone/Balance\nObjective, professional\nEnsure consistent capitalization/terms\n\n\nTransitions\nAdequate\nAdd linking sentences for flow\n\n\nLevel of detail\nAppropriate\nSlight tightening of overlap\n\n\n\n\nIf you revise with these suggestions in mind (especially with transitions, placement of the roadmap, and tightening up small areas of repetition or wordiness), your introduction will be very strong for a Phuse or similar technical audience. Let me know if you have follow-up questions or want feedback on another specific section!"
+  },
+  {
+    "objectID": "slides_long.html",
+    "href": "slides_long.html",
+    "title": "Breaking Free from the XPT",
+    "section": "",
+    "text": "title: “Breaking Free from the Xpt” subtitle: “Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies” author: - “Ben Straub (GSK)” - “Sam Parmar (Pfizer)” - “Nick Masel (Johnson & Johnson)” format: revealjs: theme: simple incremental: true slide-number: true transition: fade"
+  },
+  {
+    "objectID": "slides_long.html#dataset-json-as-an-alternative-transport-format",
+    "href": "slides_long.html#dataset-json-as-an-alternative-transport-format",
+    "title": "Breaking Free from the XPT",
+    "section": "Dataset-JSON as an Alternative Transport Format",
+    "text": "Dataset-JSON as an Alternative Transport Format\n\nFrom SAS XPT to Dataset-JSON\nR Consortium R Submissions Working Group\nPilot 5: R-generated ADaM + Dataset-JSON\nLessons, challenges, and how you can start\n\n\nFrame the talk as a journey: not “SAS vs R” or “XPT vs JSON” but reducing friction and enabling modern, open, reproducible workflows while still meeting regulatory needs."
   }
 ]
