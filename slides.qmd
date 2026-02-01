@@ -7,17 +7,17 @@ author: |
   Nick Masel (Johnson & Johnson)
 format: 
   clean-revealjs:
-    footer: "[bms63.github.io/phuse-datasetjson/slides](https://bms63.github.io/phuse-datasetjson/slides)"
+    footer: "[US PHUSE Connect 2026 datasetjson slides and paper](https://bms63.github.io/phuse-datasetjson/slides)"
     incremental: true
 ---
 
 # Presenters
 
-  Ben Straub (GSK, R Consortium Submissions WG)  
-  Sam Parmar (Pfizer, R Consortium Submissions WG)  
-  Nick Masel (Johnson & Johnson, R Consortium Submissions WG, datasetjson R package)
+  Ben Straub (GSK, RCSWG)  
+  Sam Parmar (Pfizer, RCSWG)  
+  Nick Masel (Johnson & Johnson, RCSWG, {datasetjson})
   
-# 1980s
+# 1980s - A snapshot of technology
   
 ## A time of bliss
 
@@ -38,12 +38,11 @@ format:
 
 ## Motivation: Why Talk About Transport Formats?
 
-
-- All of these 1980s technologies have been replaced!
+- All of these 1980s technologies have been replaced - except the xpt.
 - XPTs has been the de facto submission transport for decades
 - XPT works – but reflects 1980s constraints, not modern data practice
 - Open-source tooling and modern standards are now mainstream
-- CDISC Dataset-JSON offers a contemporary alternative
+- Dataset-JSON offers a contemporary alternative
 
 ::: {.notes}
 Set the stage: XPT is familiar and “good enough,” but we’re asking if there’s a better fit for today’s ecosystems, especially for R-based submissions.
@@ -53,10 +52,10 @@ Set the stage: XPT is familiar and “good enough,” but we’re asking if ther
 
 ## Agenda
 
-This talk covers four topics:
+This talk covers three topics:
 
-- Why the industry is rethinking XPT as the default transport
-- What Dataset-JSON is, where it came from, and why it matters
+- Why the industry is rethinking XPT as the default transport file?
+- What Dataset-JSON is, where it came from, and why it matters?
 - The R Consortium R Submissions Working Group and Pilot 5
 
 ::: {.notes}
@@ -100,14 +99,20 @@ Connect these to practical headaches: bloated files, harder QC, more custom glue
 
 ---
 
-## Dataset-JSON History (Needs more!!)
+## Dataset-JSON History
 
-- CDISC standard for representing tabular clinical data in JSON
 - Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT
-- Designed for: (move or add to next slide)
-  - Regulatory submissions
-  - Supports both file-based and API-based workflows
-  - Interoperability  
+- FDA April 2025 Federal Register notice:
+  - Reaffirms datasetjson standards
+  - Signals openness to evolving transport mechanisms
+  
+
+![](images/timeline.png)
+
+::: footer
+[Dataset-JSON v1.1](https://www.cdisc.org/sites/default/files/pdf/Dataset-JSON-v1-1-Public-Review.pdf)
+:::
+
 
 ::: {.notes}
 Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”
@@ -115,16 +120,19 @@ Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “s
 
 ---
 
-## Why Dataset-JSON (vs Other Modern Formats)?
+## Why Dataset-JSON?
 
 - **Self-contained metadata**
   - Variable labels/types and CDISC metadata embedded in the file
+  - Designed to meet regulatory needs
 - **Human-readable and audit-friendly**
-  - Plain-text JSON; easy to inspect, search, and diff
+  - Plain-text JSON; easy to inspect and search
 - **Universally parseable**
   - Mature JSON parsers exist in all major languages
 - **Supports APIs**
   - Same structure works for file transfer and REST endpoints
+- **Interoperability**
+  - This word is too fancy for me 
 
 ::: {.notes}
 Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.
@@ -171,20 +179,12 @@ Underscore that industry change happens when standards bodies, industry, and reg
 
 ---
 
-## Recent Dataset-JSON news
-
-- FDA April 2025 Federal Register notice:
-  - Reaffirms datasetjson standards
-  - Signals openness to evolving transport mechanisms
-  
-- More here flow into Submissions WG
-
 ## R Consortium R Submissions Working Group
 
 - Mission: demonstrate that **R-based submission packages** can:
   - Meet regulatory expectations
   - Be fully reproducible and reviewable
-  - something something here
+  - Experiment today to prepare for tomorrow's submissions
 - Focus on:
   - Complete, public submission-like artifacts (data, code, outputs)
   - Practical workflows others can fork and adapt
@@ -215,12 +215,12 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ## Pilots 1 - 4 
 
-TODO
-
 - Evolution:
   - Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT
+  - Pilot 2: TLFs are packaged into a Shiny App
   - Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT
-
+  - Pilot 4: Pilot 2 delivered as webassembly and as a container
+  
 ---
 
 ## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM 
@@ -233,7 +233,7 @@ TODO
   - Deliver a publicly accessible R-based submission-like package
   - Use **Dataset-JSON v1.1** as the dataset transport format
   - Generate key ADaM datasets in R (not SAS) and ...
-  - SDTM also regenerated as ...
+  - SDTM also regenerated as datasetjson but no program available
   - Use the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package to do the heavy lifting
 
 ::: {.notes}
@@ -246,15 +246,14 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
 
 - Public repository:
   - https://github.com/RConsortium/submissions-pilot5-datasetjson
-- eCTD-like package overview (Quarto source):
-  - [`ectd_readme/README.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/ectd_readme/README.qmd)
-- ADRG previews:
-  - HTML: [rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/](http://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/)
-  - PDF: [rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf](https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf)
-- Contents:
+- eCTD-like package overview:
+  - [`ectd_readme/README.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda)
+- ADRG available for [Pilot 5](https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda/blob/main/m5/datasets/rconsortiumpilot5/analysis/adam/datasets/adrg.pdf)
+- Additional Contents:
   - R programs for dataset generation and conversions
   - Dataset-JSON outputs
   - QC reports
+  - Merged Pulled Requests with CICD checks
 
 ::: {.notes}
 Encourage participants to explore the repo post-session; it’s meant as a starting point they can reuse.
@@ -272,33 +271,9 @@ Encourage participants to explore the repo post-session; it’s meant as a start
 - Comparability treated as a first-class artifact:
   - [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd): dataset-to-dataset QC using `diffdf`
   - [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd): text and graphical diffing of outputs
-- Dataset-JSON creation is just another scripted step:
-  - e.g., `convert_xpt_to_datasetjson.r`
 
 ::: {.notes}
 Key message: nothing is “magic”; everything is scripted and version-controlled, including conversion to Dataset-JSON and QC.
-:::
-
----
-
-## Mini Example: ADaM Data Frame → Dataset-JSON {.smaller}
-
-- Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
-  - Start from an ADaM-like tibble (`adsl`)
-  - Ensure dataset label is set (`attr(adsl, "label")`)
-  - Define column metadata tibble:
-    - `itemOID`, `name`, `label`, `dataType`
-  - Call [`datasetjson::dataset_json()`](https://atorus-research.github.io/datasetjson/reference/dataset_json.html):
-    - Pass data, dataset name, label, columns metadata
-  - Write JSON text with [`write_dataset_json()`](https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html)
-- Output:
-  - A plain-text Dataset-JSON file containing:
-    - Top-level metadata
-    - Column metadata
-    - Row data
-
-::: {.notes}
-You don’t need to show all the code line by line; emphasize that producing Dataset-JSON is a straightforward, scripted transformation.
 :::
 
 ---
@@ -320,7 +295,7 @@ Brief mention to show forward-looking tooling, but clarify that AI augments, not
 
 ---
 
-## Challenges Faced: Standards & Tools
+## Challenges Faced 
 
 - **Standards timing**
   - Dataset-JSON moved from v1.0 to v1.1 during pilot
@@ -331,15 +306,6 @@ Brief mention to show forward-looking tooling, but clarify that AI augments, not
     - Workarounds and additional documentation
     - Direct discussion with FDA collaborators
   - Potential re-submission once P21 supports v1.1
-
-::: {.notes}
-This illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key.
-:::
-
----
-
-## Challenges Faced: Technical Details
-
 - Learning how metadata is represented and persisted in Dataset-JSON
 - Managing numeric precision:
   - Converting float variables to decimal data type in JSON
@@ -350,7 +316,7 @@ This illustrates that format innovation can get slightly ahead of validation eco
     - [https://github.com/atorus-research/datasetjson/issues](https://github.com/atorus-research/datasetjson/issues)
 
 ::: {.notes}
-Real-world adoption always involves working through rough edges; Pilot 5 surfaces and documents them for the community.
+This illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key.
 :::
 
 ---
@@ -368,6 +334,28 @@ Real-world adoption always involves working through rough edges; Pilot 5 surface
 
 ::: {.notes}
 Tie this back to the original motivation: same scientific intent and reproducibility as XPT-based workflows, but better aligned with modern tools.
+:::
+
+---
+
+## daatasetjson R package (Workhorse of Pilot 5)
+
+- Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
+  - Start from an ADaM-like tibble (`adsl`)
+  - Ensure dataset label is set (`attr(adsl, "label")`)
+  - Define column metadata tibble:
+    - `itemOID`, `name`, `label`, `dataType`
+  - Call [`datasetjson::dataset_json()`](https://atorus-research.github.io/datasetjson/reference/dataset_json.html):
+    - Pass data, dataset name, label, columns metadata
+  - Write JSON text with [`write_dataset_json()`](https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html)
+- Output:
+  - A plain-text Dataset-JSON file containing:
+    - Top-level metadata
+    - Column metadata
+    - Row data
+
+::: {.notes}
+You don’t need to show all the code line by line; emphasize that producing Dataset-JSON is a straightforward, scripted transformation.
 :::
 
 ---
