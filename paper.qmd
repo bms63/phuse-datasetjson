@@ -38,7 +38,7 @@ This paper covers four related topics:
 
 XPT is not “bad”— as it is widely supported and deeply embedded in regulatory processes. However, when viewed through a modern software lens, it unduly burdens the acceptance of modern software practices and adoption of new data standards. In this section, we will lay out why the xpt is problematic.
 
-**Outdated Technology:** The format was defined in the 1980s (SAS Technical Report TS-140) and was designed for data transfer between SAS applications on different operating systems, particularly mainframe and VAX systems. It is not aligned with modern data architectures or standards like FHIR or big-data. The FDA adopted it as [non-proprietary data format](https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml){target="_blank"} to submit for drug submissions.
+**Outdated Technology:** The format was defined in the 1980s and was designed for data transfer between SAS applications on different operating systems. It is not aligned with modern data architectures or standards like Fast Healthcare Interoperability Resources (FHIR) or big-data. The FDA adopted it as [non-proprietary data format](https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml){target="_blank"} to submit for drug submissions.
 
 **Limited Data Characteristics:** Variable Names are restricted to a maximum of 8 characters and are case-insensitive. Variable Labels are limited to 40 characters. Character Variable Lengths cannot exceed 200 characters or bytes. Variable Types are limited to US ASCII for character variables and IBM INTEGER and DOUBLE for numeric variables.
 
@@ -49,8 +49,6 @@ XPT is not “bad”— as it is widely supported and deeply embedded in regulat
 **Inefficient Storage:** The format is inefficient, often leading to wasted storage space. It allocates fixed space for variables, and missing or shorter values are padded with blanks, which can result in up to 70% wasted space. It also does not support data compression.
 
 **Ecosystem asymmetry:** XPT is universally known in SAS-centric workflows, but is less native to open-source tooling and data engineering stacks.
- 
-**Automation friction:** modern validation, diffing, schema checking, and reproducible pipelines tend to align naturally with text-based and structured formats.
 
 This is the motivation for exploring Dataset-JSON: not to declare a villain, but to ask whether an alternative transport can reduce friction and better fit modern, reproducible, open toolchains while continuing to support reviewer needs.
 
@@ -66,7 +64,7 @@ Dataset-JSON can be thought of as a standard way to serialize a dataset plus its
 
 - transport of rows/records in JSON form
 - representation of column metadata (name, label, type, etc.)
-- consistent schema that can be validated and diffed using standard tooling
+- consistent schema that can be validated
 - contains one dataset per file
 - each dataset can optionally reference a Define-XML file
 
@@ -76,7 +74,7 @@ The standard addresses requirements from the PHUSE 2017 ["Transport for the Next
 
 In April 2025, the FDA published a [Federal Register notice](https://www.federalregister.gov/documents/2025/04/09/2025-06051/electronic-study-data-submission-data-standards-clinical-data-interchange-standards-consortium){target="_blank"} reinforcing CDISC standards for electronic study data submission, signaling regulatory openness to transport format evolution. This context makes Dataset-JSON increasingly relevant as the industry evaluates alternatives to legacy transport mechanisms while maintaining compliance with CDISC standards.
 
-### Collaboration framing (CDISC / PHUSE / FDA)
+### Collaboration framing (CDISC / PHUSE / FDA / R Consortium)
 
 Industry adoption of submission changes typically succeeds only where standards bodies, industry groups, and regulators align around feasibility and reviewer usability. Dataset-JSON exists within this collaborative ecosystem where CDISC defines standards, PHUSE supports applied use cases and community practice, and FDA engagement is critical to evaluate submission and review implications.
 
@@ -88,7 +86,6 @@ While modern formats like Parquet offer performance advantages for big data appl
 
 - **Self-contained metadata:** Variable labels, types, and CDISC-specific metadata are embedded directly in the file, eliminating external dependencies.
 - **Human-readable and audit-friendly:** Text-based JSON enables review, comparison, and validation using standard development tools without specialized software.
-- **Version control integration:** Plain text format works naturally with Git-based workflows and standard diff tools.
 - **Universal parsing:** JSON parsers exist in virtually every programming language, reducing implementation barriers across toolchains.
 - **API-Based Exchange**  Dataset-JSON supports both API and file based exchange
 
@@ -283,9 +280,6 @@ QC reports in the Pilot 5 repo:
 LLM-assisted ADRG utilities (Pilot 5 repo):
 
 - [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)
-
-TS-140 THE RECORD LAYOUT OF A DATA SET IN SAS TRANSPORT (XPORT) FORMAT
-- https://support.sas.com/content/dam/SAS/support/en/technical-papers/record-layout-of-a-sas-version-5-or-6-data-set-in-sas-transport-xport-format.pdf
 
 ## ACKNOWLEDGMENTS
 
