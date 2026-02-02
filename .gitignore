@@ -63,4 +63,5 @@ draft_slides.qmd
 **/*.quarto_ipynb
 slides_files/
 *.docx
-
+!output/ADSL.json
+!data/*

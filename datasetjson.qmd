@@ -1,0 +1,167 @@
+## The Whole Game
+
+Let's see the complete workflow with [{pharmaverseadam}](https://github.com/pharmaverse/pharmaverseadam) data:
+
+::: incremental
+1.  **Start** with ADAM datasets
+2.  **Prepare** top-level metadata and column metadata
+3.  **Convert** to Dataset-JSON
+4.  **Share** the standardized file
+5.  **Read** it back anywhere
+:::
+
+------------------------------------------------------------------------
+
+## Step 1: Load ADAM Data and Metadata
+
+```{r}
+#| eval: true
+#| echo: true
+#| code-line-numbers: 1-2|3-5
+library(datasetjson)
+
+# Load data
+adsl <- readRDS("data/adsl.rds")
+```
+
+------------------------------------------------------------------------
+
+## Step 1a: Examine What We Have - ADSL
+
+```{r}
+#| eval: true
+#| echo: true
+knitr::kable(head(adsl[1:6]), format = "html", table.attr = "style='font-size: 24px;'")
+```
+
+------------------------------------------------------------------------
+
+## Step 2: Prepare Metadata
+
+```{r}
+#| eval: true
+#| echo: true
+# Load column metadata
+adsl_meta <- readRDS("data/adsl_meta.rds")
+```
+
+------------------------------------------------------------------------
+
+## Step 2a: Examine What We Have - adsl_meta
+
+```{r}
+#| eval: true
+#| echo: true
+knitr::kable(head(adsl_meta), format = "html", table.attr = "style='font-size: 24px;'")
+```
+
+------------------------------------------------------------------------
+
+## Step 3: Create Dataset-JSON
+
+```{r}
+#| eval: true
+#| echo: true
+#| code-line-numbers: 1,5,10|1,2,7,8|1,3,9|1,4,6
+# Convert ADSL to Dataset-JSON
+## top-level metadata
+## column/variable metadata
+## rows
+adsl_json <- dataset_json(
+  adsl,
+  name = "ADSL",
+  dataset_label = "Subject Level Analysis Dataset",
+  columns = adsl_meta
+)
+```
+
+::: aside
+<a href="https://github.com/cdisc-org/DataExchange-DatasetJson/blob/40b2b23c6792d073bed1ee32e15891077ea90d96/doc/dataset-json1-1.md" target="_blank">CDISC Dataset-JSON v1.1 Specification</a>
+:::
+
+------------------------------------------------------------------------
+
+## Step 3a: Inspect Dataset-JSON Object
+
+```{r}
+#| eval: true
+#| echo: true
+head(adsl_json)
+```
+
+------------------------------------------------------------------------
+
+## Step 3b: Inspect Dataset-JSON Object Attributes
+
+#### class, top-level, column
+
+```{r}
+#| eval: true
+#| echo: true
+#| class-output: highlight
+#| output-line-numbers: 5|4,7,8|9-1000
+str(attributes(adsl_json))
+```
+
+------------------------------------------------------------------------
+
+## Step 4: Share Standardized Files
+
+```{r}
+#| eval: true
+#| echo: true
+# Write to Dataset-JSON files
+write_dataset_json(adsl_json, "output/ADSL.json", pretty = TRUE) # use pretty when viewing
+```
+
+::: {.nonincremental}
+<br><br> Now anyone can read these files!
+
+-   Regulatory reviewers
+-   External collaborators
+-   Different software (R, Python, SAS)
+:::
+
+
+------------------------------------------------------------------------
+
+## Step 4a: Inspect Dataset-JSON File
+
+```{ojs}
+FileAttachment("output/ADSL.json").json()
+```
+
+------------------------------------------------------------------------
+
+## Step 5: Read Back Anywhere
+
+```{r}
+#| eval: true
+#| echo: true
+# Read back - gets original data + metadata
+adsl_restored <- read_dataset_json("output/ADSL.json")
+```
+
+------------------------------------------------------------------------
+
+## Step 5a: Inspect Dataset-JSON Object
+
+```{r}
+#| eval: true
+#| echo: true
+adsl_restored
+```
+
+------------------------------------------------------------------------
+
+## Step 5b: Inspect Dataset-JSON Object Attributes
+
+#### class, top-level, column
+
+```{r}
+#| eval: true
+#| echo: true
+#| class-output: highlight
+#| output-line-numbers: 4|5,6,7|7-1000
+str(attributes(adsl_restored))
+```
