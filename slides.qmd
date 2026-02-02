@@ -9,6 +9,8 @@ format:
   clean-revealjs:
     footer: "[US PHUSE Connect 2026 datasetjson slides and paper](https://bms63.github.io/phuse-datasetjson/slides)"
     incremental: true
+filters:
+  - output-line-highlight.lua
 ---
 
 # Presenters
@@ -338,25 +340,9 @@ Tie this back to the original motivation: same scientific intent and reproducibi
 
 ---
 
-## daatasetjson R package (Workhorse of Pilot 5)
+## datasetjson R package (Workhorse of Pilot 5)
 
-- Using the [`datasetjson`](https://atorus-research.github.io/datasetjson/) R package:
-  - Start from an ADaM-like tibble (`adsl`)
-  - Ensure dataset label is set (`attr(adsl, "label")`)
-  - Define column metadata tibble:
-    - `itemOID`, `name`, `label`, `dataType`
-  - Call [`datasetjson::dataset_json()`](https://atorus-research.github.io/datasetjson/reference/dataset_json.html):
-    - Pass data, dataset name, label, columns metadata
-  - Write JSON text with [`write_dataset_json()`](https://atorus-research.github.io/datasetjson/reference/write_dataset_json.html)
-- Output:
-  - A plain-text Dataset-JSON file containing:
-    - Top-level metadata
-    - Column metadata
-    - Row data
-
-::: {.notes}
-You don’t need to show all the code line by line; emphasize that producing Dataset-JSON is a straightforward, scripted transformation.
-:::
+{{< include datasetjson.qmd >}}
 
 ---
 
