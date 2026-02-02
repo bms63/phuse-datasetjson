@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-brief-history-lesson" id="toc-a-brief-history-lesson" class="nav-link" data-scroll-target="#a-brief-history-lesson">A brief “history lesson”</a></li>
   <li><a href="#what-dataset-json-is-practically" id="toc-what-dataset-json-is-practically" class="nav-link" data-scroll-target="#what-dataset-json-is-practically">What Dataset-JSON is (practically)</a></li>
   <li><a href="#regulatory-context-and-momentum" id="toc-regulatory-context-and-momentum" class="nav-link" data-scroll-target="#regulatory-context-and-momentum">Regulatory context and momentum</a></li>
-  <li><a href="#collaboration-framing-cdisc-phuse-fda" id="toc-collaboration-framing-cdisc-phuse-fda" class="nav-link" data-scroll-target="#collaboration-framing-cdisc-phuse-fda">Collaboration framing (CDISC / PHUSE / FDA)</a></li>
+  <li><a href="#collaboration-framing-cdisc-phuse-fda-r-consortium" id="toc-collaboration-framing-cdisc-phuse-fda-r-consortium" class="nav-link" data-scroll-target="#collaboration-framing-cdisc-phuse-fda-r-consortium">Collaboration framing (CDISC / PHUSE / FDA / R Consortium)</a></li>
   </ul></li>
   <li><a href="#why-dataset-json-over-other-modern-formats" id="toc-why-dataset-json-over-other-modern-formats" class="nav-link" data-scroll-target="#why-dataset-json-over-other-modern-formats">WHY DATASET-JSON OVER OTHER MODERN FORMATS</a></li>
   <li><a href="#r-consortium-working-group" id="toc-r-consortium-working-group" class="nav-link" data-scroll-target="#r-consortium-working-group">R CONSORTIUM WORKING GROUP</a>
@@ -233,13 +233,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="a-high-level-framing-why-xpt-feels-like-yesterdays-solution" class="level3">
 <h3 class="anchored" data-anchor-id="a-high-level-framing-why-xpt-feels-like-yesterdays-solution">A high-level framing: why XPT feels like yesterday’s solution</h3>
 <p>XPT is not “bad”— as it is widely supported and deeply embedded in regulatory processes. However, when viewed through a modern software lens, it unduly burdens the acceptance of modern software practices and adoption of new data standards. In this section, we will lay out why the xpt is problematic.</p>
-<p><strong>Outdated Technology:</strong> The format was defined in the 1980s (SAS Technical Report TS-140) and was designed for data transfer between SAS applications on different operating systems, particularly mainframe and VAX systems. It is not aligned with modern data architectures or standards like FHIR or big-data. The FDA adopted it as <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml" target="_blank">non-proprietary data format</a> to submit for drug submissions.</p>
+<p><strong>Outdated Technology:</strong> The format was defined in the 1980s and was designed for data transfer between SAS applications on different operating systems. It is not aligned with modern data architectures or standards like Fast Healthcare Interoperability Resources (FHIR) or big-data. The FDA adopted it as <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml" target="_blank">non-proprietary data format</a> to submit for drug submissions.</p>
 <p><strong>Limited Data Characteristics:</strong> Variable Names are restricted to a maximum of 8 characters and are case-insensitive. Variable Labels are limited to 40 characters. Character Variable Lengths cannot exceed 200 characters or bytes. Variable Types are limited to US ASCII for character variables and IBM INTEGER and DOUBLE for numeric variables.</p>
 <p><strong>Poor Handling of International Characters:</strong> It only supports US ASCII character encoding, meaning it cannot natively handle multibyte characters or UTF-8. Representing international characters requires “tricks” or workarounds, which can lead to encoding and interpretation issues.</p>
 <p><strong>Lack of Robust Metadata:</strong> The .xpt format has no direct way to embed rich metadata within the file itself. It relies on separate define.xml files, which introduces the risk of data and metadata mismatches if not carefully managed.</p>
 <p><strong>Inefficient Storage:</strong> The format is inefficient, often leading to wasted storage space. It allocates fixed space for variables, and missing or shorter values are padded with blanks, which can result in up to 70% wasted space. It also does not support data compression.</p>
 <p><strong>Ecosystem asymmetry:</strong> XPT is universally known in SAS-centric workflows, but is less native to open-source tooling and data engineering stacks.</p>
-<p><strong>Automation friction:</strong> modern validation, diffing, schema checking, and reproducible pipelines tend to align naturally with text-based and structured formats.</p>
 <p>This is the motivation for exploring Dataset-JSON: not to declare a villain, but to ask whether an alternative transport can reduce friction and better fit modern, reproducible, open toolchains while continuing to support reviewer needs.</p>
 </section>
 </section>
@@ -255,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>transport of rows/records in JSON form</li>
 <li>representation of column metadata (name, label, type, etc.)</li>
-<li>consistent schema that can be validated and diffed using standard tooling</li>
+<li>consistent schema that can be validated</li>
 <li>contains one dataset per file</li>
 <li>each dataset can optionally reference a Define-XML file</li>
 </ul>
@@ -265,8 +264,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="regulatory-context-and-momentum">Regulatory context and momentum</h3>
 <p>In April 2025, the FDA published a <a href="https://www.federalregister.gov/documents/2025/04/09/2025-06051/electronic-study-data-submission-data-standards-clinical-data-interchange-standards-consortium" target="_blank">Federal Register notice</a> reinforcing CDISC standards for electronic study data submission, signaling regulatory openness to transport format evolution. This context makes Dataset-JSON increasingly relevant as the industry evaluates alternatives to legacy transport mechanisms while maintaining compliance with CDISC standards.</p>
 </section>
-<section id="collaboration-framing-cdisc-phuse-fda" class="level3">
-<h3 class="anchored" data-anchor-id="collaboration-framing-cdisc-phuse-fda">Collaboration framing (CDISC / PHUSE / FDA)</h3>
+<section id="collaboration-framing-cdisc-phuse-fda-r-consortium" class="level3">
+<h3 class="anchored" data-anchor-id="collaboration-framing-cdisc-phuse-fda-r-consortium">Collaboration framing (CDISC / PHUSE / FDA / R Consortium)</h3>
 <p>Industry adoption of submission changes typically succeeds only where standards bodies, industry groups, and regulators align around feasibility and reviewer usability. Dataset-JSON exists within this collaborative ecosystem where CDISC defines standards, PHUSE supports applied use cases and community practice, and FDA engagement is critical to evaluate submission and review implications.</p>
 <p>While this paper is not a policy paper, Pilot 5 is explicitly framed as an FDA–industry collaboration through the R Consortium and serves as a public “show your work” style example.</p>
 </section>
@@ -277,7 +276,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong>Self-contained metadata:</strong> Variable labels, types, and CDISC-specific metadata are embedded directly in the file, eliminating external dependencies.</li>
 <li><strong>Human-readable and audit-friendly:</strong> Text-based JSON enables review, comparison, and validation using standard development tools without specialized software.</li>
-<li><strong>Version control integration:</strong> Plain text format works naturally with Git-based workflows and standard diff tools.</li>
 <li><strong>Universal parsing:</strong> JSON parsers exist in virtually every programming language, reducing implementation barriers across toolchains.</li>
 <li><strong>API-Based Exchange</strong> Dataset-JSON supports both API and file based exchange</li>
 </ul>
@@ -417,7 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(json_text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{
-  "datasetJSONCreationDateTime": "2026-02-01T20:27:47",
+  "datasetJSONCreationDateTime": "2026-02-02T18:44:47",
   "datasetJSONVersion": "1.1.0",
   "itemGroupOID": "ADSL",
   "records": 2,
@@ -505,7 +503,6 @@ https://github.com/cdisc-org/sdtm-adam-pilot-project</p>
 <ul>
 <li><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd"><code>adrg/llm-adrg-utils/llm_pipeline.qmd</code></a></li>
 </ul>
-<p>TS-140 THE RECORD LAYOUT OF A DATA SET IN SAS TRANSPORT (XPORT) FORMAT - https://support.sas.com/content/dam/SAS/support/en/technical-papers/record-layout-of-a-sas-version-5-or-6-data-set-in-sas-transport-xport-format.pdf</p>
 </section>
 <section id="acknowledgments" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgments">ACKNOWLEDGMENTS</h2>
