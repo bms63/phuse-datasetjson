@@ -67,7 +67,7 @@ Give the audience a mental roadmap; we’ll go from pain points, to the new stan
 ## XPT: Yesterday’s Solution to Yesterday’s Problem
 
 - **Outdated technology**
-  - Defined in the 1980s (SAS TS-140) for SAS-to-SAS transfer
+  - Defined in the 1980s for SAS-to-SAS transfer
   - Optimized for mainframes, not for modern APIs or big data
 - **Constrained data characteristics**
   - 8-character variable names, 40-character labels
@@ -368,7 +368,7 @@ You don’t need to show all the code line by line; emphasize that producing Dat
   - Text-based, automated, reproducible workflows
 - Dataset-JSON offers:
   - Self-contained, human-readable, API-ready transport
-  - Stronger fit with R, Python, and Git-based practices
+  - Stronger fit with open-source ecosystems
 - Pilot 5:
   - Provides a public blueprint you can adapt
   - Invites further experimentation and feedback with regulators
@@ -395,7 +395,7 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 - Ben Straub, GSK – Philadelphia, United States  
 - Sam Parmar, Pfizer – New York City, United States  
-- Nick Masel, Johnson & Johnson – (location/email as applicable)  
+- Nick Masel, Johnson & Johnson – Raleigh, United States 
 
 ::: {.notes}
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
