@@ -253,7 +253,7 @@
 <section id="motivation-why-talk-about-transport-formats" class="slide level2">
 <h2>Motivation: Why Talk About Transport Formats?</h2>
 <ul>
-<li class="fragment">All of these 1980s technologies have been replaced - except the xpt.</li>
+<li class="fragment">All of these 1980s technologies have been replaced - except the XPT.</li>
 <li class="fragment">XPTs has been the de facto submission transport for decades</li>
 <li class="fragment">XPT works – but reflects 1980s constraints, not modern data practice</li>
 <li class="fragment">Open-source tooling and modern standards are now mainstream</li>
@@ -450,10 +450,7 @@
 <ul>
 <li class="fragment">Same structure works for file transfer and REST endpoints</li>
 </ul></li>
-<li class="fragment"><strong>Interoperability</strong>
-<ul>
-<li class="fragment">This word is too fancy for me</li>
-</ul></li>
+<li class="fragment"><strong>Interoperability</strong></li>
 </ul>
 <aside class="notes">
 <p>Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.</p>
@@ -585,8 +582,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="what-earlier-pilots-showed" class="slide level2">
-<h2>What Earlier Pilots Showed</h2>
+<section id="what-the-pilots-showed" class="slide level2">
+<h2>What the Pilots Showed</h2>
 <ul>
 <li class="fragment">Demonstrated:
 <ul>
@@ -615,9 +612,16 @@
           display:block!important;
       }</style></aside>
 </section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="pilot-5" class="title-slide slide level1 center">
+<h1>Pilot 5</h1>
+
+<img data-src="https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png" width="100" class="r-stretch"></section>
 <section id="pilot-5-focus-dataset-json-r-generated-adam" class="slide level2">
 <h2>Pilot 5 Focus: Dataset-JSON + R-Generated ADaM</h2>
-<p><img data-src="https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png" class="absolute" style="bottom: 35%; right: 0px; width: 170px; "></p>
 <ul>
 <li class="fragment">Objectives:
 <ul>
@@ -769,24 +773,25 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="challenges-faced" class="slide level2">
+<section id="challenges-faced" class="slide level2 smaller">
 <h2>Challenges Faced</h2>
-<ul>
-<li class="fragment"><strong>Standards timing</strong>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="external-dependencies-evolution">External Dependencies &amp; Evolution</h3>
 <ul>
 <li class="fragment">Dataset-JSON moved from v1.0 to v1.1 during pilot</li>
 <li class="fragment">Needed to understand and document v1.1 changes with FDA</li>
-</ul></li>
-<li class="fragment"><strong>Validation tooling gap</strong>
-<ul>
-<li class="fragment">Pinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1</li>
+<li class="fragment">Pinnacle 21 Community did not yet support Dataset-JSON v1.1</li>
 <li class="fragment">Required:
 <ul>
 <li class="fragment">Workarounds and additional documentation</li>
 <li class="fragment">Direct discussion with FDA collaborators</li>
+<li class="fragment">Re-submission once P21 supports v1.1</li>
 </ul></li>
-<li class="fragment">Potential re-submission once P21 supports v1.1</li>
-</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="implementation-tooling-gaps">Implementation &amp; Tooling Gaps</h3>
+<ul>
 <li class="fragment">Learning how metadata is represented and persisted in Dataset-JSON</li>
 <li class="fragment">Managing numeric precision:
 <ul>
@@ -802,6 +807,7 @@
 </ul></li>
 </ul></li>
 </ul>
+</div></div>
 <aside class="notes">
 <p>This illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key.</p>
 <style type="text/css">
@@ -4543,7 +4549,7 @@
 <span id="cb16-308"><a></a>  .. ..$ label   : chr "Death Within 30 Days of First Trt Flag"</span>
 <span id="cb16-309"><a></a>  .. ..$ dataType: chr "string"</span>
 <span id="cb16-310"><a></a> $ records                    : int 306</span>
-<span id="cb16-311"><a></a> $ datasetJSONCreationDateTime: chr "2026-02-04T21:09:05"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-311"><a></a> $ datasetJSONCreationDateTime: chr "2026-02-04T21:36:58"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
