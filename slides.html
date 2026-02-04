@@ -6,7 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/qrcodejs-v1.0.0/qrcode.js"></script><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Ben Straub (GSK) Sam Parmar (Pfizer) Nick Masel (Johnson &amp; Johnson)">
@@ -189,6 +190,9 @@
   </style>
   <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
   <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+  <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
 <script src="mathjax-config.js"></script>
@@ -291,6 +295,14 @@
           display:block!important;
       }</style></aside>
 </section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="xpt" class="title-slide slide level1 center">
+<h1>XPT</h1>
+
+</section>
 <section id="xpt-yesterdays-solution-to-yesterdays-problem" class="slide level2">
 <h2>XPT: Yesterday’s Solution to Yesterday’s Problem</h2>
 <ul>
@@ -356,33 +368,67 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="dataset-json-history" class="slide level2">
-<h2>Dataset-JSON History</h2>
-<ul>
-<li class="fragment">Selected by FDA (2022 evaluation) as an optimal modern format to replace SAS V5 XPT</li>
-<li class="fragment">FDA April 2025 Federal Register notice:
-<ul>
-<li class="fragment">Reaffirms datasetjson standards</li>
-<li class="fragment">Signals openness to evolving transport mechanisms</li>
-</ul></li>
-</ul>
+<section class="slide level2">
 
-<img data-src="images/timeline.png" class="r-stretch"><div class="footer">
+</section></section>
+<section>
+<section id="dataset-json" class="title-slide slide level1 center">
+<h1>Dataset-JSON</h1>
+
+</section>
+<section id="dataset-json-timeline" class="slide level2">
+<h2>Dataset-JSON Timeline</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">timeline
+    title Dataset-JSON Timeline: 2022 - 2023
+    section 2022
+        2022 : FDA evaluation selects Dataset-JSON as optimal format to replace SAS V5 XPT
+    section 2023
+        Jul : Dataset-JSON Pilot Kickoff
+        Aug : Dataset-JSON v1.0 released as part of ODM v2.0
+        Sept : COSA Dataset-JSON Hackathon concludes at US Interchange
+        Sept : PHUSE CSS Conference Dataset-JSON Plenary &amp; Workshop
+        Nov : PHUSE EU Connect Dataset-JSON Workshop
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="footer">
 <p><a href="https://www.cdisc.org/sites/default/files/pdf/Dataset-JSON-v1-1-Public-Review.pdf">Dataset-JSON v1.1</a></p>
 </div>
-<aside class="notes">
-<p>Position Dataset-JSON as a CDISC-backed, regulator-aware standard, not just “some JSON flavor.”</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section>
+<section id="dataset-json-timeline-1" class="slide level2">
+<h2>Dataset-JSON Timeline</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">timeline
+    title Dataset-JSON Timeline: 2024 - 2025
+    section 2024
+        Feb : PHUSE US Connect Dataset-JSON Workshop
+        May : Dataset-JSON v1.1 Kickoff
+        June : PHUSE CSS Final Pilot Report
+        Sep : Dataset-JSON v1.1 Public Review
+        Dec : Dataset-JSON v1.1 Published
+    section 2025
+        Apr : FDA Federal Register notice reaffirms standards, signals openness to evolving transport mechanisms
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://www.cdisc.org/sites/default/files/pdf/Dataset-JSON-v1-1-Public-Review.pdf">Dataset-JSON v1.1</a></p>
+</div>
 </section>
 <section id="why-dataset-json" class="slide level2">
 <h2>Why Dataset-JSON?</h2>
@@ -489,6 +535,14 @@
           display:block!important;
       }</style></aside>
 </section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="r-consortium-r-submissions-working-group-and-pilot-5" class="title-slide slide level1 center">
+<h1>R Consortium R Submissions Working Group and Pilot 5</h1>
+
+</section>
 <section id="r-consortium-r-submissions-working-group" class="slide level2">
 <h2>R Consortium R Submissions Working Group</h2>
 <ul>
@@ -519,6 +573,18 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="pilots-1---4" class="slide level2">
+<h2>Pilots 1 - 4</h2>
+<ul>
+<li class="fragment">Evolution:
+<ul>
+<li class="fragment">Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
+<li class="fragment">Pilot 2: TLFs are packaged into a Shiny App</li>
+<li class="fragment">Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
+<li class="fragment">Pilot 4: Pilot 2 delivered as webassembly and as a container</li>
+</ul></li>
+</ul>
+</section>
 <section id="what-earlier-pilots-showed" class="slide level2">
 <h2>What Earlier Pilots Showed</h2>
 <ul>
@@ -548,18 +614,6 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="pilots-1---4" class="slide level2">
-<h2>Pilots 1 - 4</h2>
-<ul>
-<li class="fragment">Evolution:
-<ul>
-<li class="fragment">Pilot 1: TLFs in R, SDTM/ADaM from SAS XPT</li>
-<li class="fragment">Pilot 2: TLFs are packaged into a Shiny App</li>
-<li class="fragment">Pilot 3: Rebuilt 5 ADaM datasets in R, still output XPT</li>
-<li class="fragment">Pilot 4: Pilot 2 delivered as webassembly and as a container</li>
-</ul></li>
-</ul>
 </section>
 <section id="pilot-5-focus-dataset-json-r-generated-adam" class="slide level2">
 <h2>Pilot 5 Focus: Dataset-JSON + R-Generated ADaM</h2>
@@ -592,24 +646,51 @@
 </section>
 <section id="pilot-5-artifacts-what-you-can-see-today" class="slide level2 smaller">
 <h2>Pilot 5 Artifacts (What You Can See Today)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li class="fragment">Public repository:
+<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson">Public repository</a> for development work</li>
+<li class="fragment"><img data-src="images/construction.png" width="100">
 <ul>
-<li class="fragment">https://github.com/RConsortium/submissions-pilot5-datasetjson</li>
-</ul></li>
-<li class="fragment">eCTD-like package overview:
-<ul>
-<li class="fragment"><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda"><code>ectd_readme/README.qmd</code></a></li>
-</ul></li>
-<li class="fragment">ADRG available for <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda/blob/main/m5/datasets/rconsortiumpilot5/analysis/adam/datasets/adrg.pdf">Pilot 5</a></li>
-<li class="fragment">Additional Contents:
-<ul>
-<li class="fragment">R programs for dataset generation and conversions</li>
-<li class="fragment">Dataset-JSON outputs</li>
-<li class="fragment">QC reports</li>
-<li class="fragment">Merged Pulled Requests with CICD checks</li>
+<li class="fragment">R programs</li>
+<li class="fragment">Data: SDTM and ADaM</li>
+<li class="fragment">QC Reports from Bots</li>
+<li class="fragment">Closed Pull Requests with Discussion</li>
+<li class="fragment">Meeting Notes and Development ADRG (LLM-supported)</li>
+<li class="fragment"><div id="" class="qrcode"></div>
+<script type="text/javascript">
+(function() {
+  var script = document.currentScript;
+  var qrcode = script.previousElementSibling;
+  qrcode.qrcode = new QRCode(qrcode, {"colorDark":"#000000","colorLight":"#ffffff","height":128,"text":"https://github.com/RConsortium/submissions-pilot5-datasetjson","width":128});
+  script.remove();
+})();
+</script>
+    </li>
 </ul></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><p><a href="https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda">Public repository</a> for final submission work</p></li>
+<li class="fragment"><p><img data-src="images/delivery.png" width="100"></p>
+<ul>
+<li class="fragment">Following M1/M5 structure</li>
+<li class="fragment">Final R programs</li>
+<li class="fragment">Final JSON data</li>
+<li class="fragment">Final ADRG and other supporting documents</li>
+<li class="fragment"><div id="" class="qrcode"></div>
+<script type="text/javascript">
+(function() {
+  var script = document.currentScript;
+  var qrcode = script.previousElementSibling;
+  qrcode.qrcode = new QRCode(qrcode, {"colorDark":"#000000","colorLight":"#ffffff","height":128,"text":"https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda","width":128});
+  script.remove();
+})();
+</script>
+    </li>
+</ul></li>
+</ul>
+</div></div>
 <aside class="notes">
 <p>Encourage participants to explore the repo post-session; it’s meant as a starting point they can reuse.</p>
 <style type="text/css">
@@ -717,7 +798,7 @@
 <li class="fragment"><a href="https://atorus-research.github.io/datasetjson/index.html"><code>datasetjson</code></a> R package has a few open issues</li>
 <li class="fragment">Tracked and discussed publicly:
 <ul>
-<li class="fragment"><a href="https://github.com/atorus-research/datasetjson/issues">https://github.com/atorus-research/datasetjson/issues</a></li>
+<li class="fragment"><a href="https://github.com/atorus-research/datasetjson/issues" class="uri">https://github.com/atorus-research/datasetjson/issues</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -764,6 +845,14 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="datasetjson-r-package" class="title-slide slide level1 center">
+<h1>datasetjson R package</h1>
+
 </section>
 <section id="datasetjson-r-package-workhorse-of-pilot-5" class="slide level2">
 <h2>datasetjson R package (Workhorse of Pilot 5)</h2>
@@ -4454,7 +4543,7 @@
 <span id="cb16-308"><a></a>  .. ..$ label   : chr "Death Within 30 Days of First Trt Flag"</span>
 <span id="cb16-309"><a></a>  .. ..$ dataType: chr "string"</span>
 <span id="cb16-310"><a></a> $ records                    : int 306</span>
-<span id="cb16-311"><a></a> $ datasetJSONCreationDateTime: chr "2026-02-04T20:19:22"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-311"><a></a> $ datasetJSONCreationDateTime: chr "2026-02-04T21:09:05"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section>
@@ -4502,10 +4591,10 @@
 <h2>References &amp; Contact</h2>
 <p><strong>Selected references</strong></p>
 <ul>
-<li class="fragment">Pilot 5 repo: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson">https://github.com/RConsortium/submissions-pilot5-datasetjson</a><br>
+<li class="fragment">Pilot 5 repo: <a href="https://github.com/RConsortium/submissions-pilot5-datasetjson" class="uri">https://github.com/RConsortium/submissions-pilot5-datasetjson</a><br>
 </li>
-<li class="fragment">eCTD overview: <a href="https://www.fda.gov/drugs/electronic-common-technical-document-ectd">https://www.fda.gov/drugs/electronic-common-technical-document-ectd</a></li>
-<li class="fragment">Dataset-JSON v1.1: <a href="https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html">https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</a></li>
+<li class="fragment">eCTD overview: <a href="https://www.fda.gov/drugs/electronic-common-technical-document-ectd" class="uri">https://www.fda.gov/drugs/electronic-common-technical-document-ectd</a></li>
+<li class="fragment">Dataset-JSON v1.1: <a href="https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html" class="uri">https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html</a></li>
 </ul>
 <p><strong>Authors</strong></p>
 <ul>
