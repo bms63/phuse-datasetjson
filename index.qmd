@@ -1,9 +1,9 @@
 ---
-title: "Breaking Free from the Xpt"
+title: "Breaking Free from the XPT"
 ---
 
 This is a Quarto site for the [PHUSE US Connect 2026](https://www.phuse-events.org/attend/frontend/reg/thome.csp?pageID=56977&eventID=88) talk titled "Breaking Free from the XPT: Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies". It will be presented on [Monday, March 26, 2026](https://phuse.s3.eu-central-1.amazonaws.com/Events/2026/US+Connect+2026/US+Connect+2026+Full+Agenda.pdf) in Austin, Texas.
 
-![](xkcd)
+![](images/xkcd)
 
 
