@@ -1,5 +1,5 @@
 ---
-title: "Breaking Free from the Xpt: Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies"
+title: "Breaking Free from the XPT: Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies"
 subtitle: 
     Ben Straub, GSK, Philadelphia, United States <br>
     Sam Parmar, Pfizer, New York City, United States <br>
