@@ -61,7 +61,7 @@ J&J, RCSWG, {datasetjson}
 
 ## Motivation: Why Talk About Transport Formats?
 
--   All of these 1980s technologies have been replaced - except the xpt.
+-   All of these 1980s technologies have been replaced - except the XPT.
 -   XPTs has been the de facto submission transport for decades
 -   XPT works – but reflects 1980s constraints, not modern data practice
 -   Open-source tooling and modern standards are now mainstream
@@ -184,7 +184,6 @@ timeline
 -   **Supports APIs**
     -   Same structure works for file transfer and REST endpoints
 -   **Interoperability**
-    -   This word is too fancy for me
 
 ::: notes
 Contrast with Parquet/other binary formats: great for analytics, less ideal when transparency and audit trails matter for regulators.
@@ -257,7 +256,7 @@ Briefly mention that multiple pilots exist; we’ll zoom in on Pilot 5 as the Da
 
 ------------------------------------------------------------------------
 
-## What Earlier Pilots Showed
+## What the Pilots Showed
 
 -   Demonstrated:
     -   eCTD-style packaging and conventions
@@ -274,9 +273,15 @@ This slide builds trust: regulators have already successfully reviewed R-based p
 
 ------------------------------------------------------------------------
 
+# Pilot 5 
+
+![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){width="100px"}
+
+---
+
 ## Pilot 5 Focus: Dataset-JSON + R-Generated ADaM
 
-![](https://raw.githubusercontent.com/RConsortium/submissions-wg/refs/heads/main/hexes/pilot%205%402x.png){.absolute right="0" bottom="35%" width="170"}
+
 
 -   Objectives:
     -   Convert *all* XPTs in the package to Dataset-JSON
@@ -359,17 +364,24 @@ Brief mention to show forward-looking tooling, but clarify that AI augments, not
 
 ------------------------------------------------------------------------
 
-## Challenges Faced
+## Challenges Faced {.smaller}
 
--   **Standards timing**
-    -   Dataset-JSON moved from v1.0 to v1.1 during pilot
-    -   Needed to understand and document v1.1 changes with FDA
--   **Validation tooling gap**
-    -   Pinnacle 21 Community v4.1.0 did not yet support Dataset-JSON v1.1
-    -   Required:
-        -   Workarounds and additional documentation
-        -   Direct discussion with FDA collaborators
-    -   Potential re-submission once P21 supports v1.1
+::::: columns
+::: {.column width="50%"}
+### External Dependencies & Evolution
+
+-   Dataset-JSON moved from v1.0 to v1.1 during pilot
+-   Needed to understand and document v1.1 changes with FDA
+-   Pinnacle 21 Community did not yet support Dataset-JSON v1.1
+-   Required:
+      -   Workarounds and additional documentation
+      -   Direct discussion with FDA collaborators
+      -   Re-submission once P21 supports v1.1
+:::
+
+::: {.column width="50%"}
+### Implementation & Tooling Gaps
+
 -   Learning how metadata is represented and persisted in Dataset-JSON
 -   Managing numeric precision:
     -   Converting float variables to decimal data type in JSON
@@ -378,6 +390,8 @@ Brief mention to show forward-looking tooling, but clarify that AI augments, not
     -   [`datasetjson`](https://atorus-research.github.io/datasetjson/index.html) R package has a few open issues
     -   Tracked and discussed publicly:
         -   <https://github.com/atorus-research/datasetjson/issues>
+:::
+:::::
 
 ::: notes
 This illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key.
