@@ -416,11 +416,11 @@ Tie this back to the original motivation: same scientific intent and reproducibi
 
 ------------------------------------------------------------------------
 
-# datasetjson R package
+# datasetjson R package <br> [Workhorse of Pilot 5]{style="font-size: 60%;"}
+
+![](images/package_logo.svg){fig-align="right"}
 
 ------------------------------------------------------------------------
-
-## datasetjson R package (Workhorse of Pilot 5)
 
 {{< include datasetjson.qmd >}}
 
