@@ -269,8 +269,8 @@ OpenAI. (2025). GPT-5.1 (12 November version) [Large language model]. https://pl
 
 Pilot 5 ADRG preview (public links referenced by the Pilot 5 repo README):
 
-- HTML: https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/  
-- PDF: https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf
+- HTML: [https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/](https://rpodcast.quarto.pub/pilot-5-aanalysis-data-reviewers-guide/)
+- PDF: [https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf](https://rsubmission-draft.us-east-1.linodeobjects.com/pilot5-adrg-quarto-pdf.pdf)
 
 QC reports in the Pilot 5 repo:
 
