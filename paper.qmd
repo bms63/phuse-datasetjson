@@ -32,13 +32,13 @@ This paper covers four related topics:
 1. Why the industry is reevaluating long-standing dataset transport assumptions (with XPT as the historical default).
 2. What is Dataset-JSON, where it came from, and why it matters.
 3. The R Consortium R Submissions Working Group context that enabled Pilot 5.
-4. R Submission Pilot 5, with emphasis on the Dataset-JSON implementation, reproducible workflows, and what we learned.
+4. R Submission Pilot 5 use of Dataset-JSON as replacement for XPT for FDA Submission.
 
 ### A high-level framing: why XPT feels like yesterday’s solution
 
-XPT is not “bad”— as it is widely supported and deeply embedded in regulatory processes. However, when viewed through a modern software lens, it unduly burdens the acceptance of modern software practices and adoption of new data standards. In this section, we will lay out why the xpt is problematic.
+XPT is not “bad”— as it is widely supported and deeply embedded in regulatory processes. However, when viewed through a modern software lens, it unduly burdens the acceptance of modern software practices and adoption of new data standards. In this section, we will lay out why the XPT is problematic.
 
-**Outdated Technology:** The format was defined in the 1980s and was designed for data transfer between SAS applications on different operating systems. It is not aligned with modern data architectures or standards like Fast Healthcare Interoperability Resources (FHIR) or big-data. The FDA adopted it as [non-proprietary data format](https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml){target="_blank"} to submit for drug submissions.
+**Outdated Technology:** The format was defined in the 1980s and was designed for data transfer between SAS applications on different operating systems. It is not aligned with modern data architectures or standards. The FDA adopted it as [non-proprietary data format](https://www.loc.gov/preservation/digital/formats/fdd/fdd000464.shtml){target="_blank"} to submit for drug submissions and it has since stuck as the de-facto transport.
 
 **Limited Data Characteristics:** Variable Names are restricted to a maximum of 8 characters and are case-insensitive. Variable Labels are limited to 40 characters. Character Variable Lengths cannot exceed 200 characters or bytes. Variable Types are limited to US ASCII for character variables and IBM INTEGER and DOUBLE for numeric variables.
 
