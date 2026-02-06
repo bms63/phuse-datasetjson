@@ -1,14 +1,9 @@
 ---
-title: "Breaking Free from the XPT"
-subtitle: "Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies"
-author: |
-  Ben Straub (GSK)  
-  Sam Parmar (Pfizer)  
-  Nick Masel (Johnson & Johnson)
 format: 
   clean-revealjs:
     footer: "[bms63.github.io/phuse-datasetjson](https://bms63.github.io/phuse-datasetjson)"
     incremental: true
+    css: styles.css
 filters:
   - output-line-highlight.lua
 ---
@@ -40,6 +35,17 @@ J&J, RCSWG, {datasetjson}
 ![](images/nick_circle.png){width="295px"}
 :::
 ::::::
+
+---
+
+## {#title-slide}
+
+::: {.title}
+Breaking Free from the XPT
+:::
+::: {.subtitle}
+Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies
+:::
 
 # 1980s - A snapshot of technology
 
