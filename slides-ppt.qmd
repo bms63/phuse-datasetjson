@@ -1,0 +1,15 @@
+---
+title: "Breaking Free from the XPT"
+subtitle: "Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies"
+author: |
+  Ben Straub (GSK)  
+  Sam Parmar (Pfizer)  
+  Nick Masel (Johnson & Johnson)
+format:
+  pptx: default
+editor: source
+---
+
+## Slides
+
+
