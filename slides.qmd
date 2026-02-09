@@ -7,7 +7,7 @@ author: |
   Nick Masel (Johnson & Johnson)
 format: 
   clean-revealjs:
-    footer: "[US PHUSE Connect 2026 datasetjson slides and paper](https://bms63.github.io/phuse-datasetjson/slides)"
+    footer: "[bms63.github.io/phuse-datasetjson](https://bms63.github.io/phuse-datasetjson)"
     incremental: true
 filters:
   - output-line-highlight.lua
