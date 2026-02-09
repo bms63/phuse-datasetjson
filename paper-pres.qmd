@@ -1,0 +1,148 @@
+---
+title: "Breaking Free from the Xpt"
+subtitle: " Exploration of dataset.json as an Alternative Transport File to Regulatory Agencies"
+author: "Ben Straub (GSK, Philadelphia, United States)"
+format:
+  revealjs:
+    code-block-max-height: "400px" # Makes code blocks scrollable if content exceeds this height
+    scrollable: true # Enables vertical scrolling for general slide content if it overflows
+    auto-stretch: false
+editor: source
+---
+
+## Required xkcd comic
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](xkcd.png) 
+:::
+
+::: {.column width="60%"}
+::: incremental
+* How do you deliver data?
+* Are there data delivery systems that are holding you back!
+:::
+:::
+
+::::
+
+## The next 20 minutes...
+
+::: incremental
+
+* Brief intro to the xpts 
+* History and potential of datasetjson
+* Submissions Working Group
+* Pilot 5 to the FDA
+
+:::
+
+## So at the end of 20 minutes...
+
+I hope you walk away with:
+
+::: incremental
+
+* Limitations of xpts
+* What is datasetjson
+* R-based submissions to the FDA. 
+:::
+
+## xpts {.smaller}
+
+::: incremental
+
+- Outdated Design: Born in the 1980s, its architecture is incompatible with modern standards.
+
+- Restrictive Naming: Limits variable names to 8 characters and labels to 40.
+
+- Language Barrier: Supports only US ASCII, hindering international character sets.
+
+- Disjointed Metadata: Metadata is stored separately, leading to potential data-meaning mismatches.
+
+- Inefficient Storage: Wastes space through blank padding and lacks data compression.
+:::
+
+## datasetjson {.smaller}
+
+::: incremental
+
+- CDISC Standard: Dataset-JSON is a CDISC standard for representing clinical tabular datasets using JSON.
+
+- Modern Data Exchange: Designed for interoperability, supporting regulatory submissions and API-based data sharing.
+
+- Machine-Readable Metadata: Carries explicit, machine-readable dataset metadata for improved clarity and validation.
+
+- Flexible Data Handling: Enables transport of rows, column metadata, and supports streaming for large datasets (NDJSON).
+
+- Regulatory Momentum: Aligns with FDA's evolving stance on electronic study data submission and industry collaboration.
+
+:::
+
+## Why not another format? {.smaller}
+
+::: incremental
+- Embedded Metadata: Contains all variable and CDISC-specific metadata directly within the file.
+
+- Human-Readable & Auditable: Text-based JSON allows for easy review, comparison, and validation.
+
+- Version Control Friendly: Integrates seamlessly with Git and standard diff tools.
+
+- Universal Parsing: Supported by JSON parsers in nearly all programming languages, lowering implementation hurdles.
+
+- Regulatory Transparency: Prioritizes readability and auditability, crucial for regulatory review contexts.
+
+:::
+ 
+## R Submissions to FDA Working Group {.smaller}
+
+::: incremental
+
+- Regulatory Viability: Demonstrating that open-source, R-based submissions meet regulatory expectations.
+
+- Transparency: Promoting full transparency by making all submission artifacts (data, code, documentation) available.
+
+- Current Facilitation: Providing open examples to ease R-based regulatory submissions today.
+
+- Future Influence: Shaping future industry and agency decisions on submission systems and processes.
+
+- Proven Success: Demonstrating reproducible workflows, eCTD-style packaging, and securing FDA recognition.
+
+:::
+
+## Pilot 5 {.smaller}
+
+- Dataset-JSON Submission: Aims to deliver a publicly accessible R-based submission package using Dataset-JSON.
+
+- R-based ADaM Generation: Expands on prior pilots by generating ADaM datasets directly in R.
+
+- Evolution from Prior Pilots: Builds on Pilot 1 (R-based tables/figures) and Pilot 3 (R-generated ADaM as XPT).
+
+- XPT to Dataset-JSON Conversion: Focused on converting all XPT files in the submission package to Dataset-JSON.
+
+- Process-Oriented: Emphasizes investigating the submission process and Dataset-JSON integration over content volume.
+
+## Pilot 5 Success {.smaller}
+
+- Submission sent to FDA in late Fall of 2025
+
+- Re-submission needed to remove unhelpful code
+
+- Re-submitted in early January and awaiting feedback.
+
+## Conclusion {.smaller}
+
+- Dataset-JSON Viability: Demonstrates Dataset-JSON as a realistic alternative transport format for submissions.
+
+- Reproducibility Maintained: Confirms reproducibility and reviewability are maintained with Dataset-JSON.
+
+- Equivalent to XPT: Shows Dataset-JSON supports scientific intent and reproducibility expectations of XPT.
+
+- Transparent Approach: Achieved through transparent derivation code, explicit metadata, and reviewer-oriented packaging.
+
+- Modern Alignment: Integrates modern open-source data workflows while upholding regulatory standards.
+
+
+
+
