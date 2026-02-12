@@ -1,6 +1,6 @@
 # Get all XPT files from directory
 xpt_files <- list.files(
-  "../sdtm-adam-pilot-project/updated-pilot-submission-package/900172/m5/datasets/cdiscpilot01/tabulations/sdtm/",
+  "xpts/",
   pattern = "\\.xpt$",
   full.names = TRUE
 )
