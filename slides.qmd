@@ -14,25 +14,25 @@ filters:
 ::: {.column width="30%"}
 Ben Straub
 
-GSK, RCSWG
+GSK, [RCSWG](https://rconsortium.github.io/submissions-wg/)
 
-![](images/ben_circle.png){width="400px"}
+[![](images/ben_circle.png){width="400px"}](https://github.com/bms63)
 :::
 
 ::: {.column width="30%"}
 Sam Parmar
 
-Pfizer, RCSWG
+Pfizer, [RCSWG](https://rconsortium.github.io/submissions-wg/)
 
-![](images/sam_circle.png){width="400px"}
+[![](images/sam_circle.png){width="400px"}](https://github.com/parmsam)
 :::
 
 ::: {.column width="40%"}
 Nick Masel
 
-J&J, RCSWG, {datasetjson}
+J&J, [RCSWG](https://rconsortium.github.io/submissions-wg/), [Dataset-JSON](https://atorus-research.github.io/datasetjson/)
 
-![](images/nick_circle.png){width="295px"}
+[![](images/nick_circle.png){width="295px"}](https://github.com/nicholas-masel)
 :::
 ::::::
 
