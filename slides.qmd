@@ -455,6 +455,8 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ------------------------------------------------------------------------
 
+# Thank You
+
 ## References & Contact {.smaller}
 
 **Selected references**
@@ -465,9 +467,9 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 **Authors**
 
--   Ben Straub, GSK – Philadelphia, United States\
--   Sam Parmar, Pfizer – New York City, United States\
--   Nick Masel, Johnson & Johnson – Raleigh, United States
+-   [Ben Straub](mailto:ben.x.straub@gsk.com), GSK – Philadelphia, United States\
+-   [Sam Parmar](mailto:samir.parmar@pfizer.com), Pfizer – New York City, United States\
+-   [Nick Masel](mailto:nmasel@its.jnj.com), Johnson & Johnson – Raleigh, United States
 
 ::: notes
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
