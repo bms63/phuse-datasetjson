@@ -5,7 +5,7 @@ subtitle:
     Sam Parmar, Pfizer, New York City, United States <br>
     Nick Masel, Johnson and Johnson, Raleigh, United States
 format: 
-    docx
+    html
 ---
 
 ```{r, echo = FALSE}
