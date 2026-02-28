@@ -1,0 +1,11 @@
+/* css styles */
+
+<style>
+/* Remove gap between title and subtitle on title slide */
+#title-slide .title p {
+  margin-bottom: 0;
+}
+#title-slide .subtitle p {
+  margin-top: 0;
+}
+</style>
