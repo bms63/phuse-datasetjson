@@ -1,14 +1,9 @@
 ---
-title: "Breaking Free from the XPT"
-subtitle: "Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies"
-author: |
-  Ben Straub (GSK)  
-  Sam Parmar (Pfizer)  
-  Nick Masel (Johnson & Johnson)
 format: 
   clean-revealjs:
     footer: "[bms63.github.io/phuse-datasetjson](https://bms63.github.io/phuse-datasetjson)"
     incremental: true
+    css: styles.css
 filters:
   - output-line-highlight.lua
 ---
@@ -19,27 +14,38 @@ filters:
 ::: {.column width="30%"}
 Ben Straub
 
-GSK, RCSWG
+GSK, [RCSWG](https://rconsortium.github.io/submissions-wg/)
 
-![](images/ben_circle.png){width="400px"}
+[![](images/ben_circle.png){width="400px"}](https://github.com/bms63)
 :::
 
 ::: {.column width="30%"}
 Sam Parmar
 
-Pfizer, RCSWG
+Pfizer, [RCSWG](https://rconsortium.github.io/submissions-wg/)
 
-![](images/sam_circle.png){width="400px"}
+[![](images/sam_circle.png){width="400px"}](https://github.com/parmsam)
 :::
 
 ::: {.column width="40%"}
 Nick Masel
 
-J&J, RCSWG, {datasetjson}
+J&J, [RCSWG](https://rconsortium.github.io/submissions-wg/), [{datasetjson}](https://atorus-research.github.io/datasetjson/)
 
-![](images/nick_circle.png){width="295px"}
+[![](images/nick_circle.png){width="295px"}](https://github.com/nicholas-masel)
 :::
 ::::::
+
+---
+
+## {#title-slide}
+
+::: {.title}
+Breaking Free from the XPT
+:::
+::: {.subtitle}
+Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies
+:::
 
 # 1980s - A snapshot of technology
 
@@ -53,11 +59,11 @@ J&J, RCSWG, {datasetjson}
 
 ## A time of memory
 
-![](images/answering_machine.jpg)
+![](images/answering_machine2.jpg)
 
 ## A time of xpt
 
-![](images/xpt.jpg)
+![](images/xpt2.png)
 
 ## Motivation: Why Talk About Transport Formats?
 
@@ -449,6 +455,8 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ------------------------------------------------------------------------
 
+# Thank You
+
 ## References & Contact {.smaller}
 
 **Selected references**
@@ -459,9 +467,9 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 **Authors**
 
--   Ben Straub, GSK – Philadelphia, United States\
--   Sam Parmar, Pfizer – New York City, United States\
--   Nick Masel, Johnson & Johnson – Raleigh, United States
+-   [Ben Straub](mailto:ben.x.straub@gsk.com), GSK – Philadelphia, United States\
+-   [Sam Parmar](mailto:samir.parmar@pfizer.com), Pfizer – New York City, United States\
+-   [Nick Masel](mailto:nmasel@its.jnj.com), Johnson & Johnson – Raleigh, United States
 
 ::: notes
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
