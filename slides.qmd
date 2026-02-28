@@ -30,7 +30,7 @@ Pfizer, [RCSWG](https://rconsortium.github.io/submissions-wg/)
 ::: {.column width="40%"}
 Nick Masel
 
-J&J, [RCSWG](https://rconsortium.github.io/submissions-wg/), [Dataset-JSON](https://atorus-research.github.io/datasetjson/)
+J&J, [RCSWG](https://rconsortium.github.io/submissions-wg/), [{datasetjson}](https://atorus-research.github.io/datasetjson/)
 
 [![](images/nick_circle.png){width="295px"}](https://github.com/nicholas-masel)
 :::
