@@ -59,11 +59,11 @@ Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agenc
 
 ## A time of memory
 
-![](images/answering_machine.jpg)
+![](images/answering_machine2.jpg)
 
 ## A time of xpt
 
-![](images/xpt.jpg)
+![](images/xpt2.png)
 
 ## Motivation: Why Talk About Transport Formats?
 
