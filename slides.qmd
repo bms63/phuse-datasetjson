@@ -4,6 +4,7 @@ format:
     footer: "[bms63.github.io/phuse-datasetjson](https://bms63.github.io/phuse-datasetjson)"
     incremental: true
     css: styles.css
+    embed-resources: true
 filters:
   - output-line-highlight.lua
 ---
