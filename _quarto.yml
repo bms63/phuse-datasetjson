@@ -11,6 +11,8 @@ website:
         text: Paper
       - href: slides.qmd
         text: Presentation
+      - href: size_comparisons.qmd
+        text: Size Comparisons
   page-footer: 
     left: "Created using [Quarto](https://quarto.org/docs/websites/)."
     right: 

@@ -1,0 +1,207 @@
+---
+title: "Size Comparisons: Dataset-JSON vs. XPT"
+---
+
+## Overview
+
+This report examines one of the practical considerations when evaluating Dataset-JSON as a replacement for the legacy SAS XPORT (XPT) format: **file size**. The XPT format allocates fixed-width fields and pads records with blanks, which can waste considerable storage. Dataset-JSON, being a text-based format, compresses variable-length data efficiently for sparse or short-string heavy datasets — but can be larger for numerically dense data due to JSON's human-readable representation.
+
+The datasets used here come from a real clinical trial study (CDISC SDTM pilot data), spanning domain types such as demography, adverse events, laboratory results, questionnaires, and supplemental qualifiers. By comparing file sizes side-by-side we can see where Dataset-JSON offers storage savings and where XPT may be more compact.
+
+**Key questions this analysis answers:**
+
+- How does the size of each Dataset-JSON file compare to its XPT counterpart?
+- Which datasets benefit most from the JSON format?
+- Are there datasets where the JSON representation is actually larger than XPT?
+
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(tidyr)
+library(DT)
+library(plotly)
+library(ggplot2)
+
+# ── Read file sizes ─────────────────────────────────────────────────────────
+
+xpt_files  <- list.files("xpts/", pattern = "\\.xpt$",  full.names = TRUE)
+json_files <- list.files("json/",  pattern = "\\.json$", full.names = TRUE)
+
+xpt_sizes  <- setNames(file.info(xpt_files)$size,
+                       tools::file_path_sans_ext(basename(xpt_files)))
+json_sizes <- setNames(file.info(json_files)$size,
+                       tools::file_path_sans_ext(basename(json_files)))
+
+# Exclude ts (no JSON generated for it)
+common_names <- intersect(names(xpt_sizes), names(json_sizes))
+
+size_df <- tibble(
+  Dataset = toupper(common_names),
+  XPT_KB  = round(xpt_sizes[common_names]  / 1024, 1),
+  JSON_KB = round(json_sizes[common_names] / 1024, 1)
+) |>
+  mutate(
+    Ratio         = round(JSON_KB / XPT_KB, 3),
+    `Size Change` = case_when(
+      Ratio < 1  ~ "JSON smaller",
+      Ratio > 1  ~ "JSON larger",
+      TRUE       ~ "Equal"
+    )
+  ) |>
+  arrange(desc(XPT_KB))
+```
+
+## Interactive Size Comparison Table
+
+The table below shows all `r nrow(size_df)` datasets. By default it displays **12 rows** sorted by XPT file size (largest first). You can:
+
+- **Sort** any column by clicking the column header
+- **Search** across all columns using the search box
+- **Adjust** the number of rows shown using the "Show entries" control
+- **Page** through results using the navigation at the bottom
+
+```{r}
+#| echo: false
+
+display_df <- size_df |>
+  select(
+    Dataset,
+    `XPT Size (KB)`  = XPT_KB,
+    `JSON Size (KB)` = JSON_KB,
+    `JSON / XPT Ratio` = Ratio,
+    `Size Change`
+  )
+
+datatable(
+  display_df,
+  options = list(
+    pageLength    = 12,
+    lengthMenu    = list(c(5, 10, 12, 15, 20, -1),
+                         c("5", "10", "12", "15", "20", "All")),
+    order         = list(list(1, "desc")),   # default sort: XPT Size desc
+    scrollX       = TRUE,
+    dom           = "lfrtip"
+  ),
+  rownames = FALSE,
+  class    = "stripe hover cell-border compact",
+  filter   = "top"
+) |>
+  formatStyle(
+    "Size Change",
+    backgroundColor = styleEqual(
+      c("JSON smaller", "JSON larger", "Equal"),
+      c("#d4edda",      "#f8d7da",     "#fff3cd")
+    )
+  ) |>
+  formatStyle(
+    "JSON / XPT Ratio",
+    background = styleColorBar(range(display_df[["JSON / XPT Ratio"]]), "#c8e6fb"),
+    backgroundSize   = "100% 90%",
+    backgroundRepeat = "no-repeat",
+    backgroundPosition = "center"
+  )
+```
+
+---
+
+## Bar Chart: XPT vs. JSON File Sizes (Top 12 by XPT Size)
+
+The chart below focuses on the 12 largest datasets (by XPT size). Hover over any bar for exact values.
+
+```{r}
+#| echo: false
+#| fig-height: 7
+
+top12 <- size_df |> slice(1:12)
+
+long12 <- top12 |>
+  select(Dataset, `XPT (KB)` = XPT_KB, `JSON (KB)` = JSON_KB) |>
+  pivot_longer(cols = c(`XPT (KB)`, `JSON (KB)`),
+               names_to  = "Format",
+               values_to = "Size_KB") |>
+  mutate(Dataset = factor(Dataset, levels = rev(top12$Dataset)))
+
+p <- ggplot(long12, aes(x = Dataset, y = Size_KB, fill = Format,
+                        text = paste0(Format, ": ", Size_KB, " KB"))) +
+  geom_col(position = "dodge") +
+  coord_flip() +
+  scale_fill_manual(values = c("XPT (KB)" = "#00BFC4", "JSON (KB)" = "#F8766D")) +
+  labs(
+    title = "Top 12 Datasets: XPT vs. JSON File Size",
+    x     = NULL,
+    y     = "File Size (KB)",
+    fill  = "Format"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "top")
+
+ggplotly(p, tooltip = "text") |>
+  layout(legend = list(orientation = "h", x = 0, y = 1.08))
+```
+
+---
+
+## Ratio Chart: JSON / XPT File Size Ratio
+
+A ratio below **1.0** (dashed red line) indicates the JSON file is **smaller** than the XPT file; a ratio above 1.0 means JSON is larger. Hover for dataset details.
+
+```{r}
+#| echo: false
+#| fig-height: 7
+
+ratio_df <- size_df |>
+  arrange(Ratio) |>
+  mutate(Dataset = factor(Dataset, levels = Dataset))
+
+p2 <- ggplot(ratio_df,
+             aes(x = Dataset, y = Ratio,
+                 fill = `Size Change`,
+                 text = paste0(Dataset, "\nRatio: ", Ratio,
+                               "\nXPT: ", XPT_KB, " KB",
+                               "\nJSON: ", JSON_KB, " KB"))) +
+  geom_col() +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", linewidth = 0.8) +
+  coord_flip() +
+  scale_fill_manual(values = c("JSON smaller" = "#28a745",
+                                "JSON larger"  = "#dc3545",
+                                "Equal"        = "#ffc107")) +
+  labs(
+    title = "JSON / XPT File Size Ratio (all datasets)",
+    x     = NULL,
+    y     = "JSON Size / XPT Size",
+    fill  = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "top")
+
+ggplotly(p2, tooltip = "text") |>
+  layout(legend = list(orientation = "h", x = 0, y = 1.08))
+```
+
+---
+
+## Summary
+
+```{r}
+#| echo: false
+
+smaller_count <- sum(size_df$Ratio < 1)
+larger_count  <- sum(size_df$Ratio > 1)
+avg_ratio     <- round(mean(size_df$Ratio), 2)
+max_saving    <- size_df |> filter(Ratio == min(Ratio)) |> pull(Dataset)
+max_increase  <- size_df |> filter(Ratio == max(Ratio)) |> pull(Dataset)
+```
+
+Across `r nrow(size_df)` datasets compared:
+
+- **`r smaller_count`** datasets are **smaller** as Dataset-JSON than as XPT.
+- **`r larger_count`** datasets are **larger** as Dataset-JSON than as XPT.
+- The **average JSON/XPT ratio** is **`r avg_ratio`** (values below 1 indicate overall space savings).
+- The biggest space saving is in **`r max_saving`**, while **`r max_increase`** sees the largest size increase in JSON format.
+
+These results highlight that Dataset-JSON is not universally more compact than XPT. Datasets with many short fixed-width fields (especially padded numerics) tend to compress well in JSON, while datasets with many long, dense numeric columns may grow. Understanding this trade-off is important when planning a regulatory submission strategy centred on Dataset-JSON.
