@@ -65,3 +65,5 @@ slides_files/
 *.docx
 !output/ADSL.json
 !data/*
+!xpts/*
+!json/*
