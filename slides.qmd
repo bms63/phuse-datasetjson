@@ -435,3 +435,59 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 ::: notes
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
 :::
+
+------------------------------------------------------------------------
+
+## Scan for Resources {.smaller}
+
+:::::: columns
+::: {.column width="25%" style="text-align: center;"}
+**This Presentation**
+
+{{< qrcode https://bms63.github.io/phuse-datasetjson >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**RCSWG**
+
+{{< qrcode https://rconsortium.github.io/submissions-wg/ >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**datasetjson R Package**
+
+{{< qrcode https://atorus-research.github.io/datasetjson/ >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**Dataset-JSON v1.1**
+
+{{< qrcode https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html >}}
+:::
+::::::
+
+:::::: columns
+::: {.column width="25%" style="text-align: center;"}
+**Pilot 5 Dev Repo**
+
+{{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**Pilot 5 FDA Submission**
+
+{{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**eCTD Overview**
+
+{{< qrcode https://www.fda.gov/drugs/electronic-common-technical-document-ectd >}}
+:::
+
+::: {.column width="25%" style="text-align: center;"}
+**pharmaverse adam**
+
+{{< qrcode https://github.com/pharmaverse/pharmaverseadam >}}
+:::
+::::::
