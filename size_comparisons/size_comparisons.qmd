@@ -132,10 +132,9 @@ p <- ggplot(long12, aes(x = Dataset, y = Size_KB, fill = Format,
   coord_flip() +
   scale_fill_manual(values = c("XPT (KB)" = "#00BFC4", "JSON (KB)" = "#F8766D")) +
   labs(
-    title = "Top 12 Datasets: XPT vs. JSON File Size",
-    x     = NULL,
-    y     = "File Size (KB)",
-    fill  = "Format"
+    x    = NULL,
+    y    = "File Size (KB)",
+    fill = "Format"
   ) +
   theme_minimal(base_size = 13) +
   theme(legend.position = "top")
@@ -171,10 +170,9 @@ p2 <- ggplot(ratio_df,
                                 "JSON larger"  = "#dc3545",
                                 "Equal"        = "#ffc107")) +
   labs(
-    title = "JSON / XPT File Size Ratio (all datasets)",
-    x     = NULL,
-    y     = "JSON Size / XPT Size",
-    fill  = NULL
+    x    = NULL,
+    y    = "JSON Size / XPT Size",
+    fill = NULL
   ) +
   theme_minimal(base_size = 13) +
   theme(legend.position = "top")
