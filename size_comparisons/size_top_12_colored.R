@@ -6,13 +6,13 @@ library(tidyr)    # For pivot_longer
 
 # Get all XPT files from directory
 xpt_files <- list.files(
-  "xpts/",
+  "../xpts/",
   pattern = "\\.xpt$",
   full.names = TRUE
 )
 
 # Create output directory
-output_dir <- "json"
+output_dir <- "../json"
 
 # Ensure output directory exists
 if (!dir.exists(output_dir)) {

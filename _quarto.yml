@@ -1,5 +1,6 @@
 project:
   type: website
+  execute-dir: project
 
 website:
   title: "Breaking Free from the XPT"
@@ -11,7 +12,7 @@ website:
         text: Paper
       - href: slides.qmd
         text: Presentation
-      - href: size_comparisons.qmd
+      - href: size_comparisons/size_comparisons.qmd
         text: Size Comparisons
   page-footer: 
     left: "Created using [Quarto](https://quarto.org/docs/websites/)."

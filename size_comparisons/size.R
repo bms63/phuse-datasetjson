@@ -1,12 +1,12 @@
 # Get all XPT files from directory
 xpt_files <- list.files(
-  "xpts/",
+  "../xpts/",
   pattern = "\\.xpt$",
   full.names = TRUE
 )
 
 # Create output directory
-output_dir <- "json"
+output_dir <- "../json"
 
 # Record file sizes
 file_sizes <- file.info(xpt_files)$size
@@ -104,3 +104,4 @@ p <- ggplot(size_comparison, aes(x = reorder(dataset, proportion), y = proportio
   theme_minimal()
 
 ggsave("size_comparison.png", p, width = 10, height = 8, dpi = 300)
+
