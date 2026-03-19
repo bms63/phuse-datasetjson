@@ -416,28 +416,6 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ------------------------------------------------------------------------
 
-# Thank You
-
-## References & Contact {.smaller}
-
-**Selected references**
-
--   Pilot 5 repo: <https://github.com/RConsortium/submissions-pilot5-datasetjson>\
--   eCTD overview: <https://www.fda.gov/drugs/electronic-common-technical-document-ectd>
--   Dataset-JSON v1.1: <https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html>
-
-**Authors**
-
--   [Ben Straub](mailto:ben.x.straub@gsk.com), GSK – Philadelphia, United States\
--   [Sam Parmar](mailto:samir.parmar@pfizer.com), Pfizer – New York City, United States\
--   [Nick Masel](mailto:nmasel@its.jnj.com), Johnson & Johnson – Raleigh, United States
-
-::: notes
-Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
-:::
-
-------------------------------------------------------------------------
-
 ## Scan for Resources {.smaller}
 
 :::::: columns
@@ -491,3 +469,29 @@ Invite questions and follow-up discussions; mention that all materials are publi
 {{< qrcode https://github.com/pharmaverse/pharmaverseadam >}}
 :::
 ::::::
+
+------------------------------------------------------------------------
+
+# Thank You
+
+## References & Contact {.smaller}
+
+**Selected references**
+
+-   Pilot 5 repo: <https://github.com/RConsortium/submissions-pilot5-datasetjson>\
+-   eCTD overview: <https://www.fda.gov/drugs/electronic-common-technical-document-ectd>
+-   Dataset-JSON v1.1: <https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html>
+
+**Authors**
+
+-   [Ben Straub](mailto:ben.x.straub@gsk.com), GSK – Philadelphia, United States\
+-   [Sam Parmar](mailto:samir.parmar@pfizer.com), Pfizer – New York City, United States\
+-   [Nick Masel](mailto:nmasel@its.jnj.com), Johnson & Johnson – Raleigh, United States
+
+::: notes
+Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
+:::
+
+------------------------------------------------------------------------
+
+
