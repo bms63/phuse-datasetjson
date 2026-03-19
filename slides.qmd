@@ -448,7 +448,7 @@ Invite questions and follow-up discussions; mention that all materials are publi
 :::
 
 ::: {.column width="25%" style="text-align: center;"}
-**RCSWG**
+**R Consortium Submissions Working Group**
 
 {{< qrcode https://rconsortium.github.io/submissions-wg/ >}}
 :::
