@@ -383,23 +383,6 @@ a re-submission in January 2026.
 
 ------------------------------------------------------------------------
 
-## What Pilot 5 Demonstrates
-
--   Dataset-JSON is a **viable transport** for submission-like packages:
-    -   Produced fully in an R-driven pipeline
-    -   With explicit metadata management
--   A reviewer-friendly, eCTD-style package can use Dataset-JSON instead of XPT
--   Outputs (TLFs) can be regenerated from provided code and datasets
--   QC comparisons:
-    -   Dataset-level and output-level
-    -   Scripted and reported for transparency
-
-::: notes
-Tie this back to the original motivation: same scientific intent and reproducibility as XPT-based workflows, but better aligned with modern tools.
-:::
-
-
-
 # datasetjson R package <br> [Workhorse of Pilot 5]{style="font-size: 60%;"}
 
 ![](images/package_logo.svg){fig-align="right"}
