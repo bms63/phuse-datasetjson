@@ -1,23 +1,11 @@
 /* css styles */
 
 <style>
-/* Optional CSS for styling the headshots */
-.headshot {
-  width: 100px;       /* Set a fixed width */
-  height: 100px;      /* Set a fixed height */
-  object-fit: cover;  /* Ensures the image covers the area without distortion */
-  border-radius: 50%; /* Makes the image round */
-  display: block;     /* Ensures each image takes its own line for vertical stacking */
-  margin: 0 auto 15px auto; /* Centers the image and adds bottom margin */
-  border: 3px solid #ddd; /* Optional: adds a subtle border */
+/* Remove gap between title and subtitle on title slide */
+#title-slide .title p {
+  margin-bottom: 0;
 }
-
-/* Adjustments for the names to align better with images */
-.column h3 {
-  margin-bottom: 0.1em;
-  padding-top: 15px; /* Adjust to visually align with image centers if needed */
-}
-.column p { /* If you wrap the affiliations in <p> tags */
+#title-slide .subtitle p {
   margin-top: 0;
 }
 </style>

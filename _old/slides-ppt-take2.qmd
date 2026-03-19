@@ -1,11 +1,7 @@
 ---
-format: 
-  clean-revealjs:
-    footer: "[bms63.github.io/phuse-datasetjson](https://bms63.github.io/phuse-datasetjson)"
-    incremental: false
-    css: styles.css
-filters:
-  - output-line-highlight.lua
+title: "slides-ppt"
+format: pptx
+editor: visual
 ---
 
 ## Presenters
@@ -14,38 +10,27 @@ filters:
 ::: {.column width="30%"}
 Ben Straub
 
-GSK, [RCSWG](https://rconsortium.github.io/submissions-wg/)
+GSK, RCSWG
 
-[![](images/ben_circle.png){width="400px"}](https://github.com/bms63)
+![](images/ben_circle.png){width="400px"}
 :::
 
 ::: {.column width="30%"}
 Sam Parmar
 
-Pfizer, [RCSWG](https://rconsortium.github.io/submissions-wg/)
+Pfizer, RCSWG
 
-[![](images/sam_circle.png){width="400px"}](https://github.com/parmsam)
+![](images/sam_circle.png){width="400px"}
 :::
 
 ::: {.column width="40%"}
 Nick Masel
 
-J&J, [RCSWG](https://rconsortium.github.io/submissions-wg/), [{datasetjson}](https://atorus-research.github.io/datasetjson/)
+J&J, RCSWG, {datasetjson}
 
-[![](images/nick_circle.png){width="295px"}](https://github.com/nicholas-masel)
+![](images/nick_circle.png){width="295px"}
 :::
 ::::::
-
----
-
-## {#title-slide}
-
-::: {.title}
-Breaking Free from the XPT
-:::
-::: {.subtitle}
-Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agencies
-:::
 
 # 1980s - A snapshot of technology
 
@@ -59,18 +44,18 @@ Exploration of Dataset-JSON as an Alternative Transport File to Regulatory Agenc
 
 ## A time of memory
 
-![](images/answering_machine2.jpg)
+![](images/answering_machine.jpg)
 
 ## A time of xpt
 
-![](images/xpt2.png)
+![](images/xpt.jpg)
 
 ## Motivation: Why Talk About Transport Formats?
 
 -   All of these 1980s technologies have been replaced - except the XPT.
 -   XPTs has been the de facto submission transport for decades
 -   XPT works – but reflects 1980s constraints, not modern data practice
--   Open-source tooling and modern standards are becoming more mainstream in Pharma
+-   Open-source tooling and modern standards are now mainstream
 -   Dataset-JSON offers a contemporary alternative
 
 ::: notes
@@ -81,12 +66,11 @@ Set the stage: XPT is familiar and “good enough,” but we’re asking if ther
 
 ## Agenda
 
-This talk covers four topics:
+This talk covers three topics:
 
 -   Why the industry is rethinking XPT as the default transport file?
 -   What Dataset-JSON is, where it came from, and why it matters?
--   A "Pilot" FDA submission using Dataset-JSON v1.1 standard (no xpts!) 
--   The R package datasetjson - a five minute crash course.
+-   The R Consortium R Submissions Working Group and Pilot 5
 
 ::: notes
 Give the audience a mental roadmap; we’ll go from pain points, to the new standard, to the pilot as a worked example.
@@ -316,7 +300,6 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
     -   QC Reports from Bots
     -   Closed Pull Requests with Discussion
     -   Meeting Notes and Development ADRG (LLM-supported)
-    -   {{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson >}}
 :::
 
 ::: {.column width="50%"}
@@ -327,12 +310,45 @@ Stress that Pilot 5 is both about the format (Dataset-JSON) and demonstrating en
     -   Final R programs
     -   Final JSON data
     -   Final ADRG and other supporting documents
-    -   {{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda >}}
 :::
 :::::
 
 ::: notes
 Encourage participants to explore the repo post-session; it’s meant as a starting point they can reuse.
+:::
+
+------------------------------------------------------------------------
+
+## Way of Working: Reproducibility-First
+
+-   Organized to be **re-runnable and inspectable**:
+    -   Programs: [`pilot5-submission/pilot5-programs/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-programs)
+        -   e.g., `adsl.r`, `adae.r`, `adlbc.r`, `adtte.r`
+    -   Outputs: [`pilot5-submission/pilot5-output/`](https://github.com/RConsortium/submissions-pilot5-datasetjson/tree/main/pilot5-submission/pilot5-output)
+    -   Documentation: ADRG + eCTD-style README
+-   Comparability treated as a first-class artifact:
+    -   [`qcReport.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/qcReport.qmd): dataset-to-dataset QC using `diffdf`
+    -   [`tlf-qc.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/tlf-qc.qmd): text and graphical diffing of outputs
+
+::: notes
+Key message: nothing is “magic”; everything is scripted and version-controlled, including conversion to Dataset-JSON and QC.
+:::
+
+------------------------------------------------------------------------
+
+## Where AI Helped (But Didn’t Replace Authors)
+
+-   Pilot 5 experimented with LLM-assisted documentation:
+    -   [`adrg/llm-adrg-utils/llm_pipeline.qmd`](https://github.com/RConsortium/submissions-pilot5-datasetjson/blob/main/adrg/llm-adrg-utils/llm_pipeline.qmd)
+-   Use cases:
+    -   Extract variables, datasets, filters from analysis code
+    -   Pre-populate reviewer-facing tables in ADRG
+-   Intent:
+    -   **Reduce manual effort and inconsistencies**
+    -   Keep humans firmly in the authoring and review loop
+
+::: notes
+Brief mention to show forward-looking tooling, but clarify that AI augments, not replaces, human oversight.
 :::
 
 ------------------------------------------------------------------------
@@ -370,16 +386,22 @@ Encourage participants to explore the repo post-session; it’s meant as a start
 This illustrates that format innovation can get slightly ahead of validation ecosystems; collaboration and documentation are key.
 :::
 
-
 ------------------------------------------------------------------------
 
-## Feedback from the FDA
+## What Pilot 5 Demonstrates
 
-- The submission package was successfully delivered to the FDA via eCTD portal
-in November 2025.
-- A minor was revision was requested by FDA reviewers - use of `.rds` files with
-a re-submission in January 2026.
-- Awaiting final feedback from reviewers.
+-   Dataset-JSON is a **viable transport** for submission-like packages:
+    -   Produced fully in an R-driven pipeline
+    -   With explicit metadata management
+-   A reviewer-friendly, eCTD-style package can use Dataset-JSON instead of XPT
+-   Outputs (TLFs) can be regenerated from provided code and datasets
+-   QC comparisons:
+    -   Dataset-level and output-level
+    -   Scripted and reported for transparency
+
+::: notes
+Tie this back to the original motivation: same scientific intent and reproducibility as XPT-based workflows, but better aligned with modern tools.
+:::
 
 ------------------------------------------------------------------------
 
@@ -416,8 +438,6 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 ------------------------------------------------------------------------
 
-# Thank You
-
 ## References & Contact {.smaller}
 
 **Selected references**
@@ -428,66 +448,10 @@ Encourage incremental experimentation: start with internal pilots, evaluate tool
 
 **Authors**
 
--   [Ben Straub](mailto:ben.x.straub@gsk.com), GSK – Philadelphia, United States\
--   [Sam Parmar](mailto:samir.parmar@pfizer.com), Pfizer – New York City, United States\
--   [Nick Masel](mailto:nmasel@its.jnj.com), Johnson & Johnson – Raleigh, United States
+-   Ben Straub, GSK – Philadelphia, United States\
+-   Sam Parmar, Pfizer – New York City, United States\
+-   Nick Masel, Johnson & Johnson – Raleigh, United States
 
 ::: notes
 Invite questions and follow-up discussions; mention that all materials are public and contributions are welcome.
 :::
-
-------------------------------------------------------------------------
-
-## Scan for Resources {.smaller}
-
-:::::: columns
-::: {.column width="25%" style="text-align: center;"}
-**This Presentation**
-
-{{< qrcode https://bms63.github.io/phuse-datasetjson >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**R Consortium Submissions Working Group**
-
-{{< qrcode https://rconsortium.github.io/submissions-wg/ >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**datasetjson R Package**
-
-{{< qrcode https://atorus-research.github.io/datasetjson/ >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**Dataset-JSON v1.1**
-
-{{< qrcode https://cdisc-org.github.io/DataExchange-DatasetJson/doc/dataset-json1-1.html >}}
-:::
-::::::
-
-:::::: columns
-::: {.column width="25%" style="text-align: center;"}
-**Pilot 5 Dev Repo**
-
-{{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**Pilot 5 FDA Submission**
-
-{{< qrcode https://github.com/RConsortium/submissions-pilot5-datasetjson-to-fda >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**eCTD Overview**
-
-{{< qrcode https://www.fda.gov/drugs/electronic-common-technical-document-ectd >}}
-:::
-
-::: {.column width="25%" style="text-align: center;"}
-**pharmaverse adam**
-
-{{< qrcode https://github.com/pharmaverse/pharmaverseadam >}}
-:::
-::::::
